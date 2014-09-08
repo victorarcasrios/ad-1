@@ -5,6 +5,8 @@ Repositorios externos (sudo apt-add-repository):
 	(oracle-java7-installer) ppa:webupd8team/java
 
 Paquetes y programas instalados (sudo apt-get install):
+	gnome-session-flashback (Escritorio basico)
+
 	oracle-java7-installer (jdk)
 
 	monodevelop
