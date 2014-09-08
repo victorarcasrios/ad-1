@@ -21,7 +21,7 @@ Paquetes y programas instalados (sudo apt-get install):
 
 Otros comandos:
 	***GIT***
-		git clone [URL].git
+		git clone [URL].git [Destino/ ]
 		git status (Estado)
 		git pull (Actualizar Local/Bajar)
 		git push (Actualizar Nube/Subir)
