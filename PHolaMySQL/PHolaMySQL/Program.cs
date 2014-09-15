@@ -34,7 +34,7 @@ namespace PHolaMySQL
 
 			Console.WriteLine ("FieldCount = {0}", mySqlDataReader.FieldCount);
 			for (int index = 0; index < mySqlDataReader.FieldCount; index++) {
-
+				Console.WriteLine ("Column {0} = {1}", index, mySqlDataReader.GetName (index));
 
 			}
 
