@@ -11,11 +11,13 @@ Paquetes y programas instalados (sudo apt-get install):
 
 	monodevelop
 	monodevelop-nunit
-	monodevelop-nunit-manual
+	monodoc-nunit-manual
 	monodevelop-versioncontrol
-	monodevelop-gtk2.0-manual
-	monodevelop-mysql-manual
-	monodevelop-browser
+	monodoc-gtk2.0-manual
+	monodoc-mysql-manual
+	monodoc-browser
+	libmysql-cil-dev
+	libmysql6.4-cil
 
 	bitnami-lampstack-5.4.32-0-linux-x64-installer.run (externo)
 
