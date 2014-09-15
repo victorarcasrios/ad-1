@@ -8,8 +8,6 @@ namespace PHolaMySQL
 	{
 		public static void Main (string[] args)
 		{
-			Console.WriteLine ("Error 404 not found");
-
 			string connectionString =
 				"Server=localhost;"+
 				"Database=dbprueba;"+
@@ -18,18 +16,23 @@ namespace PHolaMySQL
 			MySqlConnection mySqlConnection = new MySqlConnection (connectionString);
 
 			mySqlConnection.Open ();
-			/*
-			//Write
-			MySqlCommand mySqlCommand = mySqlConnection.CreateCommand ();
-			mySqlCommand.CommandText = 
-				string.Format ("INSERT INTO categoria (nombre) VALUES ('{0}')", DateTime.Now);
 
-			mySqlCommand.ExecuteNonQuery ();
-			*/
-			//Read
+			Console.WriteLine ("Opciones:\n1.Consultar\n2.Modificar\n");
+			string respuesta = Console.ReadLine ();
+			if (respuesta == "1") {DataReader (mySqlConnection);}
+			if (respuesta == "2") {DataWriter (mySqlConnection);}
+
+			mySqlConnection.Close ();
+
+			Console.WriteLine ("\n\nError 404 not found");
+
+		}
+
+		public static void DataReader (MySqlConnection mySqlConnection)
+		{
 			MySqlCommand mySqlCommand = mySqlConnection.CreateCommand ();
 			mySqlCommand.CommandText = "SELECT * FROM categoria";
-			
+
 			MySqlDataReader mySqlDataReader = mySqlCommand.ExecuteReader ();
 
 			Console.WriteLine ("FieldCount = {0}", mySqlDataReader.FieldCount);
@@ -38,8 +41,17 @@ namespace PHolaMySQL
 
 			}
 
-			mySqlConnection.Close ();
+		}
+
+		public static void DataWriter (MySqlConnection mySqlConnection)
+		{
+			MySqlCommand mySqlCommand = mySqlConnection.CreateCommand ();
+			mySqlCommand.CommandText = 
+				string.Format ("INSERT INTO categoria (nombre) VALUES ('{0}')", DateTime.Now);
+
+			mySqlCommand.ExecuteNonQuery ();
 
 		}
+
 	}
 }
