@@ -8,16 +8,19 @@ namespace PHolaMySQL
 	{
 		public static void Main (string[] args)
 		{
+			Console.Write ("Contraseña para usuario root: " );
+			string password = Console.ReadLine ();
+
 			string connectionString =
 				"Server=localhost;"+
 				"Database=dbprueba;"+
 				"User ID=root;"+
-				"Password=sistemas";
+				"Password="+password;
 			MySqlConnection mySqlConnection = new MySqlConnection (connectionString);
 
 			mySqlConnection.Open ();
 
-			Console.WriteLine ("Opciones:\n1.Consultar\n2.Modificar\n");
+			Console.WriteLine ("\nOpciones:\n1.Consultar\n2.Modificar\n");
 			string respuesta = Console.ReadLine ();
 			if (respuesta == "1") {DataReader (mySqlConnection);}
 			if (respuesta == "2") {DataWriter (mySqlConnection);}
@@ -35,7 +38,7 @@ namespace PHolaMySQL
 
 			MySqlDataReader mySqlDataReader = mySqlCommand.ExecuteReader ();
 
-			Console.WriteLine ("FieldCount = {0}", mySqlDataReader.FieldCount);
+			Console.WriteLine ("\nFieldCount = {0}", mySqlDataReader.FieldCount);
 			for (int index = 0; index < mySqlDataReader.FieldCount; index++) {
 				Console.WriteLine ("Column {0} = {1}", index, mySqlDataReader.GetName (index));
 
