@@ -31,11 +31,11 @@ namespace PHolaMySQL
 					//Salir
 				case "0":{ Console.WriteLine ("\nSaliendo..."); break;}
 					//Nuevo
-				case "1":{ Console.Clear (); mysqlNuevo (); break;}
+				case "1":{ Console.Clear (); mysqlNuevo (mySqlConnection); break;}
 					//Modificar
 				case "2":{ Console.Clear (); mysqlModificar (mySqlConnection); break;}
 					//Eliminar
-				case "3":{ Console.Clear (); mysqlEliminar (); break;}
+				case "3":{ Console.Clear (); mysqlEliminar (mySqlConnection); break;}
 					//Ver
 				case "4":{ Console.Clear (); mysqlVer (mySqlConnection); break;}
 					//Default
@@ -51,9 +51,13 @@ namespace PHolaMySQL
 
 		}
 
-		public static void mysqlNuevo ()
+		public static void mysqlNuevo (MySqlConnection mySqlConnection)
 		{
+			MySqlCommand mySqlCommand = mySqlConnection.CreateCommand ();
+			mySqlCommand.CommandText = 
+				string.Format ("");
 
+			mySqlCommand.ExecuteNonQuery ();
 
 		}
 
@@ -67,9 +71,13 @@ namespace PHolaMySQL
 
 		}
 
-		public static void mysqlEliminar ()
+		public static void mysqlEliminar (MySqlConnection mySqlConnection)
 		{
+			MySqlCommand mySqlCommand = mySqlConnection.CreateCommand ();
+			mySqlCommand.CommandText = 
+				string.Format ("");
 
+			mySqlCommand.ExecuteNonQuery ();
 
 		}
 
