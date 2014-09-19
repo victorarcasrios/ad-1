@@ -24,10 +24,10 @@ namespace PHolaMySQL
 			string respuesta = Console.ReadLine ();
 			if (respuesta == "1") {DataReader (mySqlConnection);}
 			if (respuesta == "2") {DataWriter (mySqlConnection);}
+			if (respuesta != "1" && respuesta != "2")
+				{Console.WriteLine ("\n\nError 404 not found");}
 
 			mySqlConnection.Close ();
-
-			Console.WriteLine ("\n\nError 404 not found");
 
 		}
 
@@ -43,6 +43,17 @@ namespace PHolaMySQL
 				Console.WriteLine ("Column {0} = {1}", index, mySqlDataReader.GetName (index));
 
 			}
+
+			while (mySqlDataReader.Read()) 
+			{
+				object id = mySqlDataReader ["id"];
+				object nombre = mySqlDataReader ["nombre"];
+
+				Console.Write ("\n{0}, {1}", id, nombre);
+
+			}
+
+			mySqlDataReader.Close ();
 
 		}
 
