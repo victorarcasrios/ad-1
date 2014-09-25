@@ -39,7 +39,7 @@ namespace PHolaMySQL
 					//Ver
 				case "4":{ Console.Clear (); mysqlVer (mySqlConnection); break;}
 					//Default
-				default:{ Console.WriteLine ("\n\nError 404 not found"); respuesta = "0"; break;}
+				default:{ Console.Clear (); Console.WriteLine ("\nError 404 Not Found"); respuesta = "0"; break;}
 
 				}
 
