@@ -47,22 +47,39 @@ public partial class MainWindow: Gtk.Window
 		this.mySqlConnection.Open ();
 
 		this.SetSizeRequest (300, 250);
-
-		vboxTable.Visible = true;
 		hboxPwd.Visible = false;
+		hboxEdit.Visible = false;
+		vboxTable.Visible = true;
+		vboxEdit.Visible = false;
 
 	}
 
 	protected void OnEditActionActivated (object sender, EventArgs e)
 	{
 		hboxPwd.Visible = false;
+		hboxEdit.Visible = true;
 		vboxTable.Visible = false;
+		vboxEdit.Visible = true;
+
+
 
 	}
 
 	protected void OnApplyActionActivated (object sender, EventArgs e)
 	{
+		MySqlCommand mySqlCommand = mySqlConnection.CreateCommand ();
+		mySqlCommand.CommandText =
+			string.Format (""); //textView.Text ?
+		mySqlCommand.ExecuteNonQuery ();
 
+	}
+
+	protected void OnGoBackActionActivated (object sender, EventArgs e)
+	{
+		hboxPwd.Visible = false;
+		hboxEdit.Visible = false;
+		vboxTable.Visible = true;
+		vboxEdit.Visible = false;
 
 	}
 

@@ -10,20 +10,6 @@
   </import>
   <widget class="Gtk.Window" id="MainWindow" design-size="564 338">
     <action-group name="Default">
-      <action id="addAction">
-        <property name="Type">Action</property>
-        <property name="Label" translatable="yes">Añadir</property>
-        <property name="ShortLabel" translatable="yes">Añadir</property>
-        <property name="StockId">gtk-add</property>
-        <signal name="Activated" handler="OnAddActionActivated" />
-      </action>
-      <action id="removeAction">
-        <property name="Type">Action</property>
-        <property name="Label" translatable="yes">Vaciar</property>
-        <property name="ShortLabel" translatable="yes">Vaciar</property>
-        <property name="StockId">gtk-remove</property>
-        <signal name="Activated" handler="OnRemoveActionActivated" />
-      </action>
       <action id="goForwardAction">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Actualizar</property>
@@ -62,6 +48,12 @@
         <property name="ShortLabel" translatable="yes">Aplicar</property>
         <property name="StockId">gtk-apply</property>
         <signal name="Activated" handler="OnApplyActionActivated" />
+      </action>
+      <action id="goBackAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes" />
+        <property name="StockId">gtk-go-back</property>
+        <signal name="Activated" handler="OnGoBackActionActivated" />
       </action>
     </action-group>
     <property name="MemberName" />
@@ -127,19 +119,33 @@
         <child>
           <widget class="Gtk.HBox" id="hboxEdit">
             <property name="MemberName" />
+            <property name="Visible">False</property>
             <property name="Spacing">6</property>
             <child>
-              <widget class="Gtk.Toolbar" id="toolBarEdit">
+              <widget class="Gtk.Toolbar" id="toolBarEdit1">
                 <property name="MemberName" />
-                <property name="Visible">False</property>
                 <property name="ShowArrow">False</property>
-                <node name="toolBarEdit" type="Toolbar">
+                <node name="toolBarEdit1" type="Toolbar">
                   <node type="Toolitem" action="applyAction" />
                 </node>
               </widget>
               <packing>
                 <property name="Position">0</property>
                 <property name="AutoSize">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.Toolbar" id="toolBarEdit2">
+                <property name="MemberName" />
+                <property name="ShowArrow">False</property>
+                <node name="toolBarEdit2" type="Toolbar">
+                  <node type="Toolitem" action="goBackAction" />
+                </node>
+              </widget>
+              <packing>
+                <property name="Position">1</property>
+                <property name="AutoSize">False</property>
+                <property name="Expand">False</property>
               </packing>
             </child>
           </widget>
@@ -173,10 +179,10 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="Gtk.Toolbar" id="toolBar3">
+                  <widget class="Gtk.Toolbar" id="toolBar2">
                     <property name="MemberName" />
                     <property name="ShowArrow">False</property>
-                    <node name="toolBar3" type="Toolbar">
+                    <node name="toolBar2" type="Toolbar">
                       <node type="Toolitem" action="refreshAction" />
                       <node type="Separator" />
                       <node type="Toolitem" action="closeAction" />
@@ -222,17 +228,18 @@
         <child>
           <widget class="Gtk.VBox" id="vboxEdit">
             <property name="MemberName" />
+            <property name="Visible">False</property>
             <property name="Spacing">6</property>
             <child>
-              <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow2">
+              <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
                 <property name="MemberName" />
                 <property name="ShadowType">In</property>
                 <child>
                   <widget class="Gtk.TextView" id="textView">
                     <property name="MemberName" />
-                    <property name="Visible">False</property>
                     <property name="CanFocus">True</property>
                     <property name="ShowScrollbars">True</property>
+                    <property name="Overwrite">True</property>
                     <property name="Text" translatable="yes" />
                   </widget>
                 </child>
