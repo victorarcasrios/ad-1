@@ -13,6 +13,8 @@ public partial class MainWindow: Gtk.Window
 	{
 		Build ();
 
+
+
 		treeView.AppendColumn ("id", new CellRendererText (), "text", 0);
 		treeView.AppendColumn ("nombre", new CellRendererText (), "text", 1);
 
@@ -37,7 +39,34 @@ public partial class MainWindow: Gtk.Window
 		a.RetVal = true;
 	}
 
-	protected void OnAddActionActivated (object sender, EventArgs e)
+	protected void OnGoForwardActionActivated (object sender, EventArgs e)
+	{
+		string connectionString = "Server=localhost;" + "Database=dbprueba;" +
+			"User ID=root;" + "Password=" + entryPwd.Text.ToString();
+		this.mySqlConnection = new MySqlConnection (connectionString);
+		this.mySqlConnection.Open ();
+
+		this.SetSizeRequest (300, 250);
+
+		vboxTable.Visible = true;
+		hboxPwd.Visible = false;
+
+	}
+
+	protected void OnEditActionActivated (object sender, EventArgs e)
+	{
+		hboxPwd.Visible = false;
+		vboxTable.Visible = false;
+
+	}
+
+	protected void OnApplyActionActivated (object sender, EventArgs e)
+	{
+
+
+	}
+
+	protected void OnRefreshActionActivated (object sender, EventArgs e)
 	{
 		MySqlCommand mySqlCommand = mySqlConnection.CreateCommand ();
 		mySqlCommand.CommandText = "SELECT * FROM categoria";
@@ -55,22 +84,10 @@ public partial class MainWindow: Gtk.Window
 
 	}
 
-	protected void OnRemoveActionActivated (object sender, EventArgs e)
+	protected void OnCloseActionActivated (object sender, EventArgs e)
 	{
 		listStore.Clear ();
 
 	}
-
-	protected void OnRefreshActionActivated (object sender, EventArgs e)
-	{
-		string connectionString = "Server=localhost;" + "Database=dbprueba;" +
-				"User ID=root;" + "Password=" + entryPwd.Text.ToString();
-		this.mySqlConnection = new MySqlConnection (connectionString);
-		this.mySqlConnection.Open ();
-
-		vboxTable.Visible = true;
-		hboxPwd.Visible = false;
-
-	}
-
+	
 }
