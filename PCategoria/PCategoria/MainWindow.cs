@@ -7,7 +7,7 @@ public partial class MainWindow: Gtk.Window
 {	
 	private ListStore listStore;
 
-	private MySqlConnection MySqlConnection;
+	private MySqlConnection mySqlConnection;
 
 	public MainWindow (): base (Gtk.WindowType.Toplevel)
 	{
@@ -26,13 +26,32 @@ public partial class MainWindow: Gtk.Window
 
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
 	{
+		try{
+			this.mySqlConnection.Close ();
+		}
+		catch{
+			Console.WriteLine ("Error 404 Not Found");
+		}
+
 		Application.Quit ();
 		a.RetVal = true;
 	}
 
 	protected void OnAddActionActivated (object sender, EventArgs e)
 	{
-		listStore.AppendValues ("1", "uno");
+		MySqlCommand mySqlCommand = mySqlConnection.CreateCommand ();
+		mySqlCommand.CommandText = "SELECT * FROM categoria";
+
+		MySqlDataReader mySqlDataReader = mySqlCommand.ExecuteReader ();
+
+		while (mySqlDataReader.Read())
+		{
+			object id = mySqlDataReader ["id"].ToString ();
+			object nombre = mySqlDataReader ["nombre"].ToString ();
+			listStore.AppendValues (id, nombre);
+		}
+
+		mySqlDataReader.Close ();
 
 	}
 
@@ -46,7 +65,11 @@ public partial class MainWindow: Gtk.Window
 	{
 		string connectionString = "Server=localhost;" + "Database=dbprueba;" +
 				"User ID=root;" + "Password=" + entryPwd.Text.ToString();
-		MySqlConnection mySqlConnection = new MySqlConnection (connectionString);
+		this.mySqlConnection = new MySqlConnection (connectionString);
+		this.mySqlConnection.Open ();
+
+		vboxTable.Visible = true;
+		hboxPwd.Visible = false;
 
 	}
 
