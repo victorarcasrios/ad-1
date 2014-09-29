@@ -48,7 +48,7 @@ public partial class MainWindow: Gtk.Window
 			this.mySqlConnection = new MySqlConnection (connectionString);
 			this.mySqlConnection.Open ();
 
-			this.SetSizeRequest (300, 250);
+			this.SetSizeRequest (500, 250);
 			hboxPwd.Visible = false;
 			vboxTable.Visible = true;
 			vboxEdit.Visible = false;
@@ -74,10 +74,16 @@ public partial class MainWindow: Gtk.Window
 
 	protected void OnApplyActionActivated (object sender, EventArgs e)
 	{
-		MySqlCommand mySqlCommand = mySqlConnection.CreateCommand ();
-		mySqlCommand.CommandText =
-			string.Format (textView.Buffer.Text); //INSERT, DROP, CREATE, DELETE
-		mySqlCommand.ExecuteNonQuery ();
+		try{
+			MySqlCommand mySqlCommand = mySqlConnection.CreateCommand ();
+			mySqlCommand.CommandText =
+				string.Format (textView.Buffer.Text); //INSERT, DROP, CREATE, DELETE, UPDATE
+			mySqlCommand.ExecuteNonQuery ();
+		}
+		catch (MySqlException){
+			Console.WriteLine ("SQL Syntax Error");
+			textView.Buffer.Clear ();
+		}
 
 	}
 
@@ -91,19 +97,27 @@ public partial class MainWindow: Gtk.Window
 
 	protected void OnRefreshActionActivated (object sender, EventArgs e)
 	{
-		MySqlCommand mySqlCommand = mySqlConnection.CreateCommand ();
-		mySqlCommand.CommandText = "SELECT * FROM categoria";
+		try{
+			listStore.Clear ();
 
-		MySqlDataReader mySqlDataReader = mySqlCommand.ExecuteReader ();
+			MySqlCommand mySqlCommand = mySqlConnection.CreateCommand ();
+			mySqlCommand.CommandText = "SELECT * FROM categoria";
 
-		while (mySqlDataReader.Read())
-		{
-			object id = mySqlDataReader ["id"].ToString ();
-			object nombre = mySqlDataReader ["nombre"].ToString ();
-			listStore.AppendValues (id, nombre);
+			MySqlDataReader mySqlDataReader = mySqlCommand.ExecuteReader ();
+
+			while (mySqlDataReader.Read())
+			{
+				object id = mySqlDataReader ["id"].ToString ();
+				object nombre = mySqlDataReader ["nombre"].ToString ();
+				listStore.AppendValues (id, nombre);
+			}
+
+			mySqlDataReader.Close ();
 		}
-
-		mySqlDataReader.Close ();
+		catch (MySqlException){
+			Console.WriteLine ("SQL Error");
+			listStore.Clear ();
+		}
 
 	}
 
