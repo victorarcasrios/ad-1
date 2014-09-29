@@ -13,16 +13,17 @@ public partial class MainWindow: Gtk.Window
 	{
 		Build ();
 
-
+		this.SetSizeRequest (300, 50);
+		hboxPwd.Visible = true;
+		vboxTable.Visible = false;
+		vboxEdit.Visible = false;
 
 		treeView.AppendColumn ("id", new CellRendererText (), "text", 0);
 		treeView.AppendColumn ("nombre", new CellRendererText (), "text", 1);
 
-		listStore = new ListStore (typeof(string), typeof(string));
+		listStore = new ListStore (typeof(ulong), typeof(string));
 
 		treeView.Model = listStore; //Java> treeView.setModel(listStore);
-
-
 
 	}
 
@@ -32,7 +33,7 @@ public partial class MainWindow: Gtk.Window
 			this.mySqlConnection.Close ();
 		}
 		catch{
-			Console.WriteLine ("Error 404 Not Found");
+			Console.WriteLine ("\nError 404 Not Found");
 		}
 
 		Application.Quit ();
@@ -41,27 +42,33 @@ public partial class MainWindow: Gtk.Window
 
 	protected void OnGoForwardActionActivated (object sender, EventArgs e)
 	{
-		string connectionString = "Server=localhost;" + "Database=dbprueba;" +
-			"User ID=root;" + "Password=" + entryPwd.Text.ToString();
-		this.mySqlConnection = new MySqlConnection (connectionString);
-		this.mySqlConnection.Open ();
+		try{
+			string connectionString = "Server=localhost;" + "Database=dbprueba;" +
+				"User ID=root;" + "Password=" + entryPwd.Text.ToString();
+			this.mySqlConnection = new MySqlConnection (connectionString);
+			this.mySqlConnection.Open ();
 
-		this.SetSizeRequest (300, 250);
-		hboxPwd.Visible = false;
-		hboxEdit.Visible = false;
-		vboxTable.Visible = true;
-		vboxEdit.Visible = false;
+			this.SetSizeRequest (300, 250);
+			hboxPwd.Visible = false;
+			vboxTable.Visible = true;
+			vboxEdit.Visible = false;
 
+		}
+		catch (MySqlException){
+			Console.WriteLine ("\nError de conexión");
+			Application.Quit ();
+		}
+		catch{
+			Console.WriteLine ("\nError");
+			Application.Quit ();
+		}
 	}
 
 	protected void OnEditActionActivated (object sender, EventArgs e)
 	{
 		hboxPwd.Visible = false;
-		hboxEdit.Visible = true;
 		vboxTable.Visible = false;
 		vboxEdit.Visible = true;
-
-
 
 	}
 
@@ -69,7 +76,7 @@ public partial class MainWindow: Gtk.Window
 	{
 		MySqlCommand mySqlCommand = mySqlConnection.CreateCommand ();
 		mySqlCommand.CommandText =
-			string.Format (""); //textView.Text ?
+			string.Format (textView.Buffer.Text); //INSERT, DROP, CREATE, DELETE
 		mySqlCommand.ExecuteNonQuery ();
 
 	}
@@ -77,7 +84,6 @@ public partial class MainWindow: Gtk.Window
 	protected void OnGoBackActionActivated (object sender, EventArgs e)
 	{
 		hboxPwd.Visible = false;
-		hboxEdit.Visible = false;
 		vboxTable.Visible = true;
 		vboxEdit.Visible = false;
 
