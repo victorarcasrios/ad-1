@@ -1,3 +1,5 @@
+//gitUser> juankza
+
 using Gtk;
 using MySql.Data.MySqlClient;
 using System;
@@ -85,18 +87,27 @@ public partial class MainWindow: Gtk.Window
 		TreeIter treeIter;
 		treeView.Selection.GetSelected (out treeIter);
 		object id = listStore.GetValue (treeIter, 0);
-		object nombre = listStore.GetValue (treeIter, 1);
+		//object nombre = listStore.GetValue (treeIter, 1);
 
-		try{
-			MySqlCommand mySqlCommand = mySqlConnection.CreateCommand ();
-			mySqlCommand.CommandText =
-				string.Format ("DELETE FROM `{0}`.`categoria` WHERE `categoria`.`id` = {1}",
-				               mySqlConnection.Database, id);
-			mySqlCommand.ExecuteNonQuery ();
+		MessageDialog messageDialog = new MessageDialog (
+			this, DialogFlags.Modal, MessageType.Question, ButtonsType.YesNo, "¿Desea eliminar el elemento seleccionado?");
+		messageDialog.Title = "Eliminar";
+
+		if ((ResponseType)messageDialog.Run () == ResponseType.Yes){
+			try{
+				MySqlCommand mySqlCommand = mySqlConnection.CreateCommand ();
+				mySqlCommand.CommandText =
+					string.Format ("DELETE FROM `{0}`.`{1}` WHERE `{1}`.`id` = {2}",
+					               mySqlConnection.Database, "categoria", id); //{1}Command> SHOW TABLES
+				mySqlCommand.ExecuteNonQuery ();
+			}
+			catch (MySqlException){
+				Console.WriteLine ("SQL Syntax Error");
+			}
+
 		}
-		catch (MySqlException){
-			Console.WriteLine ("SQL Syntax Error");
-		}
+
+		messageDialog.Destroy ();
 
 	}
 
@@ -137,7 +148,7 @@ public partial class MainWindow: Gtk.Window
 		try{
 			MySqlCommand mySqlCommand = mySqlConnection.CreateCommand ();
 			mySqlCommand.CommandText =
-				string.Format (textView.Buffer.Text); //INSERT, DROP, CREATE, DELETE, UPDATE
+				string.Format (textView.Buffer.Text); //CREATE, DROP, INSERT, DELETE, UPDATE
 			mySqlCommand.ExecuteNonQuery ();
 		}
 		catch (MySqlException){
