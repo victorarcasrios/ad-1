@@ -87,7 +87,16 @@ public partial class MainWindow: Gtk.Window
 		object id = listStore.GetValue (treeIter, 0);
 		object nombre = listStore.GetValue (treeIter, 1);
 
-		Console.WriteLine ("id={0}, nombre={1}", id, nombre);
+		try{
+			MySqlCommand mySqlCommand = mySqlConnection.CreateCommand ();
+			mySqlCommand.CommandText =
+				string.Format ("DELETE FROM `{0}`.`categoria` WHERE `categoria`.`id` = {1}",
+				               mySqlConnection.Database, id);
+			mySqlCommand.ExecuteNonQuery ();
+		}
+		catch (MySqlException){
+			Console.WriteLine ("SQL Syntax Error");
+		}
 
 	}
 
