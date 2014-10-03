@@ -23,7 +23,15 @@ public partial class MainWindow: Gtk.Window
 
 		listStore = new ListStore (typeof(ulong), typeof(string));
 
-		treeView.Model = listStore; //Java> treeView.setModel(listStore);
+		treeView.Model = listStore; //JavaCode> treeView.setModel(listStore);
+		//Habilita multiseleccion
+		//treeView.Selection.Mode = SelectionMode.Multiple; 
+
+		treeView.Selection.Changed += delegate
+		{
+			deleteAction.Sensitive = treeView.Selection.CountSelectedRows () > 0;
+
+		};
 
 	}
 
@@ -72,6 +80,49 @@ public partial class MainWindow: Gtk.Window
 
 	}
 
+	protected void OnDeleteActionActivated (object sender, EventArgs e)
+	{
+		TreeIter treeIter;
+		treeView.Selection.GetSelected (out treeIter);
+		object id = listStore.GetValue (treeIter, 0);
+		object nombre = listStore.GetValue (treeIter, 1);
+
+		Console.WriteLine ("id={0}, nombre={1}", id, nombre);
+
+	}
+
+	protected void OnRefreshActionActivated (object sender, EventArgs e)
+	{
+		try{
+			listStore.Clear ();
+
+			MySqlCommand mySqlCommand = mySqlConnection.CreateCommand ();
+			mySqlCommand.CommandText = "SELECT * FROM categoria";
+
+			MySqlDataReader mySqlDataReader = mySqlCommand.ExecuteReader ();
+
+			while (mySqlDataReader.Read())
+			{
+				object id = mySqlDataReader ["id"];
+				object nombre = mySqlDataReader ["nombre"];
+				listStore.AppendValues (id, nombre);
+			}
+
+			mySqlDataReader.Close ();
+		}
+		catch (MySqlException){
+			Console.WriteLine ("SQL Error");
+			listStore.Clear ();
+		}
+
+	}
+
+	protected void OnCloseActionActivated (object sender, EventArgs e)
+	{
+		listStore.Clear ();
+
+	}
+
 	protected void OnApplyActionActivated (object sender, EventArgs e)
 	{
 		try{
@@ -92,38 +143,6 @@ public partial class MainWindow: Gtk.Window
 		hboxPwd.Visible = false;
 		vboxTable.Visible = true;
 		vboxEdit.Visible = false;
-
-	}
-
-	protected void OnRefreshActionActivated (object sender, EventArgs e)
-	{
-		try{
-			listStore.Clear ();
-
-			MySqlCommand mySqlCommand = mySqlConnection.CreateCommand ();
-			mySqlCommand.CommandText = "SELECT * FROM categoria";
-
-			MySqlDataReader mySqlDataReader = mySqlCommand.ExecuteReader ();
-
-			while (mySqlDataReader.Read())
-			{
-				object id = mySqlDataReader ["id"].ToString ();
-				object nombre = mySqlDataReader ["nombre"].ToString ();
-				listStore.AppendValues (id, nombre);
-			}
-
-			mySqlDataReader.Close ();
-		}
-		catch (MySqlException){
-			Console.WriteLine ("SQL Error");
-			listStore.Clear ();
-		}
-
-	}
-
-	protected void OnCloseActionActivated (object sender, EventArgs e)
-	{
-		listStore.Clear ();
 
 	}
 	

@@ -10,6 +10,7 @@ public partial class MainWindow
 	private global::Gtk.Action editAction;
 	private global::Gtk.Action applyAction;
 	private global::Gtk.Action goBackAction;
+	private global::Gtk.Action deleteAction;
 	private global::Gtk.VBox vboxMain;
 	private global::Gtk.HBox hboxPwd;
 	private global::Gtk.Label labelPwd;
@@ -19,6 +20,7 @@ public partial class MainWindow
 	private global::Gtk.HBox hboxTableTB;
 	private global::Gtk.Toolbar tableTB1;
 	private global::Gtk.Toolbar tableTB2;
+	private global::Gtk.Toolbar tableTB3;
 	private global::Gtk.ScrolledWindow GtkSWTable;
 	private global::Gtk.TreeView treeView;
 	private global::Gtk.VBox vboxEdit;
@@ -54,6 +56,10 @@ public partial class MainWindow
 		this.goBackAction = new global::Gtk.Action ("goBackAction", global::Mono.Unix.Catalog.GetString ("Atras"), null, "gtk-go-back");
 		this.goBackAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Atras");
 		w1.Add (this.goBackAction, null);
+		this.deleteAction = new global::Gtk.Action ("deleteAction", global::Mono.Unix.Catalog.GetString ("Eliminar"), null, "gtk-delete");
+		this.deleteAction.Sensitive = false;
+		this.deleteAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Eliminar");
+		w1.Add (this.deleteAction, null);
 		this.UIManager.InsertActionGroup (w1, 0);
 		this.AddAccelGroup (this.UIManager.AccelGroup);
 		this.Name = "MainWindow";
@@ -118,19 +124,27 @@ public partial class MainWindow
 		global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.hboxTableTB [this.tableTB1]));
 		w6.Position = 0;
 		// Container child hboxTableTB.Gtk.Box+BoxChild
-		this.UIManager.AddUiFromString ("<ui><toolbar name='tableTB2'><toolitem name='refreshAction' action='refreshAction'/><separator/><toolitem name='closeAction' action='closeAction'/></toolbar></ui>");
+		this.UIManager.AddUiFromString ("<ui><toolbar name='tableTB2'><toolitem name='deleteAction' action='deleteAction'/></toolbar></ui>");
 		this.tableTB2 = ((global::Gtk.Toolbar)(this.UIManager.GetWidget ("/tableTB2")));
 		this.tableTB2.Name = "tableTB2";
 		this.tableTB2.ShowArrow = false;
 		this.hboxTableTB.Add (this.tableTB2);
 		global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.hboxTableTB [this.tableTB2]));
 		w7.Position = 1;
-		w7.Expand = false;
-		this.vboxTable.Add (this.hboxTableTB);
-		global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.vboxTable [this.hboxTableTB]));
-		w8.Position = 0;
+		// Container child hboxTableTB.Gtk.Box+BoxChild
+		this.UIManager.AddUiFromString ("<ui><toolbar name='tableTB3'><toolitem name='refreshAction' action='refreshAction'/><separator/><toolitem name='closeAction' action='closeAction'/></toolbar></ui>");
+		this.tableTB3 = ((global::Gtk.Toolbar)(this.UIManager.GetWidget ("/tableTB3")));
+		this.tableTB3.Name = "tableTB3";
+		this.tableTB3.ShowArrow = false;
+		this.hboxTableTB.Add (this.tableTB3);
+		global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.hboxTableTB [this.tableTB3]));
+		w8.Position = 2;
 		w8.Expand = false;
-		w8.Fill = false;
+		this.vboxTable.Add (this.hboxTableTB);
+		global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vboxTable [this.hboxTableTB]));
+		w9.Position = 0;
+		w9.Expand = false;
+		w9.Fill = false;
 		// Container child vboxTable.Gtk.Box+BoxChild
 		this.GtkSWTable = new global::Gtk.ScrolledWindow ();
 		this.GtkSWTable.Name = "GtkSWTable";
@@ -141,11 +155,11 @@ public partial class MainWindow
 		this.treeView.Name = "treeView";
 		this.GtkSWTable.Add (this.treeView);
 		this.vboxTable.Add (this.GtkSWTable);
-		global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.vboxTable [this.GtkSWTable]));
-		w10.Position = 1;
-		this.vboxMain.Add (this.vboxTable);
-		global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.vboxMain [this.vboxTable]));
+		global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.vboxTable [this.GtkSWTable]));
 		w11.Position = 1;
+		this.vboxMain.Add (this.vboxTable);
+		global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.vboxMain [this.vboxTable]));
+		w12.Position = 1;
 		// Container child vboxMain.Gtk.Box+BoxChild
 		this.vboxEdit = new global::Gtk.VBox ();
 		this.vboxEdit.Name = "vboxEdit";
@@ -160,22 +174,22 @@ public partial class MainWindow
 		this.editTB1.Name = "editTB1";
 		this.editTB1.ShowArrow = false;
 		this.hboxEditTB.Add (this.editTB1);
-		global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.hboxEditTB [this.editTB1]));
-		w12.Position = 0;
+		global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.hboxEditTB [this.editTB1]));
+		w13.Position = 0;
 		// Container child hboxEditTB.Gtk.Box+BoxChild
 		this.UIManager.AddUiFromString ("<ui><toolbar name='editTB2'><toolitem name='goBackAction' action='goBackAction'/></toolbar></ui>");
 		this.editTB2 = ((global::Gtk.Toolbar)(this.UIManager.GetWidget ("/editTB2")));
 		this.editTB2.Name = "editTB2";
 		this.editTB2.ShowArrow = false;
 		this.hboxEditTB.Add (this.editTB2);
-		global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.hboxEditTB [this.editTB2]));
-		w13.Position = 1;
-		w13.Expand = false;
-		this.vboxEdit.Add (this.hboxEditTB);
-		global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.vboxEdit [this.hboxEditTB]));
-		w14.Position = 0;
+		global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.hboxEditTB [this.editTB2]));
+		w14.Position = 1;
 		w14.Expand = false;
-		w14.Fill = false;
+		this.vboxEdit.Add (this.hboxEditTB);
+		global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.vboxEdit [this.hboxEditTB]));
+		w15.Position = 0;
+		w15.Expand = false;
+		w15.Fill = false;
 		// Container child vboxEdit.Gtk.Box+BoxChild
 		this.GtkSWEdit = new global::Gtk.ScrolledWindow ();
 		this.GtkSWEdit.Name = "GtkSWEdit";
@@ -186,11 +200,11 @@ public partial class MainWindow
 		this.textView.Name = "textView";
 		this.GtkSWEdit.Add (this.textView);
 		this.vboxEdit.Add (this.GtkSWEdit);
-		global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.vboxEdit [this.GtkSWEdit]));
-		w16.Position = 1;
+		global::Gtk.Box.BoxChild w17 = ((global::Gtk.Box.BoxChild)(this.vboxEdit [this.GtkSWEdit]));
+		w17.Position = 1;
 		this.vboxMain.Add (this.vboxEdit);
-		global::Gtk.Box.BoxChild w17 = ((global::Gtk.Box.BoxChild)(this.vboxMain [this.vboxEdit]));
-		w17.Position = 2;
+		global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.vboxMain [this.vboxEdit]));
+		w18.Position = 2;
 		this.Add (this.vboxMain);
 		if ((this.Child != null)) {
 			this.Child.ShowAll ();
@@ -205,5 +219,6 @@ public partial class MainWindow
 		this.editAction.Activated += new global::System.EventHandler (this.OnEditActionActivated);
 		this.applyAction.Activated += new global::System.EventHandler (this.OnApplyActionActivated);
 		this.goBackAction.Activated += new global::System.EventHandler (this.OnGoBackActionActivated);
+		this.deleteAction.Activated += new global::System.EventHandler (this.OnDeleteActionActivated);
 	}
 }

@@ -56,6 +56,14 @@
         <property name="StockId">gtk-go-back</property>
         <signal name="Activated" handler="OnGoBackActionActivated" />
       </action>
+      <action id="deleteAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Eliminar</property>
+        <property name="Sensitive">False</property>
+        <property name="ShortLabel" translatable="yes">Eliminar</property>
+        <property name="StockId">gtk-delete</property>
+        <signal name="Activated" handler="OnDeleteActionActivated" />
+      </action>
     </action-group>
     <property name="MemberName" />
     <property name="Title" translatable="yes">MainWindow</property>
@@ -144,13 +152,26 @@
                     <property name="MemberName" />
                     <property name="ShowArrow">False</property>
                     <node name="tableTB2" type="Toolbar">
+                      <node type="Toolitem" action="deleteAction" />
+                    </node>
+                  </widget>
+                  <packing>
+                    <property name="Position">1</property>
+                    <property name="AutoSize">True</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.Toolbar" id="tableTB3">
+                    <property name="MemberName" />
+                    <property name="ShowArrow">False</property>
+                    <node name="tableTB3" type="Toolbar">
                       <node type="Toolitem" action="refreshAction" />
                       <node type="Separator" />
                       <node type="Toolitem" action="closeAction" />
                     </node>
                   </widget>
                   <packing>
-                    <property name="Position">1</property>
+                    <property name="Position">2</property>
                     <property name="AutoSize">False</property>
                     <property name="Expand">False</property>
                   </packing>
