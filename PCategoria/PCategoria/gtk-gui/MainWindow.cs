@@ -11,7 +11,7 @@ public partial class MainWindow
 	private global::Gtk.Action applyAction;
 	private global::Gtk.Action goBackAction;
 	private global::Gtk.Action deleteAction;
-	private global::Gtk.VBox vboxMain;
+	private global::Gtk.VBox vboxMain_MW;
 	private global::Gtk.HBox hboxPwd;
 	private global::Gtk.Label labelPwd;
 	private global::Gtk.Entry entryPwd;
@@ -64,14 +64,15 @@ public partial class MainWindow
 		this.AddAccelGroup (this.UIManager.AccelGroup);
 		this.Name = "MainWindow";
 		this.Title = global::Mono.Unix.Catalog.GetString ("MainWindow");
-		this.WindowPosition = ((global::Gtk.WindowPosition)(4));
+		this.WindowPosition = ((global::Gtk.WindowPosition)(3));
 		this.DefaultWidth = 300;
 		this.DefaultHeight = 50;
+		this.Gravity = ((global::Gdk.Gravity)(5));
 		// Container child MainWindow.Gtk.Container+ContainerChild
-		this.vboxMain = new global::Gtk.VBox ();
-		this.vboxMain.Name = "vboxMain";
-		this.vboxMain.Spacing = 6;
-		// Container child vboxMain.Gtk.Box+BoxChild
+		this.vboxMain_MW = new global::Gtk.VBox ();
+		this.vboxMain_MW.Name = "vboxMain_MW";
+		this.vboxMain_MW.Spacing = 6;
+		// Container child vboxMain_MW.Gtk.Box+BoxChild
 		this.hboxPwd = new global::Gtk.HBox ();
 		this.hboxPwd.Name = "hboxPwd";
 		this.hboxPwd.Spacing = 6;
@@ -102,12 +103,12 @@ public partial class MainWindow
 		global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hboxPwd [this.toolBarPwd]));
 		w4.Position = 2;
 		w4.Expand = false;
-		this.vboxMain.Add (this.hboxPwd);
-		global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.vboxMain [this.hboxPwd]));
+		this.vboxMain_MW.Add (this.hboxPwd);
+		global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.vboxMain_MW [this.hboxPwd]));
 		w5.Position = 0;
 		w5.Expand = false;
 		w5.Fill = false;
-		// Container child vboxMain.Gtk.Box+BoxChild
+		// Container child vboxMain_MW.Gtk.Box+BoxChild
 		this.vboxTable = new global::Gtk.VBox ();
 		this.vboxTable.Name = "vboxTable";
 		this.vboxTable.Spacing = 6;
@@ -157,10 +158,10 @@ public partial class MainWindow
 		this.vboxTable.Add (this.GtkSWTable);
 		global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.vboxTable [this.GtkSWTable]));
 		w11.Position = 1;
-		this.vboxMain.Add (this.vboxTable);
-		global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.vboxMain [this.vboxTable]));
+		this.vboxMain_MW.Add (this.vboxTable);
+		global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.vboxMain_MW [this.vboxTable]));
 		w12.Position = 1;
-		// Container child vboxMain.Gtk.Box+BoxChild
+		// Container child vboxMain_MW.Gtk.Box+BoxChild
 		this.vboxEdit = new global::Gtk.VBox ();
 		this.vboxEdit.Name = "vboxEdit";
 		this.vboxEdit.Spacing = 6;
@@ -202,10 +203,10 @@ public partial class MainWindow
 		this.vboxEdit.Add (this.GtkSWEdit);
 		global::Gtk.Box.BoxChild w17 = ((global::Gtk.Box.BoxChild)(this.vboxEdit [this.GtkSWEdit]));
 		w17.Position = 1;
-		this.vboxMain.Add (this.vboxEdit);
-		global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.vboxMain [this.vboxEdit]));
+		this.vboxMain_MW.Add (this.vboxEdit);
+		global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.vboxMain_MW [this.vboxEdit]));
 		w18.Position = 2;
-		this.Add (this.vboxMain);
+		this.Add (this.vboxMain_MW);
 		if ((this.Child != null)) {
 			this.Child.ShowAll ();
 		}

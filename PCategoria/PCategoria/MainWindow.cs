@@ -1,9 +1,10 @@
-//gitUser> juankza
+//gitUser> @juankza
 
 using Gtk;
 using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using PCategoria;
 
 public partial class MainWindow: Gtk.Window
 {	
@@ -79,6 +80,8 @@ public partial class MainWindow: Gtk.Window
 		hboxPwd.Visible = false;
 		vboxTable.Visible = false;
 		vboxEdit.Visible = true;
+		EditWindow ew = new EditWindow ();
+		//ew.Realize ();
 
 	}
 
