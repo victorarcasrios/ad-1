@@ -8,8 +8,8 @@ using System.Data;
 public partial class MainWindow: Gtk.Window
 {	
 	private ListStore listStore;
-
 	private MySqlConnection mySqlConnection;
+	private MessageDialog messageDialog;
 
 	public MainWindow (): base (Gtk.WindowType.Toplevel)
 	{
@@ -89,7 +89,7 @@ public partial class MainWindow: Gtk.Window
 		object id = listStore.GetValue (treeIter, 0);
 		//object nombre = listStore.GetValue (treeIter, 1);
 
-		MessageDialog messageDialog = new MessageDialog (
+		messageDialog = new MessageDialog (
 			this, DialogFlags.Modal, MessageType.Question, ButtonsType.YesNo, "¿Desea eliminar el elemento seleccionado?");
 		messageDialog.Title = "Eliminar";
 
@@ -146,14 +146,24 @@ public partial class MainWindow: Gtk.Window
 	protected void OnApplyActionActivated (object sender, EventArgs e)
 	{
 		try{
+			if (textView.Buffer.Text != ""){
 			MySqlCommand mySqlCommand = mySqlConnection.CreateCommand ();
 			mySqlCommand.CommandText =
 				string.Format (textView.Buffer.Text); //CREATE, DROP, INSERT, DELETE, UPDATE
 			mySqlCommand.ExecuteNonQuery ();
+
+			}
+			else{
+				messageDialog = new MessageDialog (
+					this, DialogFlags.Modal, MessageType.Question, ButtonsType.Ok, "Área SQL vacía");
+				messageDialog.Title = "Error SQL";
+				messageDialog.Run ();
+				messageDialog.Destroy ();
+
+			}
 		}
 		catch (MySqlException){
 			Console.WriteLine ("SQL Syntax Error");
-			textView.Buffer.Clear ();
 		}
 
 	}
