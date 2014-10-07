@@ -1,8 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="PCategoria/EditWindow.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PCategoria/MainWindow.cs">
     <Files>
-      <File FileName="PCategoria/MainWindow.cs" Line="19" Column="33" />
+      <File FileName="PCategoria/MainWindow.cs" Line="76" Column="23" />
       <File FileName="PCategoria/EditWindow.cs" Line="39" Column="30" />
     </Files>
   </MonoDevelop.Ide.Workbench>
