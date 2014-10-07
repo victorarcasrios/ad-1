@@ -10,6 +10,9 @@ public partial class EditWindow
 	private global::Gtk.HBox hboxEditTB_EW;
 	private global::Gtk.Toolbar editTB1_EW;
 	private global::Gtk.Toolbar editTB3_EW;
+	private global::Gtk.ScrolledWindow GtkSWEdit_EW;
+	private global::Gtk.TextView textView_EW;
+	private global::Gtk.HBox hboxEditBtn_EW;
 
 	protected virtual void Build ()
 	{
@@ -60,6 +63,25 @@ public partial class EditWindow
 		w4.Position = 0;
 		w4.Expand = false;
 		w4.Fill = false;
+		// Container child vboxMain_EW.Gtk.Box+BoxChild
+		this.GtkSWEdit_EW = new global::Gtk.ScrolledWindow ();
+		this.GtkSWEdit_EW.Name = "GtkSWEdit_EW";
+		this.GtkSWEdit_EW.ShadowType = ((global::Gtk.ShadowType)(1));
+		// Container child GtkSWEdit_EW.Gtk.Container+ContainerChild
+		this.textView_EW = new global::Gtk.TextView ();
+		this.textView_EW.CanFocus = true;
+		this.textView_EW.Name = "textView_EW";
+		this.GtkSWEdit_EW.Add (this.textView_EW);
+		this.vboxMain_EW.Add (this.GtkSWEdit_EW);
+		global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.vboxMain_EW [this.GtkSWEdit_EW]));
+		w6.Position = 1;
+		// Container child vboxMain_EW.Gtk.Box+BoxChild
+		this.hboxEditBtn_EW = new global::Gtk.HBox ();
+		this.hboxEditBtn_EW.Name = "hboxEditBtn_EW";
+		this.hboxEditBtn_EW.Spacing = 6;
+		this.vboxMain_EW.Add (this.hboxEditBtn_EW);
+		global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.vboxMain_EW [this.hboxEditBtn_EW]));
+		w7.Position = 2;
 		this.Add (this.vboxMain_EW);
 		if ((this.Child != null)) {
 			this.Child.ShowAll ();

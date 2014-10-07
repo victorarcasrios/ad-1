@@ -9,7 +9,7 @@ using PCategoria;
 public partial class MainWindow: Gtk.Window
 {	
 	private ListStore listStore;
-	private MySqlConnection mySqlConnection;
+	public MySqlConnection mySqlConnection;
 	private MessageDialog messageDialog;
 
 	public MainWindow (): base (Gtk.WindowType.Toplevel)
@@ -66,7 +66,11 @@ public partial class MainWindow: Gtk.Window
 
 		}
 		catch (MySqlException){
-			Console.WriteLine ("\nError de conexión");
+			messageDialog = new MessageDialog (
+				this, DialogFlags.Modal, MessageType.Question, ButtonsType.Ok, "Connection Error\nCannot connect to database");
+			messageDialog.Title = "SQL Error";
+			messageDialog.Run ();
+			messageDialog.Destroy ();
 			Application.Quit ();
 		}
 		catch{
@@ -77,11 +81,11 @@ public partial class MainWindow: Gtk.Window
 
 	protected void OnEditActionActivated (object sender, EventArgs e)
 	{
-		hboxPwd.Visible = false;
-		vboxTable.Visible = false;
-		vboxEdit.Visible = true;
+		//hboxPwd.Visible = false;
+		//vboxTable.Visible = false;
+		//vboxEdit.Visible = true;
 		EditWindow ew = new EditWindow ();
-		//ew.Realize ();
+		ew.Show ();
 
 	}
 

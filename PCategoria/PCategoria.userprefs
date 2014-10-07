@@ -2,8 +2,8 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.Workbench ActiveDocument="PCategoria/EditWindow.cs">
     <Files>
-      <File FileName="PCategoria/MainWindow.cs" Line="11" Column="30" />
-      <File FileName="PCategoria/EditWindow.cs" Line="29" Column="19" />
+      <File FileName="PCategoria/MainWindow.cs" Line="12" Column="8" />
+      <File FileName="PCategoria/EditWindow.cs" Line="49" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
