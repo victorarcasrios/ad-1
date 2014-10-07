@@ -9,7 +9,7 @@ using PCategoria;
 public partial class MainWindow: Gtk.Window
 {	
 	private ListStore listStore;
-	public MySqlConnection mySqlConnection;
+	private MySqlConnection mySqlConnection;
 	private MessageDialog messageDialog;
 
 	public MainWindow (): base (Gtk.WindowType.Toplevel)
@@ -64,17 +64,19 @@ public partial class MainWindow: Gtk.Window
 			vboxTable.Visible = true;
 			vboxEdit.Visible = false;
 
+			OnRefreshActionActivated ();
+
 		}
 		catch (MySqlException){
 			messageDialog = new MessageDialog (
-				this, DialogFlags.Modal, MessageType.Question, ButtonsType.Ok, "Connection Error\nCannot connect to database");
-			messageDialog.Title = "SQL Error";
+				this, DialogFlags.Modal, MessageType.Error, ButtonsType.Ok, "\t\tConnection Error\t\t\nCannot connect to database");
+			messageDialog.Title = "SQL DataBase Error";
 			messageDialog.Run ();
 			messageDialog.Destroy ();
 			Application.Quit ();
 		}
 		catch{
-			Console.WriteLine ("\nError");
+			Console.WriteLine ("\nError 404 Not Found");
 			Application.Quit ();
 		}
 	}
@@ -84,7 +86,7 @@ public partial class MainWindow: Gtk.Window
 		//hboxPwd.Visible = false;
 		//vboxTable.Visible = false;
 		//vboxEdit.Visible = true;
-		EditWindow ew = new EditWindow ();
+		EditWindow ew = new EditWindow (this.mySqlConnection);
 		ew.Show ();
 
 	}
@@ -97,7 +99,7 @@ public partial class MainWindow: Gtk.Window
 		//object nombre = listStore.GetValue (treeIter, 1);
 
 		messageDialog = new MessageDialog (
-			this, DialogFlags.Modal, MessageType.Question, ButtonsType.YesNo, "¿Desea eliminar el elemento seleccionado?");
+			this, DialogFlags.Modal, MessageType.Warning, ButtonsType.YesNo, "\t\t¿Desea eliminar el elemento seleccionado?\t\t");
 		messageDialog.Title = "Eliminar";
 
 		if ((ResponseType)messageDialog.Run () == ResponseType.Yes){
@@ -109,16 +111,62 @@ public partial class MainWindow: Gtk.Window
 				mySqlCommand.ExecuteNonQuery ();
 			}
 			catch (MySqlException){
-				Console.WriteLine ("SQL Syntax Error");
+				Console.WriteLine ("SQL Error");
 			}
 
 		}
 
 		messageDialog.Destroy ();
+		OnRefreshActionActivated ();
 
 	}
 
 	protected void OnRefreshActionActivated (object sender, EventArgs e)
+	{
+		OnRefreshActionActivated ();
+
+	}
+
+	protected void OnCloseActionActivated (object sender, EventArgs e)
+	{
+		listStore.Clear ();
+
+	}
+
+	protected void OnApplyActionActivated (object sender, EventArgs e)
+	{/*
+		try{
+			if (textView.Buffer.Text != ""){
+			MySqlCommand mySqlCommand = mySqlConnection.CreateCommand ();
+			mySqlCommand.CommandText =
+				string.Format (textView.Buffer.Text); //CREATE, DROP, INSERT, DELETE, UPDATE
+			mySqlCommand.ExecuteNonQuery ();
+
+			}
+			else{
+				messageDialog = new MessageDialog (
+					this, DialogFlags.Modal, MessageType.Error, ButtonsType.Ok, "\t\tÁrea SQL vacía\t\t");
+				messageDialog.Title = "Error SQL";
+				messageDialog.Run ();
+				messageDialog.Destroy ();
+
+			}
+		}
+		catch (MySqlException){
+			Console.WriteLine ("SQL Syntax Error");
+		}
+	*/
+	}
+
+	protected void OnGoBackActionActivated (object sender, EventArgs e)
+	{
+		hboxPwd.Visible = false;
+		vboxTable.Visible = true;
+		vboxEdit.Visible = false;
+
+	}
+
+	private void OnRefreshActionActivated ()
 	{
 		try{
 			listStore.Clear ();
@@ -144,43 +192,4 @@ public partial class MainWindow: Gtk.Window
 
 	}
 
-	protected void OnCloseActionActivated (object sender, EventArgs e)
-	{
-		listStore.Clear ();
-
-	}
-
-	protected void OnApplyActionActivated (object sender, EventArgs e)
-	{
-		try{
-			if (textView.Buffer.Text != ""){
-			MySqlCommand mySqlCommand = mySqlConnection.CreateCommand ();
-			mySqlCommand.CommandText =
-				string.Format (textView.Buffer.Text); //CREATE, DROP, INSERT, DELETE, UPDATE
-			mySqlCommand.ExecuteNonQuery ();
-
-			}
-			else{
-				messageDialog = new MessageDialog (
-					this, DialogFlags.Modal, MessageType.Question, ButtonsType.Ok, "Área SQL vacía");
-				messageDialog.Title = "Error SQL";
-				messageDialog.Run ();
-				messageDialog.Destroy ();
-
-			}
-		}
-		catch (MySqlException){
-			Console.WriteLine ("SQL Syntax Error");
-		}
-
-	}
-
-	protected void OnGoBackActionActivated (object sender, EventArgs e)
-	{
-		hboxPwd.Visible = false;
-		vboxTable.Visible = true;
-		vboxEdit.Visible = false;
-
-	}
-	
 }
