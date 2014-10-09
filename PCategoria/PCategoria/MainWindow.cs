@@ -15,7 +15,7 @@ public partial class MainWindow: Gtk.Window
 	public MainWindow (): base (Gtk.WindowType.Toplevel)
 	{
 		Build ();
-
+		
 		this.SetSizeRequest (300, 100);
 		vboxLogin.Visible = true;
 		vboxTable.Visible = false;
@@ -45,7 +45,7 @@ public partial class MainWindow: Gtk.Window
 		catch{
 			Console.WriteLine ("\nError 404 Not Found");
 		}
-
+		
 		Application.Quit ();
 		a.RetVal = true;
 	}
@@ -148,14 +148,14 @@ public partial class MainWindow: Gtk.Window
 				object nombre = mySqlDataReader ["nombre"];
 				listStore.AppendValues (id, nombre);
 			}
-
+			
 			mySqlDataReader.Close ();
 		}
 		catch (MySqlException){
 			Console.WriteLine ("SQL Error");
 			listStore.Clear ();
 		}
-
+		
 	}
-	
+
 }

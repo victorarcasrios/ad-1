@@ -10,17 +10,6 @@
   </import>
   <widget class="Gtk.Window" id="MainWindow" design-size="564 294">
     <action-group name="Default">
-      <action id="goForwardAction">
-        <property name="Type">Action</property>
-        <property name="Label" translatable="yes">Actualizar</property>
-        <property name="ShortLabel" translatable="yes">Actualizar</property>
-        <property name="StockId">gtk-go-forward</property>
-        <signal name="Activated" handler="OnGoForwardActionActivated" />
-      </action>
-      <action id="Action">
-        <property name="Type">Action</property>
-        <property name="Label" translatable="yes" />
-      </action>
       <action id="refreshAction">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Actualizar</property>

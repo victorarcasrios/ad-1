@@ -3,8 +3,6 @@
 public partial class MainWindow
 {
 	private global::Gtk.UIManager UIManager;
-	private global::Gtk.Action goForwardAction;
-	private global::Gtk.Action Action;
 	private global::Gtk.Action refreshAction;
 	private global::Gtk.Action closeAction;
 	private global::Gtk.Action editAction;
@@ -32,11 +30,6 @@ public partial class MainWindow
 		// Widget MainWindow
 		this.UIManager = new global::Gtk.UIManager ();
 		global::Gtk.ActionGroup w1 = new global::Gtk.ActionGroup ("Default");
-		this.goForwardAction = new global::Gtk.Action ("goForwardAction", global::Mono.Unix.Catalog.GetString ("Actualizar"), null, "gtk-go-forward");
-		this.goForwardAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Actualizar");
-		w1.Add (this.goForwardAction, null);
-		this.Action = new global::Gtk.Action ("Action", null, null, null);
-		w1.Add (this.Action, null);
 		this.refreshAction = new global::Gtk.Action ("refreshAction", global::Mono.Unix.Catalog.GetString ("Actualizar"), null, "gtk-refresh");
 		this.refreshAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Actualizar");
 		w1.Add (this.refreshAction, null);
@@ -194,7 +187,6 @@ public partial class MainWindow
 		this.vboxTable.Hide ();
 		this.Show ();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);
-		//this.goForwardAction.Activated += new global::System.EventHandler (this.OnGoForwardActionActivated);
 		this.refreshAction.Activated += new global::System.EventHandler (this.OnRefreshActionActivated);
 		this.closeAction.Activated += new global::System.EventHandler (this.OnCloseActionActivated);
 		this.editAction.Activated += new global::System.EventHandler (this.OnEditActionActivated);
