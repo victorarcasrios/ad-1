@@ -41,10 +41,11 @@
       </action>
     </action-group>
     <property name="MemberName" />
-    <property name="Title" translatable="yes">MainWindow</property>
+    <property name="Title" translatable="yes">Acceso a Datos</property>
+    <property name="Icon">stock:stock_task Menu</property>
     <property name="WindowPosition">CenterAlways</property>
     <property name="DefaultWidth">300</property>
-    <property name="DefaultHeight">50</property>
+    <property name="DefaultHeight">75</property>
     <property name="Gravity">Center</property>
     <signal name="DeleteEvent" handler="OnDeleteEvent" />
     <child>
@@ -134,7 +135,7 @@
                 <property name="Type">TextOnly</property>
                 <property name="Label" translatable="yes">Aceptar</property>
                 <property name="UseUnderline">True</property>
-                <signal name="Activated" handler="OnButtonLoginActivated" />
+                <signal name="Clicked" handler="OnButtonLoginClicked" />
               </widget>
               <packing>
                 <property name="Position">2</property>
@@ -257,7 +258,8 @@
       </action>
     </action-group>
     <property name="MemberName" />
-    <property name="Title" translatable="yes">EditWindow</property>
+    <property name="Title" translatable="yes">SQL Script</property>
+    <property name="Icon">stock:stock_edit Menu</property>
     <property name="WindowPosition">CenterAlways</property>
     <property name="Gravity">Center</property>
     <child>

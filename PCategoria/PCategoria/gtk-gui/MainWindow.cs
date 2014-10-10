@@ -46,10 +46,11 @@ public partial class MainWindow
 		this.UIManager.InsertActionGroup (w1, 0);
 		this.AddAccelGroup (this.UIManager.AccelGroup);
 		this.Name = "MainWindow";
-		this.Title = global::Mono.Unix.Catalog.GetString ("MainWindow");
+		this.Title = global::Mono.Unix.Catalog.GetString ("Acceso a Datos");
+		this.Icon = global::Stetic.IconLoader.LoadIcon (this, "stock_task", global::Gtk.IconSize.Menu);
 		this.WindowPosition = ((global::Gtk.WindowPosition)(3));
 		this.DefaultWidth = 300;
-		this.DefaultHeight = 50;
+		this.DefaultHeight = 75;
 		this.Gravity = ((global::Gdk.Gravity)(5));
 		// Container child MainWindow.Gtk.Container+ContainerChild
 		this.vboxMain_MW = new global::Gtk.VBox ();
@@ -191,6 +192,6 @@ public partial class MainWindow
 		this.closeAction.Activated += new global::System.EventHandler (this.OnCloseActionActivated);
 		this.editAction.Activated += new global::System.EventHandler (this.OnEditActionActivated);
 		this.deleteAction.Activated += new global::System.EventHandler (this.OnDeleteActionActivated);
-		this.buttonLogin.Activated += new global::System.EventHandler (this.OnButtonLoginActivated);
+		this.buttonLogin.Clicked += new global::System.EventHandler (this.OnButtonLoginClicked);
 	}
 }

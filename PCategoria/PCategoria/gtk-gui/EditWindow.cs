@@ -31,7 +31,8 @@ public partial class EditWindow
 		this.UIManager.InsertActionGroup (w1, 0);
 		this.AddAccelGroup (this.UIManager.AccelGroup);
 		this.Name = "EditWindow";
-		this.Title = global::Mono.Unix.Catalog.GetString ("EditWindow");
+		this.Title = global::Mono.Unix.Catalog.GetString ("SQL Script");
+		this.Icon = global::Stetic.IconLoader.LoadIcon (this, "stock_edit", global::Gtk.IconSize.Menu);
 		this.WindowPosition = ((global::Gtk.WindowPosition)(3));
 		this.Gravity = ((global::Gdk.Gravity)(5));
 		// Container child EditWindow.Gtk.Container+ContainerChild

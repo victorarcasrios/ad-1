@@ -16,7 +16,9 @@ public partial class MainWindow: Gtk.Window
 	{
 		Build ();
 		
-		this.SetSizeRequest (300, 100);
+		this.SetSizeRequest (300, 75);
+		entryUser.SetSizeRequest (200, 25);
+		entryPwd.SetSizeRequest (200, 25);
 		vboxLogin.Visible = true;
 		vboxTable.Visible = false;
 
@@ -50,7 +52,7 @@ public partial class MainWindow: Gtk.Window
 		a.RetVal = true;
 	}
 
-	protected void OnButtonLoginActivated (object sender, EventArgs e)
+	protected void OnButtonLoginClicked (object sender, EventArgs e)
 	{
 		try{
 			string connectionString = "Server=localhost;" + "Database=dbprueba;" +
@@ -131,7 +133,7 @@ public partial class MainWindow: Gtk.Window
 		listStore.Clear ();
 
 	}
-
+	
 	private void OnRefreshActionActivated ()
 	{
 		try{
@@ -157,5 +159,5 @@ public partial class MainWindow: Gtk.Window
 		}
 		
 	}
-
+	
 }

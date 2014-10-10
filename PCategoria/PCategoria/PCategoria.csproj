@@ -78,6 +78,7 @@
     <Compile Include="EditWindow.cs" />
     <Compile Include="gtk-gui\PCategoria.EditWindow.cs" />
     <Compile Include="gtk-gui\EditWindow.cs" />
+    <Compile Include="App.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
