@@ -29,16 +29,16 @@ public partial class MainWindow
 		// Widget MainWindow
 		this.UIManager = new global::Gtk.UIManager ();
 		global::Gtk.ActionGroup w1 = new global::Gtk.ActionGroup ("Default");
-		this.refreshAction = new global::Gtk.Action ("refreshAction", global::Mono.Unix.Catalog.GetString ("Actualizar"), null, "gtk-refresh");
+		this.refreshAction = new global::Gtk.Action ("refreshAction", global::Mono.Unix.Catalog.GetString ("Actualizar"), global::Mono.Unix.Catalog.GetString ("Actualizar"), "gtk-refresh");
 		this.refreshAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Actualizar");
 		w1.Add (this.refreshAction, null);
-		this.closeAction = new global::Gtk.Action ("closeAction", global::Mono.Unix.Catalog.GetString ("Vaciar"), null, "gtk-close");
+		this.closeAction = new global::Gtk.Action ("closeAction", global::Mono.Unix.Catalog.GetString ("Vaciar"), global::Mono.Unix.Catalog.GetString ("Vaciar"), "gtk-close");
 		this.closeAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Vaciar");
 		w1.Add (this.closeAction, null);
-		this.editAction = new global::Gtk.Action ("editAction", global::Mono.Unix.Catalog.GetString ("Editar"), null, "gtk-edit");
+		this.editAction = new global::Gtk.Action ("editAction", global::Mono.Unix.Catalog.GetString ("Editar"), global::Mono.Unix.Catalog.GetString ("Ir a Edición"), "gtk-edit");
 		this.editAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Editar");
 		w1.Add (this.editAction, null);
-		this.deleteAction = new global::Gtk.Action ("deleteAction", global::Mono.Unix.Catalog.GetString ("Eliminar"), null, "gtk-delete");
+		this.deleteAction = new global::Gtk.Action ("deleteAction", global::Mono.Unix.Catalog.GetString ("Eliminar"), global::Mono.Unix.Catalog.GetString ("Eliminar"), "gtk-delete");
 		this.deleteAction.Sensitive = false;
 		this.deleteAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Eliminar");
 		w1.Add (this.deleteAction, null);

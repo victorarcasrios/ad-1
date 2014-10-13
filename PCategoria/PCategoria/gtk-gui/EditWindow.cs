@@ -27,10 +27,10 @@ public partial class EditWindow
 		global::Gtk.ActionGroup w1 = new global::Gtk.ActionGroup ("Default");
 		this.applyAction = new global::Gtk.Action ("applyAction", null, null, "gtk-apply");
 		w1.Add (this.applyAction, null);
-		this.executeAction = new global::Gtk.Action ("executeAction", global::Mono.Unix.Catalog.GetString ("Ejecutar"), null, "gtk-execute");
+		this.executeAction = new global::Gtk.Action ("executeAction", global::Mono.Unix.Catalog.GetString ("Ejecutar"), global::Mono.Unix.Catalog.GetString ("Ejecutar"), "gtk-execute");
 		this.executeAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Ejecutar");
 		w1.Add (this.executeAction, null);
-		this.goBackAction = new global::Gtk.Action ("goBackAction", global::Mono.Unix.Catalog.GetString ("Volver"), null, "gtk-go-back");
+		this.goBackAction = new global::Gtk.Action ("goBackAction", global::Mono.Unix.Catalog.GetString ("Volver"), global::Mono.Unix.Catalog.GetString ("Volver"), "gtk-go-back");
 		this.goBackAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Volver");
 		w1.Add (this.goBackAction, null);
 		this.UIManager.InsertActionGroup (w1, 0);

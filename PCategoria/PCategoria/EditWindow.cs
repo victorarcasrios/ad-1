@@ -30,13 +30,23 @@ public partial class EditWindow: Gtk.Window
 				MySqlCommand mySqlCommand = mySqlConnection.CreateCommand ();
 				mySqlCommand.CommandText =
 					string.Format (textView_EW.Buffer.Text); //CREATE, DROP, INSERT, UPDATE, DELETE
-				mySqlCommand.ExecuteNonQuery ();
 
 				messageDialog = new MessageDialog (
-					this, DialogFlags.Modal, MessageType.Info, ButtonsType.Ok, "\t\tSQL Script Executed Successfully\t\t");
+					this, DialogFlags.Modal, MessageType.Warning, ButtonsType.YesNo, "\t\tAre you sure?\t\t");
 				messageDialog.Title = "SQL EditWindow";
-				messageDialog.Run ();
-				messageDialog.Destroy ();
+
+				if ((ResponseType)messageDialog.Run () == ResponseType.Yes){
+					messageDialog.Destroy ();
+					mySqlCommand.ExecuteNonQuery ();
+
+					messageDialog = new MessageDialog (
+						this, DialogFlags.Modal, MessageType.Info, ButtonsType.Ok, "\t\tSQL Script Executed Successfully\t\t");
+					messageDialog.Title = "SQL EditWindow";
+					messageDialog.Run ();
+					messageDialog.Destroy ();
+
+				}
+				else{ messageDialog.Destroy ();}
 
 			}
 			else{
@@ -63,39 +73,49 @@ public partial class EditWindow: Gtk.Window
 		this.Destroy ();
 
 	}
-	
+	//CREATE
 	protected void OnBtnCreateClicked (object sender, EventArgs e)
 	{
-		textView_EW.Buffer.Text = textView_EW.Buffer.Text +
-			"\nCREATE TABLE [tabName]"; //CREATE
+		if (textView_EW.Buffer.Text == "") { textView_EW.Buffer.Text =
+			"CREATE TABLE [tabName]";}
+		else { textView_EW.Buffer.Text = textView_EW.Buffer.Text +
+			"\nCREATE TABLE [tabName]";}
 
 	}
-
+	//DROP
 	protected void OnBtnDropClicked (object sender, EventArgs e)
 	{
-		textView_EW.Buffer.Text = textView_EW.Buffer.Text +
-			"\nDROP [DATABASE/TABLE] [dbName/tabName]"; //DROP
+		if (textView_EW.Buffer.Text == "") { textView_EW.Buffer.Text =
+			"DROP [DATABASE/TABLE] [dbName/tabName]";}
+		else { textView_EW.Buffer.Text = textView_EW.Buffer.Text +
+			"\nDROP [DATABASE/TABLE] [dbName/tabName]";}
 
 	}
-
+	//INSERT
 	protected void OnBtnInsertClicked (object sender, EventArgs e)
 	{
-		textView_EW.Buffer.Text = textView_EW.Buffer.Text +
-			"\nINSERT INTO `categoria`(`id`, `nombre`) VALUES ([value-1],[value-2])"; //INSERT
+		if (textView_EW.Buffer.Text == "") { textView_EW.Buffer.Text =
+			"INSERT INTO `[tabName]`(`[column1]`, `[column2]`) VALUES ([value1], [value2])";}
+		else { textView_EW.Buffer.Text = textView_EW.Buffer.Text +
+			"\nINSERT INTO `[tabName]`(`[column1]`, `[column2]`) VALUES ([value1], [value2])";}
 
 	}
-
+	//UPDATE
 	protected void OnBtnUpdateClicked (object sender, EventArgs e)
 	{
-		textView_EW.Buffer.Text = textView_EW.Buffer.Text +
-			"\nUPDATE `categoria` SET `id`=[value-1],`nombre`=[value-2] WHERE [condition]"; //UPDATE
+		if (textView_EW.Buffer.Text == "") { textView_EW.Buffer.Text =
+			"UPDATE `[tabName]` SET `[column1]`=[value1], `[column2]`=[value2] WHERE [condition]";}
+		else { textView_EW.Buffer.Text = textView_EW.Buffer.Text +
+			"\nUPDATE `[tabName]` SET `[column1]`=[value1], `[column2]`=[value2] WHERE [condition]";}
 
 	}
-
+	//DELETE
 	protected void OnBtnDeleteClicked (object sender, EventArgs e)
 	{
-		textView_EW.Buffer.Text = textView_EW.Buffer.Text +
-			"\nDELETE FROM `categoria` WHERE [condition]"; //DELETE
+		if (textView_EW.Buffer.Text == "") { textView_EW.Buffer.Text =
+			"DELETE FROM `[tabName]` WHERE [condition]";}
+		else { textView_EW.Buffer.Text = textView_EW.Buffer.Text +
+			"\nDELETE FROM `[tabName]` WHERE [condition]";}
 
 	}
 }
