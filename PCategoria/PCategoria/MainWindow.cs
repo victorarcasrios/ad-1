@@ -52,6 +52,25 @@ public partial class MainWindow: Gtk.Window
 		a.RetVal = true;
 	}
 
+	protected void OnEntryUserFocusGrabbed (object sender, EventArgs e)
+	{
+		entryUser.Text = "";
+	}
+
+	protected void OnEntryPwdFocusGrabbed (object sender, EventArgs e)
+	{
+		entryPwd.Text = "";
+		entryPwd.Visibility = false;
+
+	}
+
+	protected void OnCheckBoxPwdToggled (object sender, EventArgs e)
+	{
+		if (entryPwd.Visibility == true) { entryPwd.Visibility = false;}
+		else { entryPwd.Visibility = true;}
+
+	}
+
 	protected void OnButtonLoginClicked (object sender, EventArgs e)
 	{
 		try{
@@ -159,5 +178,5 @@ public partial class MainWindow: Gtk.Window
 		}
 		
 	}
-	
+
 }

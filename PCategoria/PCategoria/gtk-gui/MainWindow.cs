@@ -10,11 +10,10 @@ public partial class MainWindow
 	private global::Gtk.VBox vboxMain_MW;
 	private global::Gtk.VBox vboxLogin;
 	private global::Gtk.HBox hboxUser;
-	private global::Gtk.Label labelUser;
 	private global::Gtk.Entry entryUser;
 	private global::Gtk.HBox hboxPwd;
-	private global::Gtk.Label labelPwd;
 	private global::Gtk.Entry entryPwd;
+	private global::Gtk.CheckButton checkBoxPwd;
 	private global::Gtk.Button buttonLogin;
 	private global::Gtk.VBox vboxTable;
 	private global::Gtk.HBox hboxTableTB;
@@ -65,55 +64,51 @@ public partial class MainWindow
 		this.hboxUser.Name = "hboxUser";
 		this.hboxUser.Spacing = 6;
 		// Container child hboxUser.Gtk.Box+BoxChild
-		this.labelUser = new global::Gtk.Label ();
-		this.labelUser.Name = "labelUser";
-		this.labelUser.LabelProp = global::Mono.Unix.Catalog.GetString ("Usuario");
-		this.hboxUser.Add (this.labelUser);
-		global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hboxUser [this.labelUser]));
-		w2.Position = 0;
-		w2.Expand = false;
-		w2.Fill = false;
-		// Container child hboxUser.Gtk.Box+BoxChild
 		this.entryUser = new global::Gtk.Entry ();
 		this.entryUser.CanFocus = true;
 		this.entryUser.Name = "entryUser";
+		this.entryUser.Text = global::Mono.Unix.Catalog.GetString ("Usuario");
 		this.entryUser.IsEditable = true;
 		this.entryUser.InvisibleChar = '•';
 		this.hboxUser.Add (this.entryUser);
-		global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hboxUser [this.entryUser]));
-		w3.Position = 1;
+		global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hboxUser [this.entryUser]));
+		w2.Position = 0;
 		this.vboxLogin.Add (this.hboxUser);
-		global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.vboxLogin [this.hboxUser]));
-		w4.Position = 0;
-		w4.Expand = false;
-		w4.Fill = false;
+		global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vboxLogin [this.hboxUser]));
+		w3.Position = 0;
+		w3.Expand = false;
+		w3.Fill = false;
 		// Container child vboxLogin.Gtk.Box+BoxChild
 		this.hboxPwd = new global::Gtk.HBox ();
 		this.hboxPwd.Name = "hboxPwd";
 		this.hboxPwd.Spacing = 6;
 		// Container child hboxPwd.Gtk.Box+BoxChild
-		this.labelPwd = new global::Gtk.Label ();
-		this.labelPwd.Name = "labelPwd";
-		this.labelPwd.LabelProp = global::Mono.Unix.Catalog.GetString ("Contraseña");
-		this.hboxPwd.Add (this.labelPwd);
-		global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hboxPwd [this.labelPwd]));
-		w5.Position = 0;
-		w5.Expand = false;
-		w5.Fill = false;
-		// Container child hboxPwd.Gtk.Box+BoxChild
 		this.entryPwd = new global::Gtk.Entry ();
 		this.entryPwd.CanFocus = true;
 		this.entryPwd.Name = "entryPwd";
+		this.entryPwd.Text = global::Mono.Unix.Catalog.GetString ("Contraseña");
 		this.entryPwd.IsEditable = true;
 		this.entryPwd.InvisibleChar = '•';
 		this.hboxPwd.Add (this.entryPwd);
-		global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.hboxPwd [this.entryPwd]));
-		w6.Position = 1;
+		global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hboxPwd [this.entryPwd]));
+		w4.Position = 0;
+		// Container child hboxPwd.Gtk.Box+BoxChild
+		this.checkBoxPwd = new global::Gtk.CheckButton ();
+		this.checkBoxPwd.CanFocus = true;
+		this.checkBoxPwd.Name = "checkBoxPwd";
+		this.checkBoxPwd.Label = global::Mono.Unix.Catalog.GetString ("Mostrar");
+		this.checkBoxPwd.DrawIndicator = true;
+		this.checkBoxPwd.UseUnderline = true;
+		this.hboxPwd.Add (this.checkBoxPwd);
+		global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hboxPwd [this.checkBoxPwd]));
+		w5.Position = 1;
+		w5.Expand = false;
+		w5.Fill = false;
 		this.vboxLogin.Add (this.hboxPwd);
-		global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.vboxLogin [this.hboxPwd]));
-		w7.Position = 1;
-		w7.Expand = false;
-		w7.Fill = false;
+		global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.vboxLogin [this.hboxPwd]));
+		w6.Position = 1;
+		w6.Expand = false;
+		w6.Fill = false;
 		// Container child vboxLogin.Gtk.Box+BoxChild
 		this.buttonLogin = new global::Gtk.Button ();
 		this.buttonLogin.CanFocus = true;
@@ -121,13 +116,13 @@ public partial class MainWindow
 		this.buttonLogin.UseUnderline = true;
 		this.buttonLogin.Label = global::Mono.Unix.Catalog.GetString ("Aceptar");
 		this.vboxLogin.Add (this.buttonLogin);
-		global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.vboxLogin [this.buttonLogin]));
-		w8.Position = 2;
+		global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.vboxLogin [this.buttonLogin]));
+		w7.Position = 2;
 		this.vboxMain_MW.Add (this.vboxLogin);
-		global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vboxMain_MW [this.vboxLogin]));
-		w9.Position = 0;
-		w9.Expand = false;
-		w9.Fill = false;
+		global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.vboxMain_MW [this.vboxLogin]));
+		w8.Position = 0;
+		w8.Expand = false;
+		w8.Fill = false;
 		// Container child vboxMain_MW.Gtk.Box+BoxChild
 		this.vboxTable = new global::Gtk.VBox ();
 		this.vboxTable.Name = "vboxTable";
@@ -142,30 +137,30 @@ public partial class MainWindow
 		this.tableTB1.Name = "tableTB1";
 		this.tableTB1.ShowArrow = false;
 		this.hboxTableTB.Add (this.tableTB1);
-		global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.hboxTableTB [this.tableTB1]));
-		w10.Position = 0;
+		global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.hboxTableTB [this.tableTB1]));
+		w9.Position = 0;
 		// Container child hboxTableTB.Gtk.Box+BoxChild
 		this.UIManager.AddUiFromString ("<ui><toolbar name='tableTB2'><toolitem name='deleteAction' action='deleteAction'/></toolbar></ui>");
 		this.tableTB2 = ((global::Gtk.Toolbar)(this.UIManager.GetWidget ("/tableTB2")));
 		this.tableTB2.Name = "tableTB2";
 		this.tableTB2.ShowArrow = false;
 		this.hboxTableTB.Add (this.tableTB2);
-		global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.hboxTableTB [this.tableTB2]));
-		w11.Position = 1;
+		global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.hboxTableTB [this.tableTB2]));
+		w10.Position = 1;
 		// Container child hboxTableTB.Gtk.Box+BoxChild
 		this.UIManager.AddUiFromString ("<ui><toolbar name='tableTB3'><toolitem name='refreshAction' action='refreshAction'/><separator/><toolitem name='closeAction' action='closeAction'/></toolbar></ui>");
 		this.tableTB3 = ((global::Gtk.Toolbar)(this.UIManager.GetWidget ("/tableTB3")));
 		this.tableTB3.Name = "tableTB3";
 		this.tableTB3.ShowArrow = false;
 		this.hboxTableTB.Add (this.tableTB3);
-		global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.hboxTableTB [this.tableTB3]));
-		w12.Position = 2;
-		w12.Expand = false;
+		global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.hboxTableTB [this.tableTB3]));
+		w11.Position = 2;
+		w11.Expand = false;
 		this.vboxTable.Add (this.hboxTableTB);
-		global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.vboxTable [this.hboxTableTB]));
-		w13.Position = 0;
-		w13.Expand = false;
-		w13.Fill = false;
+		global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.vboxTable [this.hboxTableTB]));
+		w12.Position = 0;
+		w12.Expand = false;
+		w12.Fill = false;
 		// Container child vboxTable.Gtk.Box+BoxChild
 		this.GtkSWTable = new global::Gtk.ScrolledWindow ();
 		this.GtkSWTable.Name = "GtkSWTable";
@@ -176,11 +171,11 @@ public partial class MainWindow
 		this.treeView.Name = "treeView";
 		this.GtkSWTable.Add (this.treeView);
 		this.vboxTable.Add (this.GtkSWTable);
-		global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.vboxTable [this.GtkSWTable]));
-		w15.Position = 1;
+		global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.vboxTable [this.GtkSWTable]));
+		w14.Position = 1;
 		this.vboxMain_MW.Add (this.vboxTable);
-		global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.vboxMain_MW [this.vboxTable]));
-		w16.Position = 1;
+		global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.vboxMain_MW [this.vboxTable]));
+		w15.Position = 1;
 		this.Add (this.vboxMain_MW);
 		if ((this.Child != null)) {
 			this.Child.ShowAll ();
@@ -192,6 +187,9 @@ public partial class MainWindow
 		this.closeAction.Activated += new global::System.EventHandler (this.OnCloseActionActivated);
 		this.editAction.Activated += new global::System.EventHandler (this.OnEditActionActivated);
 		this.deleteAction.Activated += new global::System.EventHandler (this.OnDeleteActionActivated);
+		this.entryUser.FocusGrabbed += new global::System.EventHandler (this.OnEntryUserFocusGrabbed);
+		this.entryPwd.FocusGrabbed += new global::System.EventHandler (this.OnEntryPwdFocusGrabbed);
+		this.checkBoxPwd.Toggled += new global::System.EventHandler (this.OnCheckBoxPwdToggled);
 		this.buttonLogin.Clicked += new global::System.EventHandler (this.OnButtonLoginClicked);
 	}
 }

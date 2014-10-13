@@ -29,20 +29,20 @@ public partial class EditWindow: Gtk.Window
 			if (textView_EW.Buffer.Text != ""){
 				MySqlCommand mySqlCommand = mySqlConnection.CreateCommand ();
 				mySqlCommand.CommandText =
-					string.Format (textView_EW.Buffer.Text); //CREATE, DROP, INSERT, DELETE, UPDATE
+					string.Format (textView_EW.Buffer.Text); //CREATE, DROP, INSERT, UPDATE, DELETE
 				mySqlCommand.ExecuteNonQuery ();
 
 				messageDialog = new MessageDialog (
-					this, DialogFlags.Modal, MessageType.Info, ButtonsType.Ok, "\t\tConsulta SQL realizada\t\t");
-				messageDialog.Title = "SQL Query Executed Successfully";
+					this, DialogFlags.Modal, MessageType.Info, ButtonsType.Ok, "\t\tSQL Script Executed Successfully\t\t");
+				messageDialog.Title = "SQL EditWindow";
 				messageDialog.Run ();
 				messageDialog.Destroy ();
 
 			}
 			else{
 				messageDialog = new MessageDialog (
-					this, DialogFlags.Modal, MessageType.Error, ButtonsType.Ok, "\t\tÁrea SQL vacía\t\t");
-				messageDialog.Title = "SQL Error";
+					this, DialogFlags.Modal, MessageType.Error, ButtonsType.Ok, "\t\tSQL Script Error. Script 'NULL'\t\t");
+				messageDialog.Title = "SQL EditWindow";
 				messageDialog.Run ();
 				messageDialog.Destroy ();
 
@@ -64,4 +64,38 @@ public partial class EditWindow: Gtk.Window
 
 	}
 	
+	protected void OnBtnCreateClicked (object sender, EventArgs e)
+	{
+		textView_EW.Buffer.Text = textView_EW.Buffer.Text +
+			"CREATE TABLE [tabName]"; //CREATE
+
+	}
+
+	protected void OnBtnDropClicked (object sender, EventArgs e)
+	{
+		textView_EW.Buffer.Text = textView_EW.Buffer.Text +
+			"DROP [DATABASE/TABLE] [dbName/tabName]"; //DROP
+
+	}
+
+	protected void OnBtnInsertClicked (object sender, EventArgs e)
+	{
+		textView_EW.Buffer.Text = textView_EW.Buffer.Text +
+			"INSERT INTO `categoria`(`id`, `nombre`) VALUES ([value-1],[value-2])"; //INSERT
+
+	}
+
+	protected void OnBtnUpdateClicked (object sender, EventArgs e)
+	{
+		textView_EW.Buffer.Text = textView_EW.Buffer.Text +
+			"UPDATE `categoria` SET `id`=[value-1],`nombre`=[value-2] WHERE [condition]"; //UPDATE
+
+	}
+
+	protected void OnBtnDeleteClicked (object sender, EventArgs e)
+	{
+		textView_EW.Buffer.Text = textView_EW.Buffer.Text +
+			"DELETE FROM `categoria` WHERE [condition]"; //DELETE
+
+	}
 }

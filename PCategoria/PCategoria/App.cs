@@ -14,16 +14,18 @@ public class App
 
 	private static App instance = new App ();
 
-	public static App Instance {
+	public static App Instance
+	{
 		get { return instance;}
 
 	}
 
 	private MySqlConnection mySqlConnection;
 
-	public MySqlConnection MySqlConnection {
-		get { return mySqlConnection;}
-		set { mySqlConnection = value;}
+	public MySqlConnection MySqlConnection
+	{
+		get{ return mySqlConnection;}
+		set{ mySqlConnection = value;}
 
 	}
 

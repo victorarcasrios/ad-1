@@ -13,6 +13,11 @@ public partial class EditWindow
 	private global::Gtk.ScrolledWindow GtkSWEdit_EW;
 	private global::Gtk.TextView textView_EW;
 	private global::Gtk.HBox hboxEditBtn_EW;
+	private global::Gtk.Button btnCreate;
+	private global::Gtk.Button btnDrop;
+	private global::Gtk.Button btnInsert;
+	private global::Gtk.Button btnUpdate;
+	private global::Gtk.Button btnDelete;
 
 	protected virtual void Build ()
 	{
@@ -80,17 +85,69 @@ public partial class EditWindow
 		this.hboxEditBtn_EW = new global::Gtk.HBox ();
 		this.hboxEditBtn_EW.Name = "hboxEditBtn_EW";
 		this.hboxEditBtn_EW.Spacing = 6;
+		// Container child hboxEditBtn_EW.Gtk.Box+BoxChild
+		this.btnCreate = new global::Gtk.Button ();
+		this.btnCreate.CanFocus = true;
+		this.btnCreate.Name = "btnCreate";
+		this.btnCreate.UseUnderline = true;
+		this.btnCreate.Label = global::Mono.Unix.Catalog.GetString ("CREATE");
+		this.hboxEditBtn_EW.Add (this.btnCreate);
+		global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.hboxEditBtn_EW [this.btnCreate]));
+		w7.Position = 0;
+		// Container child hboxEditBtn_EW.Gtk.Box+BoxChild
+		this.btnDrop = new global::Gtk.Button ();
+		this.btnDrop.CanFocus = true;
+		this.btnDrop.Name = "btnDrop";
+		this.btnDrop.UseUnderline = true;
+		this.btnDrop.Label = global::Mono.Unix.Catalog.GetString ("DROP");
+		this.hboxEditBtn_EW.Add (this.btnDrop);
+		global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.hboxEditBtn_EW [this.btnDrop]));
+		w8.Position = 1;
+		// Container child hboxEditBtn_EW.Gtk.Box+BoxChild
+		this.btnInsert = new global::Gtk.Button ();
+		this.btnInsert.CanFocus = true;
+		this.btnInsert.Name = "btnInsert";
+		this.btnInsert.UseUnderline = true;
+		this.btnInsert.Label = global::Mono.Unix.Catalog.GetString ("INSERT");
+		this.hboxEditBtn_EW.Add (this.btnInsert);
+		global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.hboxEditBtn_EW [this.btnInsert]));
+		w9.Position = 2;
+		// Container child hboxEditBtn_EW.Gtk.Box+BoxChild
+		this.btnUpdate = new global::Gtk.Button ();
+		this.btnUpdate.CanFocus = true;
+		this.btnUpdate.Name = "btnUpdate";
+		this.btnUpdate.UseUnderline = true;
+		this.btnUpdate.Label = global::Mono.Unix.Catalog.GetString ("UPDATE");
+		this.hboxEditBtn_EW.Add (this.btnUpdate);
+		global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.hboxEditBtn_EW [this.btnUpdate]));
+		w10.Position = 3;
+		// Container child hboxEditBtn_EW.Gtk.Box+BoxChild
+		this.btnDelete = new global::Gtk.Button ();
+		this.btnDelete.CanFocus = true;
+		this.btnDelete.Name = "btnDelete";
+		this.btnDelete.UseUnderline = true;
+		this.btnDelete.Label = global::Mono.Unix.Catalog.GetString ("DELETE");
+		this.hboxEditBtn_EW.Add (this.btnDelete);
+		global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.hboxEditBtn_EW [this.btnDelete]));
+		w11.Position = 4;
 		this.vboxMain_EW.Add (this.hboxEditBtn_EW);
-		global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.vboxMain_EW [this.hboxEditBtn_EW]));
-		w7.Position = 2;
+		global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.vboxMain_EW [this.hboxEditBtn_EW]));
+		w12.Position = 2;
+		w12.Expand = false;
+		w12.Fill = false;
 		this.Add (this.vboxMain_EW);
 		if ((this.Child != null)) {
 			this.Child.ShowAll ();
 		}
-		this.DefaultWidth = 400;
+		this.DefaultWidth = 387;
 		this.DefaultHeight = 300;
 		this.Show ();
 		this.executeAction.Activated += new global::System.EventHandler (this.OnExecuteActionActivated);
 		this.goBackAction.Activated += new global::System.EventHandler (this.OnGoBackActionActivated);
+		this.btnCreate.Clicked += new global::System.EventHandler (this.OnBtnCreateClicked);
+		this.btnDrop.Clicked += new global::System.EventHandler (this.OnBtnDropClicked);
+		this.btnInsert.Clicked += new global::System.EventHandler (this.OnBtnInsertClicked);
+		this.btnUpdate.Clicked += new global::System.EventHandler (this.OnBtnUpdateClicked);
+		this.btnDelete.Clicked += new global::System.EventHandler (this.OnBtnDeleteClicked);
 	}
 }
