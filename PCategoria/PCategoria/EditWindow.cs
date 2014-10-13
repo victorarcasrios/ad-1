@@ -16,7 +16,7 @@ public partial class EditWindow: Gtk.Window
 		Build ();
 
 		this.mySqlConnection = mySqlConnection;
-		this.SetSizeRequest (500, 250);
+		this.SetSizeRequest (750, 250);
 
 
 
@@ -67,35 +67,35 @@ public partial class EditWindow: Gtk.Window
 	protected void OnBtnCreateClicked (object sender, EventArgs e)
 	{
 		textView_EW.Buffer.Text = textView_EW.Buffer.Text +
-			"CREATE TABLE [tabName]"; //CREATE
+			"\nCREATE TABLE [tabName]"; //CREATE
 
 	}
 
 	protected void OnBtnDropClicked (object sender, EventArgs e)
 	{
 		textView_EW.Buffer.Text = textView_EW.Buffer.Text +
-			"DROP [DATABASE/TABLE] [dbName/tabName]"; //DROP
+			"\nDROP [DATABASE/TABLE] [dbName/tabName]"; //DROP
 
 	}
 
 	protected void OnBtnInsertClicked (object sender, EventArgs e)
 	{
 		textView_EW.Buffer.Text = textView_EW.Buffer.Text +
-			"INSERT INTO `categoria`(`id`, `nombre`) VALUES ([value-1],[value-2])"; //INSERT
+			"\nINSERT INTO `categoria`(`id`, `nombre`) VALUES ([value-1],[value-2])"; //INSERT
 
 	}
 
 	protected void OnBtnUpdateClicked (object sender, EventArgs e)
 	{
 		textView_EW.Buffer.Text = textView_EW.Buffer.Text +
-			"UPDATE `categoria` SET `id`=[value-1],`nombre`=[value-2] WHERE [condition]"; //UPDATE
+			"\nUPDATE `categoria` SET `id`=[value-1],`nombre`=[value-2] WHERE [condition]"; //UPDATE
 
 	}
 
 	protected void OnBtnDeleteClicked (object sender, EventArgs e)
 	{
 		textView_EW.Buffer.Text = textView_EW.Buffer.Text +
-			"DELETE FROM `categoria` WHERE [condition]"; //DELETE
+			"\nDELETE FROM `categoria` WHERE [condition]"; //DELETE
 
 	}
 }
