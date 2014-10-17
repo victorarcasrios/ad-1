@@ -78,7 +78,12 @@
     <Compile Include="EditWindow.cs" />
     <Compile Include="gtk-gui\PCategoria.EditWindow.cs" />
     <Compile Include="gtk-gui\EditWindow.cs" />
-    <Compile Include="App.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\PSerpisAD\PSerpisAD.csproj">
+      <Project>{173DE589-13F3-4AEE-9904-1F064C375E57}</Project>
+      <Name>PSerpisAD</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

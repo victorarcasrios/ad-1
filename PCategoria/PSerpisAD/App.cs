@@ -1,9 +1,7 @@
 //gitUser> @juankza
 
-using MySql.Data.MySqlClient;
 using System;
 using System.Data;
-using PCategoria;
 
 public class App 
 {
@@ -20,12 +18,11 @@ public class App
 
 	}
 
-	private MySqlConnection mySqlConnection;
-
-	public MySqlConnection MySqlConnection
+	private IDbConnection dbConnection;
+	public IDbConnection DbConnection
 	{
-		get{ return mySqlConnection;}
-		set{ mySqlConnection = value;}
+		get{ return dbConnection;}
+		set{ dbConnection = value;}
 
 	}
 

@@ -1,10 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="PCategoria/MainWindow.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PSerpisAD/MyClass.cs">
     <Files>
-      <File FileName="PCategoria/MainWindow.cs" Line="7" Column="18" />
-      <File FileName="PCategoria/EditWindow.cs" Line="1" Column="20" />
-      <File FileName="PCategoria/App.cs" Line="27" Column="3" />
+      <File FileName="PCategoria/MainWindow.cs" Line="136" Column="4" />
+      <File FileName="PCategoria/EditWindow.cs" Line="1" Column="1" />
+      <File FileName="PCategoria/App.cs" Line="1" Column="1" />
+      <File FileName="PSerpisAD/MyClass.cs" Line="9" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
