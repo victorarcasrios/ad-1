@@ -17,6 +17,36 @@
         <property name="StockId">gtk-quit</property>
         <property name="Tooltip" translatable="yes">Salir</property>
       </action>
+      <action id="ArchivoAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Archivo</property>
+        <property name="ShortLabel" translatable="yes">Archivo</property>
+      </action>
+      <action id="AbrirAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Abrir pestañas</property>
+        <property name="ShortLabel" translatable="yes">Abrir</property>
+      </action>
+      <action id="CerrarAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Cerrar pestañas</property>
+        <property name="ShortLabel" translatable="yes">Cerrar</property>
+      </action>
+      <action id="SalirAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">_Salir</property>
+        <property name="ShortLabel" translatable="yes">Salir</property>
+      </action>
+      <action id="ArticuloAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Articulo</property>
+        <property name="ShortLabel" translatable="yes">Articulo</property>
+      </action>
+      <action id="CategoriaAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Categoria</property>
+        <property name="ShortLabel" translatable="yes">Categoria</property>
+      </action>
     </action-group>
     <property name="MemberName" />
     <property name="Title" translatable="yes">MainWindow</property>
@@ -27,11 +57,18 @@
         <property name="MemberName" />
         <property name="Spacing">6</property>
         <child>
-          <widget class="Gtk.Toolbar" id="toolBar">
+          <widget class="Gtk.MenuBar" id="menuBar">
             <property name="MemberName" />
-            <property name="ShowArrow">False</property>
-            <node name="toolBar" type="Toolbar">
-              <node type="Toolitem" action="quitAction" />
+            <node name="menuBar" type="Menubar">
+              <node type="Menu" action="ArchivoAction">
+                <node type="Menu" action="AbrirAction">
+                  <node type="Menuitem" action="ArticuloAction" />
+                  <node type="Menuitem" action="CategoriaAction" />
+                </node>
+                <node type="Menuitem" action="CerrarAction" />
+                <node type="Separator" />
+                <node type="Menuitem" action="SalirAction" />
+              </node>
             </node>
           </widget>
           <packing>
