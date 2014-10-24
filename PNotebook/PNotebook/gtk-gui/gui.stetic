@@ -9,6 +9,15 @@
     <widget-library name="../bin/Debug/PNotebook.exe" internal="true" />
   </import>
   <widget class="Gtk.Window" id="MainWindow" design-size="400 300">
+    <action-group name="Default">
+      <action id="quitAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Salir</property>
+        <property name="ShortLabel" translatable="yes">Salir</property>
+        <property name="StockId">gtk-quit</property>
+        <property name="Tooltip" translatable="yes">Salir</property>
+      </action>
+    </action-group>
     <property name="MemberName" />
     <property name="Title" translatable="yes">MainWindow</property>
     <property name="WindowPosition">CenterOnParent</property>
@@ -18,41 +27,31 @@
         <property name="MemberName" />
         <property name="Spacing">6</property>
         <child>
-          <placeholder />
+          <widget class="Gtk.Toolbar" id="toolBar">
+            <property name="MemberName" />
+            <property name="ShowArrow">False</property>
+            <node name="toolBar" type="Toolbar">
+              <node type="Toolitem" action="quitAction" />
+            </node>
+          </widget>
+          <packing>
+            <property name="Position">0</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
         </child>
         <child>
-          <widget class="Gtk.Notebook" id="notebook2">
+          <widget class="Gtk.Notebook" id="noteBook">
             <property name="MemberName" />
             <property name="CanFocus">True</property>
-            <property name="CurrentPage">1</property>
-            <child>
-              <placeholder />
-            </child>
-            <child>
-              <widget class="Gtk.Label" id="labelPage1">
-                <property name="MemberName" />
-                <property name="LabelProp" translatable="yes">Pestaña 1</property>
-              </widget>
-              <packing>
-                <property name="type">tab</property>
-              </packing>
-            </child>
-            <child>
-              <placeholder />
-            </child>
-            <child>
-              <widget class="Gtk.Label" id="labelPage2">
-                <property name="MemberName" />
-                <property name="LabelProp" translatable="yes">   +   </property>
-              </widget>
-              <packing>
-                <property name="type">tab</property>
-              </packing>
-            </child>
+            <property name="CurrentPage">-1</property>
           </widget>
           <packing>
             <property name="Position">1</property>
             <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
           </packing>
         </child>
         <child>
