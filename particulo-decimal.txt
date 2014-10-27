@@ -28,3 +28,10 @@ object valuePrecio = new decimal (1.2);
 listStore.AppendValues (valuePrecio);
 
 treeView.Model = listStore;
+
+
+
+//Retardo de codigo c#
+using System.Threading;
+
+Thread.Sleep(tiempo);
