@@ -8,13 +8,282 @@
     <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <widget-library name="../bin/Debug/PArticulo.exe" internal="true" />
   </import>
-  <widget class="Gtk.Window" id="MainWindow" design-size="400 300">
+  <widget class="Gtk.Window" id="MainWindow" design-size="550 300">
+    <action-group name="Default">
+      <action id="ArchivoAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Archivo</property>
+        <property name="ShortLabel" translatable="yes">Archivo</property>
+      </action>
+      <action id="AbrirAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Abrir</property>
+        <property name="ShortLabel" translatable="yes">Abrir</property>
+      </action>
+      <action id="ArticuloOpenAct">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Artículo</property>
+        <property name="ShortLabel" translatable="yes">Artículo</property>
+      </action>
+      <action id="CategoriaOpenAct">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Categoría</property>
+        <property name="ShortLabel" translatable="yes">Categoría</property>
+      </action>
+      <action id="EditarAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Editar</property>
+        <property name="ShortLabel" translatable="yes">Editar</property>
+      </action>
+      <action id="CerrarAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Cerrar</property>
+        <property name="ShortLabel" translatable="yes">Cerrar</property>
+      </action>
+      <action id="ArticuloCloseAct">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Artículo</property>
+        <property name="ShortLabel" translatable="yes">Artículo</property>
+      </action>
+      <action id="CategoriaCloseAct">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Categoría</property>
+        <property name="ShortLabel" translatable="yes">Categoría</property>
+      </action>
+      <action id="SalirAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Salir</property>
+        <property name="ShortLabel" translatable="yes">Salir</property>
+      </action>
+      <action id="AyudaAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Ayuda</property>
+        <property name="ShortLabel" translatable="yes">Ayuda</property>
+      </action>
+      <action id="AcercaDeAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Acerca de</property>
+        <property name="ShortLabel" translatable="yes">Acerca de</property>
+      </action>
+      <action id="PestaaAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Pestaña</property>
+        <property name="ShortLabel" translatable="yes">Pestaña</property>
+      </action>
+      <action id="PestanaAnteriorAct">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Pestaña Anterior</property>
+        <property name="ShortLabel" translatable="yes">Pestaña Anterior</property>
+      </action>
+      <action id="PestaaSiguienteAct">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Pestaña Siguiente</property>
+        <property name="ShortLabel" translatable="yes">Pestaña Siguiente</property>
+      </action>
+      <action id="CerrarTodoAct">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Cerrar todo</property>
+        <property name="ShortLabel" translatable="yes">Cerrar todo</property>
+      </action>
+      <action id="ArticuloEditAct">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Artículo</property>
+        <property name="ShortLabel" translatable="yes">Artículo</property>
+      </action>
+      <action id="CategoriaEditAct">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Categoría</property>
+        <property name="ShortLabel" translatable="yes">Categoría</property>
+      </action>
+      <action id="RefrescarAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Refrescar</property>
+        <property name="ShortLabel" translatable="yes">Refrescar</property>
+      </action>
+    </action-group>
     <property name="MemberName" />
     <property name="Title" translatable="yes">MainWindow</property>
     <property name="WindowPosition">CenterOnParent</property>
     <signal name="DeleteEvent" handler="OnDeleteEvent" />
     <child>
-      <placeholder />
+      <widget class="Gtk.VBox" id="mainVBox">
+        <property name="MemberName" />
+        <property name="Spacing">6</property>
+        <child>
+          <widget class="Gtk.MenuBar" id="menuBar">
+            <property name="MemberName" />
+            <node name="menuBar" type="Menubar">
+              <node type="Menu" action="ArchivoAction">
+                <node type="Menu" action="AbrirAction">
+                  <node type="Menuitem" action="ArticuloOpenAct" />
+                  <node type="Menuitem" action="CategoriaOpenAct" />
+                </node>
+                <node type="Menu" action="CerrarAction">
+                  <node type="Menuitem" action="ArticuloCloseAct" />
+                  <node type="Menuitem" action="CategoriaCloseAct" />
+                </node>
+                <node type="Menuitem" action="RefrescarAction" />
+                <node type="Separator" />
+                <node type="Menuitem" action="SalirAction" />
+              </node>
+              <node type="Menu" action="EditarAction">
+                <node type="Menuitem" action="ArticuloEditAct" />
+                <node type="Menuitem" action="CategoriaEditAct" />
+              </node>
+              <node type="Menu" action="PestaaAction">
+                <node type="Menuitem" action="PestanaAnteriorAct" />
+                <node type="Menuitem" action="PestaaSiguienteAct" />
+                <node type="Separator" />
+                <node type="Menuitem" action="CerrarTodoAct" />
+              </node>
+              <node type="Menu" action="AyudaAction">
+                <node type="Menuitem" action="AcercaDeAction" />
+              </node>
+            </node>
+          </widget>
+          <packing>
+            <property name="Position">0</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Notebook" id="noteBook">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="CurrentPage">-1</property>
+          </widget>
+          <packing>
+            <property name="Position">1</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
+  </widget>
+  <widget class="Gtk.Window" id="LoginWindow" design-size="400 125">
+    <property name="MemberName" />
+    <property name="Title" translatable="yes">Iniciar sesión</property>
+    <property name="WindowPosition">CenterOnParent</property>
+    <signal name="DeleteEvent" handler="OnDeleteEvent" />
+    <child>
+      <widget class="Gtk.VBox" id="mainVBox">
+        <property name="MemberName" />
+        <property name="Spacing">6</property>
+        <child>
+          <widget class="Gtk.HBox" id="mainHBox">
+            <property name="MemberName" />
+            <property name="Spacing">6</property>
+            <child>
+              <widget class="Gtk.VBox" id="labelVBox">
+                <property name="MemberName" />
+                <property name="Spacing">6</property>
+                <child>
+                  <widget class="Gtk.Label" id="userLabel">
+                    <property name="MemberName" />
+                    <property name="LabelProp" translatable="yes">Usuario</property>
+                  </widget>
+                  <packing>
+                    <property name="Position">0</property>
+                    <property name="AutoSize">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.Label" id="pwdLabel">
+                    <property name="MemberName" />
+                    <property name="LabelProp" translatable="yes">Contraseña</property>
+                  </widget>
+                  <packing>
+                    <property name="Position">1</property>
+                    <property name="AutoSize">False</property>
+                  </packing>
+                </child>
+              </widget>
+              <packing>
+                <property name="Position">0</property>
+                <property name="AutoSize">True</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.VBox" id="entryVBox">
+                <property name="MemberName" />
+                <property name="Spacing">6</property>
+                <child>
+                  <widget class="Gtk.Entry" id="userEntry">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="IsEditable">True</property>
+                    <property name="InvisibleChar">•</property>
+                  </widget>
+                  <packing>
+                    <property name="Position">0</property>
+                    <property name="AutoSize">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.Entry" id="pwdEntry">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="IsEditable">True</property>
+                    <property name="Visibility">False</property>
+                    <property name="InvisibleChar">•</property>
+                  </widget>
+                  <packing>
+                    <property name="Position">1</property>
+                    <property name="AutoSize">False</property>
+                  </packing>
+                </child>
+              </widget>
+              <packing>
+                <property name="Position">1</property>
+                <property name="AutoSize">True</property>
+              </packing>
+            </child>
+          </widget>
+          <packing>
+            <property name="Position">0</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.CheckButton" id="pwdCheckBtn">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Label" translatable="yes">Mostrar contraseña</property>
+            <property name="DrawIndicator">True</property>
+            <property name="HasLabel">True</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Toggled" handler="OnPwdCheckBtnToggled" />
+          </widget>
+          <packing>
+            <property name="Position">1</property>
+            <property name="AutoSize">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="loginButton">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Aceptar</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnLoginButtonClicked" />
+          </widget>
+          <packing>
+            <property name="Position">2</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+      </widget>
     </child>
   </widget>
 </stetic-interface>

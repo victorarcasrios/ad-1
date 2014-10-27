@@ -1,3 +1,5 @@
+//gitUser> @juankza
+
 using System;
 using Gtk;
 
@@ -8,9 +10,12 @@ namespace PArticulo
 		public static void Main (string[] args)
 		{
 			Application.Init ();
-			MainWindow win = new MainWindow ();
-			win.Show ();
+			LoginWindow lWin = new LoginWindow ();
+			lWin.Show ();
 			Application.Run ();
+
 		}
+
 	}
+
 }
