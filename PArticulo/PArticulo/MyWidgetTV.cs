@@ -50,7 +50,7 @@ namespace PArticulo
 						typeof (string), typeof (string)
 						);
 					for (int i = 0; i < colsArticulo.Count; i++){
-						setRowValues (i, "articulo");
+						setRowValues (i, str);
 						((ListStore)Model).AppendValues (
 							rowValues[0], rowValues[1], rowValues[2], rowValues[3]);
 
