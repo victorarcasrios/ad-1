@@ -24,11 +24,13 @@
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Artículo</property>
         <property name="ShortLabel" translatable="yes">Artículo</property>
+        <signal name="Activated" handler="OnArticuloOpenActActivated" />
       </action>
       <action id="CategoriaOpenAct">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Categoría</property>
         <property name="ShortLabel" translatable="yes">Categoría</property>
+        <signal name="Activated" handler="OnCategoriaOpenActActivated" />
       </action>
       <action id="EditarAction">
         <property name="Type">Action</property>
@@ -44,16 +46,19 @@
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Artículo</property>
         <property name="ShortLabel" translatable="yes">Artículo</property>
+        <signal name="Activated" handler="OnArticuloCloseActActivated" />
       </action>
       <action id="CategoriaCloseAct">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Categoría</property>
         <property name="ShortLabel" translatable="yes">Categoría</property>
+        <signal name="Activated" handler="OnCategoriaCloseActActivated" />
       </action>
       <action id="SalirAction">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Salir</property>
         <property name="ShortLabel" translatable="yes">Salir</property>
+        <signal name="Activated" handler="OnSalirActionActivated" />
       </action>
       <action id="AyudaAction">
         <property name="Type">Action</property>
@@ -64,6 +69,7 @@
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Acerca de</property>
         <property name="ShortLabel" translatable="yes">Acerca de</property>
+        <signal name="Activated" handler="OnAcercaDeActionActivated" />
       </action>
       <action id="PestaaAction">
         <property name="Type">Action</property>
@@ -99,6 +105,7 @@
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Refrescar</property>
         <property name="ShortLabel" translatable="yes">Refrescar</property>
+        <signal name="Activated" handler="OnRefrescarActionActivated" />
       </action>
     </action-group>
     <property name="MemberName" />
