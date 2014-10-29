@@ -80,26 +80,31 @@
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Pestaña Anterior</property>
         <property name="ShortLabel" translatable="yes">Pestaña Anterior</property>
+        <signal name="Activated" handler="OnPestanaAnteriorActActivated" />
       </action>
-      <action id="PestaaSiguienteAct">
+      <action id="PestanaSiguienteAct">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Pestaña Siguiente</property>
         <property name="ShortLabel" translatable="yes">Pestaña Siguiente</property>
+        <signal name="Activated" handler="OnPestanaSiguienteActActivated" />
       </action>
       <action id="CerrarTodoAct">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Cerrar todo</property>
         <property name="ShortLabel" translatable="yes">Cerrar todo</property>
+        <signal name="Activated" handler="OnCerrarTodoActActivated" />
       </action>
       <action id="ArticuloEditAct">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Artículo</property>
         <property name="ShortLabel" translatable="yes">Artículo</property>
+        <signal name="Activated" handler="OnArticuloEditActActivated" />
       </action>
       <action id="CategoriaEditAct">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Categoría</property>
         <property name="ShortLabel" translatable="yes">Categoría</property>
+        <signal name="Activated" handler="OnCategoriaEditActActivated" />
       </action>
       <action id="RefrescarAction">
         <property name="Type">Action</property>
@@ -139,7 +144,7 @@
               </node>
               <node type="Menu" action="PestaaAction">
                 <node type="Menuitem" action="PestanaAnteriorAct" />
-                <node type="Menuitem" action="PestaaSiguienteAct" />
+                <node type="Menuitem" action="PestanaSiguienteAct" />
                 <node type="Separator" />
                 <node type="Menuitem" action="CerrarTodoAct" />
               </node>

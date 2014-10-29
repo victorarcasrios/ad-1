@@ -51,7 +51,31 @@ public partial class MainWindow: Gtk.Window
 		Application.Quit ();
 	}
 
+	protected void OnArticuloEditActActivated (object sender, EventArgs e)
+	{
 
+
+	}
+	protected void OnCategoriaEditActActivated (object sender, EventArgs e)
+	{
+
+
+	}
+	protected void OnPestanaAnteriorActActivated (object sender, EventArgs e)
+	{
+
+
+	}
+	protected void OnPestanaSiguienteActActivated (object sender, EventArgs e)
+	{
+
+
+	}
+	protected void OnCerrarTodoActActivated (object sender, EventArgs e)
+	{
+
+
+	}
 
 	protected void OnAcercaDeActionActivated (object sender, EventArgs e)
 	{
@@ -68,5 +92,5 @@ public partial class MainWindow: Gtk.Window
 		Application.Quit ();
 		a.RetVal = true;
 	}
-
+	
 }
