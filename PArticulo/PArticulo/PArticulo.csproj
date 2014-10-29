@@ -63,7 +63,7 @@
       <Package>mysql-connector-net</Package>
     </Reference>
     <Reference Include="PSerpisAd">
-      <HintPath>..\..\PSerpisAd\PSerpisAd\bin\Debug\PSerpisAd.dll</HintPath>
+      <HintPath>..\PSerpisAd.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

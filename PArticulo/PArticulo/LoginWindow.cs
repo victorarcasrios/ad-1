@@ -15,8 +15,6 @@ public partial class LoginWindow : Gtk.Window
 	{
 		this.Build ();
 
-
-
 	}
 
 	protected void OnPwdCheckBtnToggled (object sender, EventArgs e)

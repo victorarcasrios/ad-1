@@ -78,7 +78,7 @@
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Pestaña</property>
         <property name="ShortLabel" translatable="yes">Pestaña</property>
-        <signal name="Activated" handler="OnPestaaActionActivated" />
+        <signal name="Activated" handler="OnPestanaActActivated" />
       </action>
       <action id="PestanaAnteriorAct">
         <property name="Type">Action</property>

@@ -1,13 +1,15 @@
 //gitUser> @juankza
 
-using System;
 using Gtk;
 using PArticulo;
+using System;
+using System.Collections.Generic;
 
 public partial class MainWindow: Gtk.Window
 {	
 	private MessageDialog msgDialog;
 
+	//MAIN FUNCTION
 	public MainWindow (): base (Gtk.WindowType.Toplevel)
 	{
 		Build ();
@@ -16,29 +18,28 @@ public partial class MainWindow: Gtk.Window
 
 	}
 
+	//MY FUNCTIONS
 	private void addNewPage (Widget widget, string label){
 		noteBook.AppendPage (widget, new Label (label));
 
 	}
-
-	private string whatPage (Widget widget){
+	private string whatPgName (Widget widget){
 		Label label = (Label)widget;
 		return label.LabelProp;
 
 	}
-
-	protected void OnArchivoActionActivated (object sender, EventArgs e)
-	{
-		string pgName;
-		if (noteBook.NPages != -1){
+	private void removePage (string str){
+		List<string> pgName = new List<string> ();
+		if (noteBook.NPages != 0) {
 			for (int i = 0; i < noteBook.NPages; i++) {
-				pgName = whatPage(noteBook.GetTabLabel(noteBook.GetNthPage(i)));
+				pgName.Add (whatPgName (noteBook.GetTabLabel (noteBook.GetNthPage (i))));
+			}
 
-				if (pgName == "Articulo" || pgName == "Artículo"){
-					ArticuloCloseAct.Sensitive = true;
-				}
-				if (pgName == "Categoria" || pgName == "Categoría"){
-					CategoriaCloseAct.Sensitive = true;
+			int j = 0;
+			for (int i = 0; i < pgName.Count; i++) {
+				if (pgName[i] == str) {
+					noteBook.RemovePage (i - j);
+					j++;
 				}
 
 			}
@@ -47,43 +48,66 @@ public partial class MainWindow: Gtk.Window
 
 	}
 
+	//ARCHIVO
+	protected void OnArchivoActionActivated (object sender, EventArgs e)
+	{
+		List<string> pgName = new List<string> ();
+		if (noteBook.NPages != 0){
+			for (int i = 0; i < noteBook.NPages; i++){
+				pgName.Add (whatPgName (noteBook.GetTabLabel (noteBook.GetNthPage (i))));
+			}
+
+			for (int i = 0; i < pgName.Count; i++){
+				if (pgName[i] == "Articulo"){
+					ArticuloCloseAct.Sensitive = true;
+				}
+
+				if (pgName[i] == "Categoria"){
+					CategoriaCloseAct.Sensitive = true;
+				}
+
+			}
+
+		} else {
+			ArticuloCloseAct.Sensitive = false;
+			CategoriaCloseAct.Sensitive = false;
+		}
+
+	}
 	protected void OnArticuloOpenActActivated (object sender, EventArgs e)
 	{
-		MyWidgetTV myTreeView = new MyWidgetTV ();
+		MyWidgetTV myTreeView = new MyWidgetTV ("articulo");
 		addNewPage (myTreeView, "Articulo");
 
 	}
-
 	protected void OnCategoriaOpenActActivated (object sender, EventArgs e)
 	{
-
+		MyWidgetTV myTreeView = new MyWidgetTV ("categoria");
+		addNewPage (myTreeView, "Categoria");
 
 	}
-
 	protected void OnArticuloCloseActActivated (object sender, EventArgs e)
 	{
-
+		removePage ("Articulo");
 
 	}
-
 	protected void OnCategoriaCloseActActivated (object sender, EventArgs e)
 	{
-
+		removePage ("Categoria");
 
 	}
-
 	protected void OnRefrescarActionActivated (object sender, EventArgs e)
 	{
 
 
 	}
-
 	protected void OnSalirActionActivated (object sender, EventArgs e)
 	{
 		this.Destroy ();
 		Application.Quit ();
 	}
 
+	//EDITAR
 	protected void OnArticuloEditActActivated (object sender, EventArgs e)
 	{
 
@@ -95,13 +119,14 @@ public partial class MainWindow: Gtk.Window
 
 	}
 
+	//PESTANA
 	protected void OnPestanaActActivated (object sender, EventArgs e)
 	{
-		if (noteBook.NPages != -1) {
-
-
+		if (noteBook.NPages != 0){
+			CerrarTodoAct.Sensitive = true;
+		} else {
+			CerrarTodoAct.Sensitive = false;
 		}
-
 	}
 	protected void OnPestanaAnteriorActActivated (object sender, EventArgs e)
 	{
@@ -115,10 +140,15 @@ public partial class MainWindow: Gtk.Window
 	}
 	protected void OnCerrarTodoActActivated (object sender, EventArgs e)
 	{
+		int pgNum = noteBook.NPages;
+		for (int i = 0; i < pgNum; i++){
+			noteBook.RemovePage (0);
 
+		}
 
 	}
 
+	//ACERCA DE
 	protected void OnAcercaDeActionActivated (object sender, EventArgs e)
 	{
 		msgDialog = new MessageDialog (
@@ -128,7 +158,8 @@ public partial class MainWindow: Gtk.Window
 		msgDialog.Destroy ();
 
 	}
-
+	
+	//TEMPLATE FUNCTION
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
 	{
 		Application.Quit ();
