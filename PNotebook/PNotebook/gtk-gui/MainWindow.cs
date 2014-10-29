@@ -35,7 +35,7 @@ public partial class MainWindow
 		this.SalirAction = new global::Gtk.Action ("SalirAction", global::Mono.Unix.Catalog.GetString ("_Salir"), null, null);
 		this.SalirAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Salir");
 		w1.Add (this.SalirAction, null);
-		this.ArticuloAction = new global::Gtk.Action ("ArticuloAction", global::Mono.Unix.Catalog.GetString ("Articulo"), null, null);
+		this.ArticuloAction = new global::Gtk.Action ("ArticuloAction", global::Mono.Unix.Catalog.GetString ("Artículo"), null, null);
 		this.ArticuloAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Articulo");
 		w1.Add (this.ArticuloAction, null);
 		this.CategoriaAction = new global::Gtk.Action ("CategoriaAction", global::Mono.Unix.Catalog.GetString ("Categoria"), null, null);

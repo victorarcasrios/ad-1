@@ -14,6 +14,7 @@
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Archivo</property>
         <property name="ShortLabel" translatable="yes">Archivo</property>
+        <signal name="Activated" handler="OnArchivoActionActivated" />
       </action>
       <action id="AbrirAction">
         <property name="Type">Action</property>
@@ -45,12 +46,14 @@
       <action id="ArticuloCloseAct">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Artículo</property>
+        <property name="Sensitive">False</property>
         <property name="ShortLabel" translatable="yes">Artículo</property>
         <signal name="Activated" handler="OnArticuloCloseActActivated" />
       </action>
       <action id="CategoriaCloseAct">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Categoría</property>
+        <property name="Sensitive">False</property>
         <property name="ShortLabel" translatable="yes">Categoría</property>
         <signal name="Activated" handler="OnCategoriaCloseActActivated" />
       </action>
@@ -71,26 +74,30 @@
         <property name="ShortLabel" translatable="yes">Acerca de</property>
         <signal name="Activated" handler="OnAcercaDeActionActivated" />
       </action>
-      <action id="PestaaAction">
+      <action id="PestanaAction">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Pestaña</property>
         <property name="ShortLabel" translatable="yes">Pestaña</property>
+        <signal name="Activated" handler="OnPestaaActionActivated" />
       </action>
       <action id="PestanaAnteriorAct">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Pestaña Anterior</property>
+        <property name="Sensitive">False</property>
         <property name="ShortLabel" translatable="yes">Pestaña Anterior</property>
         <signal name="Activated" handler="OnPestanaAnteriorActActivated" />
       </action>
       <action id="PestanaSiguienteAct">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Pestaña Siguiente</property>
+        <property name="Sensitive">False</property>
         <property name="ShortLabel" translatable="yes">Pestaña Siguiente</property>
         <signal name="Activated" handler="OnPestanaSiguienteActActivated" />
       </action>
       <action id="CerrarTodoAct">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Cerrar todo</property>
+        <property name="Sensitive">False</property>
         <property name="ShortLabel" translatable="yes">Cerrar todo</property>
         <signal name="Activated" handler="OnCerrarTodoActActivated" />
       </action>
@@ -142,7 +149,7 @@
                 <node type="Menuitem" action="ArticuloEditAct" />
                 <node type="Menuitem" action="CategoriaEditAct" />
               </node>
-              <node type="Menu" action="PestaaAction">
+              <node type="Menu" action="PestanaAction">
                 <node type="Menuitem" action="PestanaAnteriorAct" />
                 <node type="Menuitem" action="PestanaSiguienteAct" />
                 <node type="Separator" />

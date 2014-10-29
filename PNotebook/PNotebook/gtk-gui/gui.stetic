@@ -39,7 +39,7 @@
       </action>
       <action id="ArticuloAction">
         <property name="Type">Action</property>
-        <property name="Label" translatable="yes">Articulo</property>
+        <property name="Label" translatable="yes">Artículo</property>
         <property name="ShortLabel" translatable="yes">Articulo</property>
       </action>
       <action id="CategoriaAction">

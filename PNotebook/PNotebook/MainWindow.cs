@@ -37,7 +37,6 @@ public partial class MainWindow: Gtk.Window
 	private void whatPage (Widget widget){
 		Label label = (Label)widget;
 		Console.WriteLine (label.LabelProp);
-		Console.WriteLine(noteBook.GetTabLabelText (label));
 
 	}
 

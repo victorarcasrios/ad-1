@@ -12,12 +12,38 @@ public partial class MainWindow: Gtk.Window
 	{
 		Build ();
 
-		CerrarAction.Sensitive = false;
+
 
 	}
 
 	private void addNewPage (Widget widget, string label){
 		noteBook.AppendPage (widget, new Label (label));
+
+	}
+
+	private string whatPage (Widget widget){
+		Label label = (Label)widget;
+		return label.LabelProp;
+
+	}
+
+	protected void OnArchivoActionActivated (object sender, EventArgs e)
+	{
+		string pgName;
+		if (noteBook.NPages != -1){
+			for (int i = 0; i < noteBook.NPages; i++) {
+				pgName = whatPage(noteBook.GetTabLabel(noteBook.GetNthPage(i)));
+
+				if (pgName == "Articulo" || pgName == "Artículo"){
+					ArticuloCloseAct.Sensitive = true;
+				}
+				if (pgName == "Categoria" || pgName == "Categoría"){
+					CategoriaCloseAct.Sensitive = true;
+				}
+
+			}
+
+		}
 
 	}
 
@@ -66,6 +92,15 @@ public partial class MainWindow: Gtk.Window
 	protected void OnCategoriaEditActActivated (object sender, EventArgs e)
 	{
 
+
+	}
+
+	protected void OnPestanaActActivated (object sender, EventArgs e)
+	{
+		if (noteBook.NPages != -1) {
+
+
+		}
 
 	}
 	protected void OnPestanaAnteriorActActivated (object sender, EventArgs e)
