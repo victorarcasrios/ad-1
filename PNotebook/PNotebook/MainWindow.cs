@@ -11,8 +11,8 @@ public partial class MainWindow: Gtk.Window
 		ArticuloAction.Activated += delegate {
 			MyTreeView myTreeView = new MyTreeView ();
 			addPage (myTreeView, "Articulo");
-			whatPage(myTreeView);
-
+			whatPage(noteBook.GetTabLabel(noteBook.GetNthPage(0)));
+			
 		};
 		
 		CategoriaAction.Activated += delegate {
@@ -30,25 +30,14 @@ public partial class MainWindow: Gtk.Window
 	}
 
 	private void addPage (Widget widget, string label){
-		HBox hBox = new HBox ();
-		Button button = new Button (new Image (Stock.Cancel, IconSize.Button));
-		hBox.Add (new Label (label));
-		hBox.Add (button);
-		hBox.ShowAll ();
-		noteBook.AppendPage (widget, hBox);
-
-		button.Clicked += delegate {
-			widget.Destroy ();
-
-		};
+		noteBook.AppendPage (widget, new Label (label));
 
 	}
 
 	private void whatPage (Widget widget){
-		for (int i = 0; i < noteBook.NPages; i++){
-			Console.WriteLine(noteBook.GetTabLabelText (widget));
-
-		}
+		Label label = (Label)widget;
+		Console.WriteLine (label.LabelProp);
+		Console.WriteLine(noteBook.GetTabLabelText (label));
 
 	}
 

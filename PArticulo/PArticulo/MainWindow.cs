@@ -2,10 +2,11 @@
 
 using System;
 using Gtk;
+using PArticulo;
 
 public partial class MainWindow: Gtk.Window
 {	
-	MessageDialog msgDialog;
+	private MessageDialog msgDialog;
 
 	public MainWindow (): base (Gtk.WindowType.Toplevel)
 	{
@@ -15,9 +16,15 @@ public partial class MainWindow: Gtk.Window
 
 	}
 
+	private void addNewPage (Widget widget, string label){
+		noteBook.AppendPage (widget, new Label (label));
+
+	}
+
 	protected void OnArticuloOpenActActivated (object sender, EventArgs e)
 	{
-
+		MyWidgetTV myTreeView = new MyWidgetTV ();
+		addNewPage (myTreeView, "Articulo");
 
 	}
 

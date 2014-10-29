@@ -16,7 +16,7 @@ public partial class MainWindow
 	private global::Gtk.Action AcercaDeAction;
 	private global::Gtk.Action PestaaAction;
 	private global::Gtk.Action PestanaAnteriorAct;
-	private global::Gtk.Action PestaaSiguienteAct;
+	private global::Gtk.Action PestanaSiguienteAct;
 	private global::Gtk.Action CerrarTodoAct;
 	private global::Gtk.Action ArticuloEditAct;
 	private global::Gtk.Action CategoriaEditAct;
@@ -70,9 +70,9 @@ public partial class MainWindow
 		this.PestanaAnteriorAct = new global::Gtk.Action ("PestanaAnteriorAct", global::Mono.Unix.Catalog.GetString ("Pestaña Anterior"), null, null);
 		this.PestanaAnteriorAct.ShortLabel = global::Mono.Unix.Catalog.GetString ("Pestaña Anterior");
 		w1.Add (this.PestanaAnteriorAct, null);
-		this.PestaaSiguienteAct = new global::Gtk.Action ("PestaaSiguienteAct", global::Mono.Unix.Catalog.GetString ("Pestaña Siguiente"), null, null);
-		this.PestaaSiguienteAct.ShortLabel = global::Mono.Unix.Catalog.GetString ("Pestaña Siguiente");
-		w1.Add (this.PestaaSiguienteAct, null);
+		this.PestanaSiguienteAct = new global::Gtk.Action ("PestanaSiguienteAct", global::Mono.Unix.Catalog.GetString ("Pestaña Siguiente"), null, null);
+		this.PestanaSiguienteAct.ShortLabel = global::Mono.Unix.Catalog.GetString ("Pestaña Siguiente");
+		w1.Add (this.PestanaSiguienteAct, null);
 		this.CerrarTodoAct = new global::Gtk.Action ("CerrarTodoAct", global::Mono.Unix.Catalog.GetString ("Cerrar todo"), null, null);
 		this.CerrarTodoAct.ShortLabel = global::Mono.Unix.Catalog.GetString ("Cerrar todo");
 		w1.Add (this.CerrarTodoAct, null);
@@ -95,7 +95,7 @@ public partial class MainWindow
 		this.mainVBox.Name = "mainVBox";
 		this.mainVBox.Spacing = 6;
 		// Container child mainVBox.Gtk.Box+BoxChild
-		this.UIManager.AddUiFromString ("<ui><menubar name='menuBar'><menu name='ArchivoAction' action='ArchivoAction'><menu name='AbrirAction' action='AbrirAction'><menuitem name='ArticuloOpenAct' action='ArticuloOpenAct'/><menuitem name='CategoriaOpenAct' action='CategoriaOpenAct'/></menu><menu name='CerrarAction' action='CerrarAction'><menuitem name='ArticuloCloseAct' action='ArticuloCloseAct'/><menuitem name='CategoriaCloseAct' action='CategoriaCloseAct'/></menu><menuitem name='RefrescarAction' action='RefrescarAction'/><separator/><menuitem name='SalirAction' action='SalirAction'/></menu><menu name='EditarAction' action='EditarAction'><menuitem name='ArticuloEditAct' action='ArticuloEditAct'/><menuitem name='CategoriaEditAct' action='CategoriaEditAct'/></menu><menu name='PestaaAction' action='PestaaAction'><menuitem name='PestanaAnteriorAct' action='PestanaAnteriorAct'/><menuitem name='PestaaSiguienteAct' action='PestaaSiguienteAct'/><separator/><menuitem name='CerrarTodoAct' action='CerrarTodoAct'/></menu><menu name='AyudaAction' action='AyudaAction'><menuitem name='AcercaDeAction' action='AcercaDeAction'/></menu></menubar></ui>");
+		this.UIManager.AddUiFromString ("<ui><menubar name='menuBar'><menu name='ArchivoAction' action='ArchivoAction'><menu name='AbrirAction' action='AbrirAction'><menuitem name='ArticuloOpenAct' action='ArticuloOpenAct'/><menuitem name='CategoriaOpenAct' action='CategoriaOpenAct'/></menu><menu name='CerrarAction' action='CerrarAction'><menuitem name='ArticuloCloseAct' action='ArticuloCloseAct'/><menuitem name='CategoriaCloseAct' action='CategoriaCloseAct'/></menu><menuitem name='RefrescarAction' action='RefrescarAction'/><separator/><menuitem name='SalirAction' action='SalirAction'/></menu><menu name='EditarAction' action='EditarAction'><menuitem name='ArticuloEditAct' action='ArticuloEditAct'/><menuitem name='CategoriaEditAct' action='CategoriaEditAct'/></menu><menu name='PestaaAction' action='PestaaAction'><menuitem name='PestanaAnteriorAct' action='PestanaAnteriorAct'/><menuitem name='PestanaSiguienteAct' action='PestanaSiguienteAct'/><separator/><menuitem name='CerrarTodoAct' action='CerrarTodoAct'/></menu><menu name='AyudaAction' action='AyudaAction'><menuitem name='AcercaDeAction' action='AcercaDeAction'/></menu></menubar></ui>");
 		this.menuBar = ((global::Gtk.MenuBar)(this.UIManager.GetWidget ("/menuBar")));
 		this.menuBar.Name = "menuBar";
 		this.mainVBox.Add (this.menuBar);
@@ -127,6 +127,11 @@ public partial class MainWindow
 		this.CategoriaCloseAct.Activated += new global::System.EventHandler (this.OnCategoriaCloseActActivated);
 		this.SalirAction.Activated += new global::System.EventHandler (this.OnSalirActionActivated);
 		this.AcercaDeAction.Activated += new global::System.EventHandler (this.OnAcercaDeActionActivated);
+		this.PestanaAnteriorAct.Activated += new global::System.EventHandler (this.OnPestanaAnteriorActActivated);
+		this.PestanaSiguienteAct.Activated += new global::System.EventHandler (this.OnPestanaSiguienteActActivated);
+		this.CerrarTodoAct.Activated += new global::System.EventHandler (this.OnCerrarTodoActActivated);
+		this.ArticuloEditAct.Activated += new global::System.EventHandler (this.OnArticuloEditActActivated);
+		this.CategoriaEditAct.Activated += new global::System.EventHandler (this.OnCategoriaEditActActivated);
 		this.RefrescarAction.Activated += new global::System.EventHandler (this.OnRefrescarActionActivated);
 	}
 }

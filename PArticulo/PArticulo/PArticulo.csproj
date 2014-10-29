@@ -79,6 +79,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LoginWindow.cs" />
     <Compile Include="gtk-gui\LoginWindow.cs" />
+    <Compile Include="MyWidgetTV.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
