@@ -9,14 +9,17 @@ using System.Data;
 
 public partial class LoginWindow : Gtk.Window
 {
+	//GLOBAL VARS
 	private MessageDialog msgDialog;
 
+	//MAIN FUNCTION
 	public LoginWindow () : base(Gtk.WindowType.Toplevel)
 	{
 		this.Build ();
 
 	}
 
+	//SHOW PWD
 	protected void OnPwdCheckBtnToggled (object sender, EventArgs e)
 	{
 		if (pwdEntry.Visibility == true){ pwdEntry.Visibility = false;}
@@ -24,6 +27,7 @@ public partial class LoginWindow : Gtk.Window
 
 	}
 
+	//LOGIN
 	protected void OnLoginButtonClicked (object sender, EventArgs e)
 	{
 		try{
@@ -56,11 +60,12 @@ public partial class LoginWindow : Gtk.Window
 
 	}
 
+	//EXIT FUNCTION
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
 	{
 		Application.Quit ();
 		a.RetVal = true;
 	}
-	
+
 }
 

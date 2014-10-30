@@ -19,7 +19,9 @@ public partial class LoginWindow
 		// Widget LoginWindow
 		this.Name = "LoginWindow";
 		this.Title = global::Mono.Unix.Catalog.GetString ("Iniciar sesión");
-		this.WindowPosition = ((global::Gtk.WindowPosition)(4));
+		this.Icon = global::Stetic.IconLoader.LoadIcon (this, "gtk-disconnect", global::Gtk.IconSize.Menu);
+		this.WindowPosition = ((global::Gtk.WindowPosition)(1));
+		this.Gravity = ((global::Gdk.Gravity)(5));
 		// Container child LoginWindow.Gtk.Container+ContainerChild
 		this.mainVBox = new global::Gtk.VBox ();
 		this.mainVBox.Name = "mainVBox";

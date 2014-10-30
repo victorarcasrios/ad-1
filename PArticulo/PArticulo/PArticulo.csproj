@@ -80,6 +80,8 @@
     <Compile Include="LoginWindow.cs" />
     <Compile Include="gtk-gui\LoginWindow.cs" />
     <Compile Include="MyWidgetTV.cs" />
+    <Compile Include="EditWindow.cs" />
+    <Compile Include="gtk-gui\PArticulo.EditWindow.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

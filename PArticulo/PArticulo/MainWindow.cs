@@ -1,20 +1,23 @@
 //gitUser> @juankza
 
 using Gtk;
+using MySql;
+using MySql.Data.MySqlClient;
 using PArticulo;
+using SerpisAd;
 using System;
 using System.Collections.Generic;
+using System.Data;
 
 public partial class MainWindow: Gtk.Window
 {	
+	//GLOBAL VARS
 	private MessageDialog msgDialog;
 
 	//MAIN FUNCTION
 	public MainWindow (): base (Gtk.WindowType.Toplevel)
 	{
 		Build ();
-
-
 
 	}
 
@@ -48,7 +51,7 @@ public partial class MainWindow: Gtk.Window
 
 	}
 
-	//ARCHIVO
+	//FILE
 	protected void OnArchivoActionActivated (object sender, EventArgs e)
 	{
 		List<string> pgName = new List<string> ();
@@ -86,6 +89,20 @@ public partial class MainWindow: Gtk.Window
 		addNewPage (myTreeView, "Categoria");
 
 	}
+	protected void OnEditActionActivated (object sender, EventArgs e)
+	{
+		EditWindow eWin = new EditWindow ();
+		eWin.ShowAll ();
+
+		this.Destroy ();
+
+	}
+	protected void OnRefreshActionActivated (object sender, EventArgs e)
+	{
+		//NOT IMPLEMENTED AND UNNECESSARY
+		//AFTER EDIT, REFRESH ON OPEN ANY TAB
+
+	}
 	protected void OnArticuloCloseActActivated (object sender, EventArgs e)
 	{
 		removePage ("Articulo");
@@ -96,30 +113,13 @@ public partial class MainWindow: Gtk.Window
 		removePage ("Categoria");
 
 	}
-	protected void OnRefrescarActionActivated (object sender, EventArgs e)
-	{
-
-
-	}
 	protected void OnSalirActionActivated (object sender, EventArgs e)
 	{
 		this.Destroy ();
 		Application.Quit ();
 	}
 
-	//EDITAR
-	protected void OnArticuloEditActActivated (object sender, EventArgs e)
-	{
-
-
-	}
-	protected void OnCategoriaEditActActivated (object sender, EventArgs e)
-	{
-
-
-	}
-
-	//PESTANA
+	//TAB
 	protected void OnPestanaActActivated (object sender, EventArgs e)
 	{
 		if (noteBook.NPages != 0){
@@ -130,12 +130,12 @@ public partial class MainWindow: Gtk.Window
 	}
 	protected void OnPestanaAnteriorActActivated (object sender, EventArgs e)
 	{
-
+		//NOT IMPLEMENTED
 
 	}
 	protected void OnPestanaSiguienteActActivated (object sender, EventArgs e)
 	{
-
+		//NOT IMPLEMENTED
 
 	}
 	protected void OnCerrarTodoActActivated (object sender, EventArgs e)
@@ -148,22 +148,23 @@ public partial class MainWindow: Gtk.Window
 
 	}
 
-	//ACERCA DE
+	//ABOUT
 	protected void OnAcercaDeActionActivated (object sender, EventArgs e)
 	{
 		msgDialog = new MessageDialog (
-			this, DialogFlags.Modal, MessageType.Info, ButtonsType.Close, "\t\tPArticulo v0.1a\t\t\nCreado por: Juan Cazalilla Costa");
+			this, DialogFlags.Modal, MessageType.Info, ButtonsType.Close,
+			"\t\tPArticulo v0.1 (Alpha)\t\t\nCreado por: Juan Cazalilla Costa");
 		msgDialog.Title = "Acerca De";
 		msgDialog.Run ();
 		msgDialog.Destroy ();
 
 	}
-	
-	//TEMPLATE FUNCTION
+
+	//EXIT FUNCTION
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
 	{
 		Application.Quit ();
 		a.RetVal = true;
 	}
-	
+
 }
