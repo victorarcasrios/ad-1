@@ -130,12 +130,12 @@ public partial class MainWindow: Gtk.Window
 	}
 	protected void OnPestanaAnteriorActActivated (object sender, EventArgs e)
 	{
-
+		//NOT IMPLEMENTED
 
 	}
 	protected void OnPestanaSiguienteActActivated (object sender, EventArgs e)
 	{
-
+		//NOT IMPLEMENTED
 
 	}
 	protected void OnCerrarTodoActActivated (object sender, EventArgs e)
@@ -159,7 +159,7 @@ public partial class MainWindow: Gtk.Window
 
 	}
 	
-	//TEMPLATE FUNCTION
+	//EXIT FUNCTION
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
 	{
 		Application.Quit ();

@@ -20,19 +20,12 @@ namespace PArticulo
 		private List<string> colsCategoria = new List<string> ();
 		private List<string> rowValues = new List<string> ();
 
+		private int rowsArt;
+		private int rowsCat;
+
 		public MyWidgetTV (string str)
 		{
 			try{
-				/*
-				AppendColumn ("id", new CellRendererText(), "text", 0);
-				AppendColumn ("nombre", new CellRendererText(), "text", 1);
-				Model = new ListStore (typeof (long), typeof (string));
-
-				((ListStore)Model).AppendValues (1L, "Uno");
-				((ListStore)Model).AppendValues (2L, "Dos");
-				((ListStore)Model).AppendValues (3L, "Tres");
-				Visible = true;
-				*/
 
 				setColumnNames ();
 				dataReader.Close ();
@@ -49,10 +42,30 @@ namespace PArticulo
 						typeof (string), typeof (string),
 						typeof (string), typeof (string)
 						);
-					for (int i = 0; i < colsArticulo.Count; i++){
+					for (int i = 0; i < rowsArt; i++){
 						setRowValues (i, str);
 						((ListStore)Model).AppendValues (
 							rowValues[0], rowValues[1], rowValues[2], rowValues[3]);
+
+					}
+
+				}
+
+				if (str == "categoria"){
+					for (int i = 0; i < colsCategoria.Count; i++){
+						AppendColumn (
+							capitalize (colsCategoria[i].ToString ()),
+							new CellRendererText(), "text", i
+							);
+					}
+
+					Model = new ListStore (
+						typeof (string), typeof (string)
+						);
+					for (int i = 0; i < rowsCat; i++){
+						setRowValues (i, str);
+						((ListStore)Model).AppendValues (
+							rowValues[0], rowValues[1]);
 
 					}
 
@@ -105,7 +118,7 @@ namespace PArticulo
 						);
 					this.dataReader = dbCommand.ExecuteReader ();
 
-					while (this.dataReader.Read()){
+					while (this.dataReader.Read ()){
 						if (tabla == "articulo"){
 							this.colsArticulo.Add (this.dataReader [0].ToString ());
 						}
@@ -114,7 +127,22 @@ namespace PArticulo
 						}
 
 					}
+					this.dataReader.Close ();
 
+					this.dbCommand = App.Instance.DbConnection.CreateCommand ();
+					dbCommand.CommandText = String.Format (
+						"SELECT COUNT(*) FROM `" +tabla+ "`"
+						);
+					this.dataReader = dbCommand.ExecuteReader ();
+					while (this.dataReader.Read ()){
+						if (tabla == "articulo"){
+							this.rowsArt = Convert.ToInt32(this.dataReader [0].ToString ());
+						}
+						if (tabla == "categoria"){
+							this.rowsCat = Convert.ToInt32(this.dataReader [0].ToString ());
+						}
+
+					}
 					this.dataReader.Close ();
 
 				}
@@ -132,22 +160,28 @@ namespace PArticulo
 		{
 			try{
 				if (this.rowValues.Count != 0){ this.rowValues.Clear ();}
-				Console.WriteLine ("ROW " +row);
-				for (int i = 0; i < colsArticulo.Count; i++){
-					this.dbCommand = App.Instance.DbConnection.CreateCommand ();
-					dbCommand.CommandText = String.Format (
-						"SELECT " +colsArticulo[i]+ " FROM `" +tab+ "`");
-					this.dataReader = dbCommand.ExecuteReader ();
-					Console.WriteLine ("I index " +i);
-					int k = 0;
-					while (this.dataReader.Read ()){Console.WriteLine ("Reader");
-						for (int j = 0; j <= row; j++){Console.WriteLine ("J index " +j);
-							if (row == k){Console.WriteLine ("K index " +k);
-								this.rowValues.Add (this.dataReader[0].ToString ());
-							}
-							k++;
+				int col = 0;
+				if (tab == "articulo"){ col = colsArticulo.Count;}
+				if (tab == "categoria"){ col = colsCategoria.Count;}
 
+				for (int i = 0; i < col; i++){
+					this.dbCommand = App.Instance.DbConnection.CreateCommand ();
+
+					string command = "";
+					if (tab == "articulo"){
+						command = String.Format ("SELECT " +colsArticulo[i]+ " FROM `" +tab+ "`");}
+					if (tab == "categoria"){
+						command = String.Format ("SELECT " +colsArticulo[i]+ " FROM `" +tab+ "`");}
+
+					dbCommand.CommandText = command;
+					this.dataReader = dbCommand.ExecuteReader ();
+
+					int j = 0;
+					while (this.dataReader.Read ()){
+						if (row == j){
+							this.rowValues.Add (this.dataReader[0].ToString ());
 						}
+						j++;
 
 					}
 
