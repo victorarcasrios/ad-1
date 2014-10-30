@@ -17,15 +17,8 @@ public partial class MainWindow
 	private global::Gtk.Action PestanaAnteriorAct;
 	private global::Gtk.Action PestanaSiguienteAct;
 	private global::Gtk.Action CerrarTodoAct;
-<<<<<<< HEAD
 	private global::Gtk.Action EditarAction;
-=======
->>>>>>> ef9423867ced2e2c4a0728cfb2e13cdd053f3de4
 	private global::Gtk.Action RefrescarAction;
-	private global::Gtk.Action ArticuloAction;
-	private global::Gtk.Action EditarAction1;
-	private global::Gtk.Action EditarAction2;
-	private global::Gtk.Action RefrescarAction1;
 	private global::Gtk.VBox mainVBox;
 	private global::Gtk.MenuBar menuBar;
 	private global::Gtk.Notebook noteBook;
@@ -71,11 +64,11 @@ public partial class MainWindow
 		this.PestanaAction = new global::Gtk.Action ("PestanaAction", global::Mono.Unix.Catalog.GetString ("Pestaña"), null, null);
 		this.PestanaAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Pestaña");
 		w1.Add (this.PestanaAction, null);
-		this.PestanaAnteriorAct = new global::Gtk.Action ("PestanaAnteriorAct", global::Mono.Unix.Catalog.GetString ("Pestaña Anterior"), "", null);
+		this.PestanaAnteriorAct = new global::Gtk.Action ("PestanaAnteriorAct", global::Mono.Unix.Catalog.GetString ("Pestaña Anterior"), null, null);
 		this.PestanaAnteriorAct.Sensitive = false;
 		this.PestanaAnteriorAct.ShortLabel = global::Mono.Unix.Catalog.GetString ("Pestaña Anterior");
 		w1.Add (this.PestanaAnteriorAct, null);
-		this.PestanaSiguienteAct = new global::Gtk.Action ("PestanaSiguienteAct", global::Mono.Unix.Catalog.GetString ("Pestaña Siguiente"), "", null);
+		this.PestanaSiguienteAct = new global::Gtk.Action ("PestanaSiguienteAct", global::Mono.Unix.Catalog.GetString ("Pestaña Siguiente"), null, null);
 		this.PestanaSiguienteAct.Sensitive = false;
 		this.PestanaSiguienteAct.ShortLabel = global::Mono.Unix.Catalog.GetString ("Pestaña Siguiente");
 		w1.Add (this.PestanaSiguienteAct, null);
@@ -83,37 +76,18 @@ public partial class MainWindow
 		this.CerrarTodoAct.Sensitive = false;
 		this.CerrarTodoAct.ShortLabel = global::Mono.Unix.Catalog.GetString ("Cerrar todo");
 		w1.Add (this.CerrarTodoAct, null);
-<<<<<<< HEAD
 		this.EditarAction = new global::Gtk.Action ("EditarAction", global::Mono.Unix.Catalog.GetString ("Editar"), null, null);
 		this.EditarAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Editar");
 		w1.Add (this.EditarAction, null);
 		this.RefrescarAction = new global::Gtk.Action ("RefrescarAction", global::Mono.Unix.Catalog.GetString ("Refrescar"), global::Mono.Unix.Catalog.GetString ("UNNECESSARY"), null);
 		this.RefrescarAction.Sensitive = false;
-=======
-		this.RefrescarAction = new global::Gtk.Action ("RefrescarAction", global::Mono.Unix.Catalog.GetString ("Refrescar"), "", null);
->>>>>>> ef9423867ced2e2c4a0728cfb2e13cdd053f3de4
 		this.RefrescarAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Refrescar");
 		w1.Add (this.RefrescarAction, null);
-		this.ArticuloAction = new global::Gtk.Action ("ArticuloAction", global::Mono.Unix.Catalog.GetString ("Articulo"), null, null);
-		this.ArticuloAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Articulo");
-		w1.Add (this.ArticuloAction, null);
-		this.EditarAction1 = new global::Gtk.Action ("EditarAction1", global::Mono.Unix.Catalog.GetString ("Editar"), null, null);
-		this.EditarAction1.ShortLabel = global::Mono.Unix.Catalog.GetString ("Editar");
-		w1.Add (this.EditarAction1, null);
-		this.EditarAction2 = new global::Gtk.Action ("EditarAction2", global::Mono.Unix.Catalog.GetString ("Editar"), null, null);
-		this.EditarAction2.ShortLabel = global::Mono.Unix.Catalog.GetString ("Editar");
-		w1.Add (this.EditarAction2, null);
-		this.RefrescarAction1 = new global::Gtk.Action ("RefrescarAction1", global::Mono.Unix.Catalog.GetString ("Refrescar"), null, null);
-		this.RefrescarAction1.ShortLabel = global::Mono.Unix.Catalog.GetString ("Refrescar");
-		w1.Add (this.RefrescarAction1, null);
 		this.UIManager.InsertActionGroup (w1, 0);
 		this.AddAccelGroup (this.UIManager.AccelGroup);
 		this.Name = "MainWindow";
 		this.Title = global::Mono.Unix.Catalog.GetString ("PArticulo (v0.1a)");
-<<<<<<< HEAD
 		this.Icon = global::Stetic.IconLoader.LoadIcon (this, "stock_task", global::Gtk.IconSize.Menu);
-=======
->>>>>>> ef9423867ced2e2c4a0728cfb2e13cdd053f3de4
 		this.WindowPosition = ((global::Gtk.WindowPosition)(1));
 		this.Gravity = ((global::Gdk.Gravity)(5));
 		// Container child MainWindow.Gtk.Container+ContainerChild
@@ -121,11 +95,7 @@ public partial class MainWindow
 		this.mainVBox.Name = "mainVBox";
 		this.mainVBox.Spacing = 6;
 		// Container child mainVBox.Gtk.Box+BoxChild
-<<<<<<< HEAD
 		this.UIManager.AddUiFromString ("<ui><menubar name='menuBar'><menu name='ArchivoAction' action='ArchivoAction'><menu name='AbrirAction' action='AbrirAction'><menuitem name='ArticuloOpenAct' action='ArticuloOpenAct'/><menuitem name='CategoriaOpenAct' action='CategoriaOpenAct'/></menu><menuitem name='EditarAction' action='EditarAction'/><menuitem name='RefrescarAction' action='RefrescarAction'/><menu name='CerrarAction' action='CerrarAction'><menuitem name='ArticuloCloseAct' action='ArticuloCloseAct'/><menuitem name='CategoriaCloseAct' action='CategoriaCloseAct'/></menu><separator/><menuitem name='SalirAction' action='SalirAction'/></menu><menu name='PestanaAction' action='PestanaAction'><menuitem name='PestanaAnteriorAct' action='PestanaAnteriorAct'/><menuitem name='PestanaSiguienteAct' action='PestanaSiguienteAct'/><separator/><menuitem name='CerrarTodoAct' action='CerrarTodoAct'/></menu><menu name='AyudaAction' action='AyudaAction'><menuitem name='AcercaDeAction' action='AcercaDeAction'/></menu></menubar></ui>");
-=======
-		this.UIManager.AddUiFromString ("<ui><menubar name='menuBar'><menu name='ArchivoAction' action='ArchivoAction'><menu name='AbrirAction' action='AbrirAction'><menuitem name='ArticuloOpenAct' action='ArticuloOpenAct'/><menuitem name='CategoriaOpenAct' action='CategoriaOpenAct'/></menu><menuitem name='EditarAction2' action='EditarAction2'/><menuitem name='RefrescarAction1' action='RefrescarAction1'/><menu name='CerrarAction' action='CerrarAction'><menuitem name='ArticuloCloseAct' action='ArticuloCloseAct'/><menuitem name='CategoriaCloseAct' action='CategoriaCloseAct'/></menu><separator/><menuitem name='SalirAction' action='SalirAction'/></menu><menu name='PestanaAction' action='PestanaAction'><menuitem name='PestanaAnteriorAct' action='PestanaAnteriorAct'/><menuitem name='PestanaSiguienteAct' action='PestanaSiguienteAct'/><separator/><menuitem name='CerrarTodoAct' action='CerrarTodoAct'/></menu><menu name='AyudaAction' action='AyudaAction'><menuitem name='AcercaDeAction' action='AcercaDeAction'/></menu></menubar></ui>");
->>>>>>> ef9423867ced2e2c4a0728cfb2e13cdd053f3de4
 		this.menuBar = ((global::Gtk.MenuBar)(this.UIManager.GetWidget ("/menuBar")));
 		this.menuBar.Name = "menuBar";
 		this.mainVBox.Add (this.menuBar);
@@ -162,12 +132,7 @@ public partial class MainWindow
 		this.PestanaAnteriorAct.Activated += new global::System.EventHandler (this.OnPestanaAnteriorActActivated);
 		this.PestanaSiguienteAct.Activated += new global::System.EventHandler (this.OnPestanaSiguienteActActivated);
 		this.CerrarTodoAct.Activated += new global::System.EventHandler (this.OnCerrarTodoActActivated);
-<<<<<<< HEAD
 		this.EditarAction.Activated += new global::System.EventHandler (this.OnEditActionActivated);
 		this.RefrescarAction.Activated += new global::System.EventHandler (this.OnRefreshActionActivated);
-=======
-		this.EditarAction2.Activated += new global::System.EventHandler (this.OnEditarActionActivated);
-		this.RefrescarAction1.Activated += new global::System.EventHandler (this.OnRefrescarActionActivated);
->>>>>>> ef9423867ced2e2c4a0728cfb2e13cdd053f3de4
 	}
 }

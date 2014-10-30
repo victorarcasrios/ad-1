@@ -12,33 +12,19 @@ namespace PArticulo
 {
 	public partial class EditWindow : Gtk.Window
 	{
-<<<<<<< HEAD
 		//GLOBAL VARS
-=======
->>>>>>> ef9423867ced2e2c4a0728cfb2e13cdd053f3de4
 		private MessageDialog msgDialog;
 
 		private IDbCommand dbCommand;
 
-<<<<<<< HEAD
 		//MAIN FUNCTION
-=======
->>>>>>> ef9423867ced2e2c4a0728cfb2e13cdd053f3de4
 		public EditWindow () : base(Gtk.WindowType.Toplevel)
 		{
 			this.Build ();
 
-<<<<<<< HEAD
 		}
 
 		//EDIT BOX (NOT FINISHED, BUT WORKS)
-=======
-
-
-		}
-
-		//BOX EDICION
->>>>>>> ef9423867ced2e2c4a0728cfb2e13cdd053f3de4
 		protected void OnBtnInsertClicked (object sender, EventArgs e)
 		{
 			if (textView.Buffer.Text == "") { textView.Buffer.Text =
