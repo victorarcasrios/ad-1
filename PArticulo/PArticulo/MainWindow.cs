@@ -1,9 +1,13 @@
 //gitUser> @juankza
 
 using Gtk;
+using MySql;
+using MySql.Data.MySqlClient;
 using PArticulo;
+using SerpisAd;
 using System;
 using System.Collections.Generic;
+using System.Data;
 
 public partial class MainWindow: Gtk.Window
 {	
@@ -86,6 +90,19 @@ public partial class MainWindow: Gtk.Window
 		addNewPage (myTreeView, "Categoria");
 
 	}
+	protected void OnEditarActionActivated (object sender, EventArgs e)
+	{
+		EditWindow eWin = new EditWindow ();
+		eWin.ShowAll ();
+
+		this.Destroy ();
+
+	}
+	protected void OnRefrescarActionActivated (object sender, EventArgs e)
+	{
+		//NOT IMPLEMENTED
+
+	}
 	protected void OnArticuloCloseActActivated (object sender, EventArgs e)
 	{
 		removePage ("Articulo");
@@ -96,27 +113,10 @@ public partial class MainWindow: Gtk.Window
 		removePage ("Categoria");
 
 	}
-	protected void OnRefrescarActionActivated (object sender, EventArgs e)
-	{
-
-
-	}
 	protected void OnSalirActionActivated (object sender, EventArgs e)
 	{
 		this.Destroy ();
 		Application.Quit ();
-	}
-
-	//EDITAR
-	protected void OnArticuloEditActActivated (object sender, EventArgs e)
-	{
-
-
-	}
-	protected void OnCategoriaEditActActivated (object sender, EventArgs e)
-	{
-
-
 	}
 
 	//PESTANA
@@ -148,11 +148,14 @@ public partial class MainWindow: Gtk.Window
 
 	}
 
+
+
 	//ACERCA DE
 	protected void OnAcercaDeActionActivated (object sender, EventArgs e)
 	{
 		msgDialog = new MessageDialog (
-			this, DialogFlags.Modal, MessageType.Info, ButtonsType.Close, "\t\tPArticulo v0.1a\t\t\nCreado por: Juan Cazalilla Costa");
+			this, DialogFlags.Modal, MessageType.Info, ButtonsType.Close,
+			"\t\tPArticulo v0.1 (Alpha)\t\t\nCreado por: Juan Cazalilla Costa");
 		msgDialog.Title = "Acerca De";
 		msgDialog.Run ();
 		msgDialog.Destroy ();
