@@ -18,6 +18,8 @@ public partial class MainWindow: Gtk.Window
 	{
 		Build ();
 		
+		
+		
 	}
 
 	//MY FUNCTIONS
