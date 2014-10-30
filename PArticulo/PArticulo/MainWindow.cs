@@ -18,7 +18,13 @@ public partial class MainWindow: Gtk.Window
 	public MainWindow (): base (Gtk.WindowType.Toplevel)
 	{
 		Build ();
+<<<<<<< HEAD
 
+=======
+		
+		
+		
+>>>>>>> ef9423867ced2e2c4a0728cfb2e13cdd053f3de4
 	}
 
 	//MY FUNCTIONS
@@ -89,6 +95,7 @@ public partial class MainWindow: Gtk.Window
 		addNewPage (myTreeView, "Categoria");
 
 	}
+<<<<<<< HEAD
 	protected void OnEditActionActivated (object sender, EventArgs e)
 	{
 		EditWindow eWin = new EditWindow ();
@@ -101,12 +108,37 @@ public partial class MainWindow: Gtk.Window
 	{
 		//NOT IMPLEMENTED AND UNNECESSARY
 		//AFTER EDIT, REFRESH ON OPEN ANY TAB
+=======
+	protected void OnEditarActionActivated (object sender, EventArgs e)
+	{
+		EditWindow eWin = new EditWindow ();
+		eWin.ShowAll ();
+
+		this.Destroy ();
+>>>>>>> ef9423867ced2e2c4a0728cfb2e13cdd053f3de4
+
+	}
+	protected void OnArticuloCloseActActivated (object sender, EventArgs e)
+	{
+<<<<<<< HEAD
+		removePage ("Articulo");
+
+	}
+	protected void OnCategoriaCloseActActivated (object sender, EventArgs e)
+	{
+		removePage ("Categoria");
+=======
+		//NOT IMPLEMENTED
+>>>>>>> ef9423867ced2e2c4a0728cfb2e13cdd053f3de4
 
 	}
 	protected void OnArticuloCloseActActivated (object sender, EventArgs e)
 	{
 		removePage ("Articulo");
 
+<<<<<<< HEAD
+	//TAB
+=======
 	}
 	protected void OnCategoriaCloseActActivated (object sender, EventArgs e)
 	{
@@ -119,7 +151,8 @@ public partial class MainWindow: Gtk.Window
 		Application.Quit ();
 	}
 
-	//TAB
+	//PESTANA
+>>>>>>> ef9423867ced2e2c4a0728cfb2e13cdd053f3de4
 	protected void OnPestanaActActivated (object sender, EventArgs e)
 	{
 		if (noteBook.NPages != 0){
@@ -148,7 +181,13 @@ public partial class MainWindow: Gtk.Window
 
 	}
 
+<<<<<<< HEAD
 	//ABOUT
+=======
+
+
+	//ACERCA DE
+>>>>>>> ef9423867ced2e2c4a0728cfb2e13cdd053f3de4
 	protected void OnAcercaDeActionActivated (object sender, EventArgs e)
 	{
 		msgDialog = new MessageDialog (
@@ -159,7 +198,11 @@ public partial class MainWindow: Gtk.Window
 		msgDialog.Destroy ();
 
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> ef9423867ced2e2c4a0728cfb2e13cdd053f3de4
 	//EXIT FUNCTION
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
 	{

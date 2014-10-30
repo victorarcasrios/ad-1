@@ -1,9 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="PCategoria/MainWindow.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PCategoria/EditWindow.cs">
     <Files>
       <File FileName="PCategoria/MainWindow.cs" Line="103" Column="4" />
-      <File FileName="PCategoria/EditWindow.cs" Line="1" Column="1" />
+      <File FileName="PCategoria/EditWindow.cs" Line="67" Column="4" />
       <File FileName="PSerpisAD/App.cs" Line="1" Column="1" />
       <File FileName="PSerpisAD/DbCommandExtensions.cs" Line="1" Column="1" />
     </Files>

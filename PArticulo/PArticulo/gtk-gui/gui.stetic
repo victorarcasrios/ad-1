@@ -80,6 +80,7 @@
         <property name="Label" translatable="yes">Pestaña Anterior</property>
         <property name="Sensitive">False</property>
         <property name="ShortLabel" translatable="yes">Pestaña Anterior</property>
+        <property name="Tooltip" translatable="yes" />
         <signal name="Activated" handler="OnPestanaAnteriorActActivated" />
       </action>
       <action id="PestanaSiguienteAct">
@@ -87,6 +88,7 @@
         <property name="Label" translatable="yes">Pestaña Siguiente</property>
         <property name="Sensitive">False</property>
         <property name="ShortLabel" translatable="yes">Pestaña Siguiente</property>
+        <property name="Tooltip" translatable="yes" />
         <signal name="Activated" handler="OnPestanaSiguienteActActivated" />
       </action>
       <action id="CerrarTodoAct">
@@ -96,11 +98,29 @@
         <property name="ShortLabel" translatable="yes">Cerrar todo</property>
         <signal name="Activated" handler="OnCerrarTodoActActivated" />
       </action>
+<<<<<<< HEAD
       <action id="EditarAction">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Editar</property>
         <property name="ShortLabel" translatable="yes">Editar</property>
         <signal name="Activated" handler="OnEditActionActivated" />
+=======
+      <action id="ArticuloEditAct">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Artículo</property>
+        <property name="Sensitive">False</property>
+        <property name="ShortLabel" translatable="yes">Artículo</property>
+        <property name="Tooltip" translatable="yes" />
+        <signal name="Activated" handler="OnArticuloEditActActivated" />
+      </action>
+      <action id="CategoriaEditAct">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Categoría</property>
+        <property name="Sensitive">False</property>
+        <property name="ShortLabel" translatable="yes">Categoría</property>
+        <property name="Tooltip" translatable="yes" />
+        <signal name="Activated" handler="OnCategoriaEditActActivated" />
+>>>>>>> ef9423867ced2e2c4a0728cfb2e13cdd053f3de4
       </action>
       <action id="RefrescarAction">
         <property name="Type">Action</property>
@@ -108,12 +128,40 @@
         <property name="Sensitive">False</property>
         <property name="ShortLabel" translatable="yes">Refrescar</property>
         <property name="Tooltip" translatable="yes" />
+<<<<<<< HEAD
         <signal name="Activated" handler="OnRefreshActionActivated" />
+=======
+      </action>
+      <action id="ArticuloAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Articulo</property>
+        <property name="ShortLabel" translatable="yes">Articulo</property>
+      </action>
+      <action id="EditarAction1">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Editar</property>
+        <property name="ShortLabel" translatable="yes">Editar</property>
+      </action>
+      <action id="EditarAction2">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Editar</property>
+        <property name="ShortLabel" translatable="yes">Editar</property>
+        <signal name="Activated" handler="OnEditarActionActivated" />
+      </action>
+      <action id="RefrescarAction1">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Refrescar</property>
+        <property name="ShortLabel" translatable="yes">Refrescar</property>
+        <signal name="Activated" handler="OnRefrescarActionActivated" />
+>>>>>>> ef9423867ced2e2c4a0728cfb2e13cdd053f3de4
       </action>
     </action-group>
     <property name="MemberName" />
     <property name="Title" translatable="yes">PArticulo (v0.1a)</property>
+<<<<<<< HEAD
     <property name="Icon">stock:stock_task Menu</property>
+=======
+>>>>>>> ef9423867ced2e2c4a0728cfb2e13cdd053f3de4
     <property name="WindowPosition">Center</property>
     <property name="Gravity">Center</property>
     <signal name="DeleteEvent" handler="OnDeleteEvent" />
@@ -131,8 +179,13 @@
                   <node type="Menuitem" action="ArticuloOpenAct" />
                   <node type="Menuitem" action="CategoriaOpenAct" />
                 </node>
+<<<<<<< HEAD
                 <node type="Menuitem" action="EditarAction" />
                 <node type="Menuitem" action="RefrescarAction" />
+=======
+                <node type="Menuitem" action="EditarAction2" />
+                <node type="Menuitem" action="RefrescarAction1" />
+>>>>>>> ef9423867ced2e2c4a0728cfb2e13cdd053f3de4
                 <node type="Menu" action="CerrarAction">
                   <node type="Menuitem" action="ArticuloCloseAct" />
                   <node type="Menuitem" action="CategoriaCloseAct" />

@@ -24,7 +24,10 @@ namespace PArticulo
 		private int rowsArt;
 		private int rowsCat;
 
+<<<<<<< HEAD
 		//MAIN FUNCTION
+=======
+>>>>>>> ef9423867ced2e2c4a0728cfb2e13cdd053f3de4
 		public MyWidgetTV (string str)
 		{
 			try{
