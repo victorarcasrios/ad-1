@@ -14,10 +14,19 @@ public partial class MainWindow: Gtk.Window
 	//GLOBAL VARS
 	private MessageDialog msgDialog;
 
+	List<string> pgName = new List<string> ();
+
+	public static string actualPage;
+
 	//MAIN FUNCTION
 	public MainWindow (): base (Gtk.WindowType.Toplevel)
 	{
 		Build ();
+
+		noteBook.SwitchPage += delegate(object o, SwitchPageArgs args) {
+			whereIAm();
+		
+		};
 
 	}
 
@@ -26,21 +35,26 @@ public partial class MainWindow: Gtk.Window
 		noteBook.AppendPage (widget, new Label (label));
 
 	}
+	private void whereIAm ()
+	{
+		actualPage = whatPgName (noteBook.GetTabLabel (noteBook.GetNthPage (noteBook.CurrentPage)));
+
+	}
 	private string whatPgName (Widget widget){
 		Label label = (Label)widget;
 		return label.LabelProp;
 
 	}
 	private void removePage (string str){
-		List<string> pgName = new List<string> ();
+		List<string> whatPgOpen = new List<string> ();
 		if (noteBook.NPages != 0) {
 			for (int i = 0; i < noteBook.NPages; i++) {
-				pgName.Add (whatPgName (noteBook.GetTabLabel (noteBook.GetNthPage (i))));
+				whatPgOpen.Add (whatPgName (noteBook.GetTabLabel (noteBook.GetNthPage (i))));
 			}
 
 			int j = 0;
-			for (int i = 0; i < pgName.Count; i++) {
-				if (pgName[i] == str) {
+			for (int i = 0; i < whatPgOpen.Count; i++) {
+				if (whatPgOpen[i] == str) {
 					noteBook.RemovePage (i - j);
 					j++;
 				}
@@ -54,18 +68,18 @@ public partial class MainWindow: Gtk.Window
 	//FILE
 	protected void OnArchivoActionActivated (object sender, EventArgs e)
 	{
-		List<string> pgName = new List<string> ();
+		if (this.pgName.Count != 0){ this.pgName.Clear ();}
 		if (noteBook.NPages != 0){
 			for (int i = 0; i < noteBook.NPages; i++){
-				pgName.Add (whatPgName (noteBook.GetTabLabel (noteBook.GetNthPage (i))));
+				this.pgName.Add (whatPgName (noteBook.GetTabLabel (noteBook.GetNthPage (i))));
 			}
 
 			for (int i = 0; i < pgName.Count; i++){
-				if (pgName[i] == "Articulo"){
+				if (this.pgName[i] == "Articulo"){
 					ArticuloCloseAct.Sensitive = true;
 				}
 
-				if (pgName[i] == "Categoria"){
+				if (this.pgName[i] == "Categoria"){
 					CategoriaCloseAct.Sensitive = true;
 				}
 
@@ -106,11 +120,13 @@ public partial class MainWindow: Gtk.Window
 	protected void OnArticuloCloseActActivated (object sender, EventArgs e)
 	{
 		removePage ("Articulo");
+		ArticuloCloseAct.Sensitive = false;
 
 	}
 	protected void OnCategoriaCloseActActivated (object sender, EventArgs e)
 	{
 		removePage ("Categoria");
+		CategoriaCloseAct.Sensitive = false;
 
 	}
 	protected void OnSalirActionActivated (object sender, EventArgs e)
@@ -146,6 +162,9 @@ public partial class MainWindow: Gtk.Window
 
 		}
 
+		ArticuloCloseAct.Sensitive = false;
+		CategoriaCloseAct.Sensitive = false;
+
 	}
 
 	//ABOUT
@@ -153,7 +172,7 @@ public partial class MainWindow: Gtk.Window
 	{
 		msgDialog = new MessageDialog (
 			this, DialogFlags.Modal, MessageType.Info, ButtonsType.Close,
-			"\tPArticulo v0.1 (Alpha)\t\nCreado por: Juan Cazalilla Costa\n\tGitUser> @juankza\t");
+			"\tPArticulo v0.2 (Alpha)\t\nCreado por: Juan Cazalilla Costa\n\tGitUser> @juankza\t");
 		msgDialog.Title = "Acerca De";
 		msgDialog.Run ();
 		msgDialog.Destroy ();

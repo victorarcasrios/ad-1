@@ -17,10 +17,16 @@ namespace PArticulo
 
 		private IDbCommand dbCommand;
 
+		private string tabPage;
+
+		private List<string> rowValues;
+
 		//MAIN FUNCTION
 		public EditWindow () : base(Gtk.WindowType.Toplevel)
 		{
 			this.Build ();
+			this.tabPage = MainWindow.actualPage;
+			this.rowValues = MyWidgetTV.getRowSelected ();
 
 		}
 

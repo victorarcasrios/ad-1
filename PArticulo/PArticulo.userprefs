@@ -1,8 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="PArticulo/MainWindow.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PArticulo/EditWindow.cs">
     <Files>
-      <File FileName="PArticulo/MainWindow.cs" Line="22" Column="2" />
+      <File FileName="PArticulo/MainWindow.cs" Line="41" Column="3" />
+      <File FileName="PArticulo/MyWidgetTV.cs" Line="9" Column="19" />
+      <File FileName="PArticulo/EditWindow.cs" Line="29" Column="49" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

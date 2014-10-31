@@ -86,7 +86,7 @@ public partial class MainWindow
 		this.UIManager.InsertActionGroup (w1, 0);
 		this.AddAccelGroup (this.UIManager.AccelGroup);
 		this.Name = "MainWindow";
-		this.Title = global::Mono.Unix.Catalog.GetString ("PArticulo (v0.1a)");
+		this.Title = global::Mono.Unix.Catalog.GetString ("PArticulo (v0.2a)");
 		this.Icon = global::Stetic.IconLoader.LoadIcon (this, "stock_task", global::Gtk.IconSize.Menu);
 		this.WindowPosition = ((global::Gtk.WindowPosition)(1));
 		this.Gravity = ((global::Gdk.Gravity)(5));

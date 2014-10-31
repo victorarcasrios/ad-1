@@ -112,7 +112,7 @@
       </action>
     </action-group>
     <property name="MemberName" />
-    <property name="Title" translatable="yes">PArticulo (v0.1a)</property>
+    <property name="Title" translatable="yes">PArticulo (v0.2a)</property>
     <property name="Icon">stock:stock_task Menu</property>
     <property name="WindowPosition">Center</property>
     <property name="Gravity">Center</property>
@@ -179,6 +179,7 @@
     <property name="Title" translatable="yes">Iniciar sesión</property>
     <property name="Icon">stock:gtk-disconnect Menu</property>
     <property name="WindowPosition">Center</property>
+    <property name="DefaultWidth">300</property>
     <property name="Gravity">Center</property>
     <signal name="DeleteEvent" handler="OnDeleteEvent" />
     <child>
@@ -303,6 +304,8 @@
     <property name="Title" translatable="yes">Editar</property>
     <property name="Icon">stock:gtk-edit Menu</property>
     <property name="WindowPosition">Center</property>
+    <property name="DefaultWidth">500</property>
+    <property name="DefaultHeight">250</property>
     <property name="Gravity">Center</property>
     <signal name="DeleteEvent" handler="OnDeleteEvent" />
     <child>

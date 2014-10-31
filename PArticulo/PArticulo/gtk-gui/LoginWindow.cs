@@ -21,6 +21,7 @@ public partial class LoginWindow
 		this.Title = global::Mono.Unix.Catalog.GetString ("Iniciar sesión");
 		this.Icon = global::Stetic.IconLoader.LoadIcon (this, "gtk-disconnect", global::Gtk.IconSize.Menu);
 		this.WindowPosition = ((global::Gtk.WindowPosition)(1));
+		this.DefaultWidth = 300;
 		this.Gravity = ((global::Gdk.Gravity)(5));
 		// Container child LoginWindow.Gtk.Container+ContainerChild
 		this.mainVBox = new global::Gtk.VBox ();
@@ -109,7 +110,6 @@ public partial class LoginWindow
 		if ((this.Child != null)) {
 			this.Child.ShowAll ();
 		}
-		this.DefaultWidth = 400;
 		this.DefaultHeight = 125;
 		this.Show ();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);

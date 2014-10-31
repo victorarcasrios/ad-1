@@ -21,6 +21,8 @@ namespace PArticulo
 			this.Title = global::Mono.Unix.Catalog.GetString ("Editar");
 			this.Icon = global::Stetic.IconLoader.LoadIcon (this, "gtk-edit", global::Gtk.IconSize.Menu);
 			this.WindowPosition = ((global::Gtk.WindowPosition)(1));
+			this.DefaultWidth = 500;
+			this.DefaultHeight = 250;
 			this.Gravity = ((global::Gdk.Gravity)(5));
 			// Container child PArticulo.EditWindow.Gtk.Container+ContainerChild
 			this.editVBox = new global::Gtk.VBox ();
@@ -104,8 +106,6 @@ namespace PArticulo
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
-			this.DefaultWidth = 400;
-			this.DefaultHeight = 300;
 			this.Show ();
 			this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);
 			this.btnInsert.Clicked += new global::System.EventHandler (this.OnBtnInsertClicked);

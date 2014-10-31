@@ -20,6 +20,7 @@ namespace PArticulo
 		private List<string> colsArticulo = new List<string> ();
 		private List<string> colsCategoria = new List<string> ();
 		private List<string> rowValues = new List<string> ();
+		private static List<string> rowSelected = new List<string> ();
 
 		private int rowsArt;
 		private int rowsCat;
@@ -74,6 +75,8 @@ namespace PArticulo
 				}
 
 				this.Visible = true;
+
+				this.Selection.Changed += delegate { setRowSelected ();};
 
 			}
 			catch (Exception e){
@@ -200,7 +203,24 @@ namespace PArticulo
 			}
 
 		}
-		private string capitalize(string str)
+		private void setRowSelected ()
+		{
+			TreeIter ti;
+			Selection.GetSelected (out ti);
+			if (rowValues.Count != 0){ rowValues.Clear ();}
+
+			for (int i = 0; i < colsArticulo.Count; i++){
+				rowValues.Add (Model.GetValue (ti, i).ToString ());
+
+			}
+
+		}
+		public static List<string> getRowSelected ()
+		{
+			return rowSelected;
+
+		}
+		private string capitalize (string str)
 		{
 			if (str == null){ return null;}
 			if (str.Length > 1){ return char.ToUpper(str[0]) + str.Substring(1);}
