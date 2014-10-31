@@ -2,13 +2,16 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.Workbench ActiveDocument="PArticulo/EditWindow.cs">
     <Files>
-      <File FileName="PArticulo/MainWindow.cs" Line="41" Column="3" />
-      <File FileName="PArticulo/MyWidgetTV.cs" Line="9" Column="19" />
-      <File FileName="PArticulo/EditWindow.cs" Line="29" Column="49" />
+      <File FileName="PArticulo/MainWindow.cs" Line="97" Column="39" />
+      <File FileName="PArticulo/MyWidgetTV.cs" Line="113" Column="4" />
+      <File FileName="PArticulo/EditWindow.cs" Line="97" Column="65" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/home/casa/JC-Temp/DAM2/AD/PArticulo/PArticulo/MyWidgetTV.cs" line="36" column="1" />
+      <Breakpoint file="/home/casa/JC-Temp/DAM2/AD/PArticulo/PArticulo/MyWidgetTV.cs" line="33" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

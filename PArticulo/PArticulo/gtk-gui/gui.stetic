@@ -351,7 +351,6 @@
                 <property name="Type">TextOnly</property>
                 <property name="Label" translatable="yes">DELETE</property>
                 <property name="UseUnderline">True</property>
-                <signal name="Clicked" handler="OnBtnDeleteClicked" />
               </widget>
               <packing>
                 <property name="Position">2</property>
@@ -392,7 +391,6 @@
             <property name="Icon">stock:gtk-execute Menu</property>
             <property name="Label" translatable="yes">EXECUTE</property>
             <property name="UseUnderline">True</property>
-            <signal name="Clicked" handler="OnBtnExecuteClicked" />
           </widget>
           <packing>
             <property name="Position">2</property>

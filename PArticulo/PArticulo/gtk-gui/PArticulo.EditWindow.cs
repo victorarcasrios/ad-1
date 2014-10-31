@@ -110,8 +110,6 @@ namespace PArticulo
 			this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);
 			this.btnInsert.Clicked += new global::System.EventHandler (this.OnBtnInsertClicked);
 			this.btnUpdate.Clicked += new global::System.EventHandler (this.OnBtnUpdateClicked);
-			this.btnDelete.Clicked += new global::System.EventHandler (this.OnBtnDeleteClicked);
-			this.btnExecute.Clicked += new global::System.EventHandler (this.OnBtnExecuteClicked);
 		}
 	}
 }

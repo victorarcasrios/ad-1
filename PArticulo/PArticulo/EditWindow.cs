@@ -19,40 +19,131 @@ namespace PArticulo
 
 		private string tabPage;
 
-		private List<string> rowValues;
+		private List<string> rowSelected;
+		private List<string> colsArticulo;
+		private List<string> colsCategoria;
 
 		//MAIN FUNCTION
 		public EditWindow () : base(Gtk.WindowType.Toplevel)
 		{
 			this.Build ();
-			this.tabPage = MainWindow.actualPage;
-			this.rowValues = MyWidgetTV.getRowSelected ();
+			this.tabPage = MainWindow.currentPage.ToLower ();
+			this.rowSelected = MyWidgetTV.getRowSelected ();
+			this.colsArticulo = MyWidgetTV.getColsArticulo ();
+			this.colsCategoria = MyWidgetTV.getColsCategoria ();
 
 		}
 
 		//EDIT BOX (NOT FINISHED, BUT WORKS)
 		protected void OnBtnInsertClicked (object sender, EventArgs e)
 		{
-			if (textView.Buffer.Text == "") { textView.Buffer.Text =
-				"INSERT INTO `[tabName]`(`[column1]`, `[column2]`) \nVALUES ([value1], [value2])";}
-			else { textView.Buffer.Text = textView.Buffer.Text +
-				"\nINSERT INTO `[tabName]`(`[column1]`, `[column2]`) \nVALUES ([value1], [value2])";}
+			try{
+				if (this.tabPage == "articulo")
+				{
+					if (textView.Buffer.Text == "")
+					{
+						textView.Buffer.Text = "INSERT INTO `" +this.tabPage+ "`(`"
+							+this.colsArticulo[0]+ "`, `" +this.colsArticulo[1]+ "`, `"
+							+this.colsArticulo[2]+ "`, `" +this.colsArticulo[3]+ "`)" +
+							"\nVALUES ([value1], [value2], [value3], [value4])";
+					}
+					else
+					{
+						textView.Buffer.Text = textView.Buffer.Text +
+							"\nINSERT INTO `" +this.tabPage+ "`(`"
+							+this.colsArticulo[0]+ "`, `" +this.colsArticulo[1]+ "`, `"
+							+this.colsArticulo[2]+ "`, `" +this.colsArticulo[3]+ "`)" +
+							"\nVALUES ([value1], [value2], [value3], [value4])";
+					}
+
+				}
+
+				if (this.tabPage == "categoria")
+				{
+					if (textView.Buffer.Text == "")
+					{
+						textView.Buffer.Text = "INSERT INTO `" +this.tabPage+ "`(`"
+							+this.colsCategoria[0]+ "`, `" +this.colsCategoria[1]+ "`)" +
+							"\nVALUES ([value1], [value2])";
+					}
+					else
+					{
+						textView.Buffer.Text = textView.Buffer.Text +
+							"\nINSERT INTO `" +this.tabPage+ "`(`"
+							+this.colsCategoria[0]+ "`, `" +this.colsCategoria[1]+ "`)" +
+							"\nVALUES ([value1], [value2])";
+					}
+
+				}
+				
+			}
+			catch (Exception error){
+				Console.WriteLine (error.Message);
+			}
 
 		}
 		protected void OnBtnUpdateClicked (object sender, EventArgs e)
 		{
-			if (textView.Buffer.Text == "") { textView.Buffer.Text =
-				"UPDATE `[tabName]` \nSET `[column1]`=[value1], `[column2]`=[value2] \nWHERE [condition]";}
-			else { textView.Buffer.Text = textView.Buffer.Text +
-				"\nUPDATE `[tabName]` \nSET `[column1]`=[value1], `[column2]`=[value2] \nWHERE [condition]";}
+			try{
+				if (this.tabPage == "articulo")
+				{
+					if (textView.Buffer.Text == "")
+					{
+						textView.Buffer.Text =
+							"UPDATE `" +this.tabPage+ "`" +
+							"\nSET `" +this.colsArticulo[0]+ "`='" +this.rowSelected[0]+ "'," +
+							"`" +this.colsArticulo[1]+ "`='" +this.rowSelected[1]+ "'," +
+							"`" +this.colsArticulo[2]+ "`='" +this.rowSelected[2]+ "'," +
+							"`" +this.colsArticulo[3]+ "`='" +this.rowSelected[3]+ "'" +
+							"\nWHERE [condition]";
+					}
+					else
+					{
+						textView.Buffer.Text = textView.Buffer.Text +
+							"\nUPDATE `" +this.tabPage+ "`" +
+							"\nSET `" +this.colsArticulo[0]+ "`='" +this.rowSelected[0]+ "'," +
+							"`" +this.colsArticulo[1]+ "`='" +this.rowSelected[1]+ "'," +
+							"`" +this.colsArticulo[2]+ "`='" +this.rowSelected[2]+ "'," +
+							"`" +this.colsArticulo[3]+ "`='" +this.rowSelected[3]+ "'" +
+							"\nWHERE [condition]";
+
+					}
+
+				}
+
+				if (this.tabPage == "categoria")
+				{
+					if (textView.Buffer.Text == "")
+					{
+						textView.Buffer.Text =
+							"UPDATE `" +this.tabPage+ "`" +
+							"\nSET `" +this.colsCategoria[0]+ "`='" +this.rowSelected[0]+ "'," +
+							"`" +this.colsCategoria[1]+ "`='" +this.rowSelected[1]+ "'" +
+							"\nWHERE [condition]";
+					}
+					else
+					{
+						textView.Buffer.Text = textView.Buffer.Text +
+							"\nUPDATE `" +this.tabPage+ "`" +
+							"\nSET `" +this.colsCategoria[0]+ "`='" +this.rowSelected[0]+ "'," +
+							"`" +this.colsCategoria[1]+ "`='" +this.rowSelected[1]+ "'" +
+							"\nWHERE [condition]";
+					}
+
+				}
+
+			}
+			catch (Exception error){
+				Console.WriteLine (error.Message);
+			}
 
 		}
 		protected void OnBtnDeleteClicked (object sender, EventArgs e)
 		{
 			if (textView.Buffer.Text == "") { textView.Buffer.Text =
-				"DELETE FROM `[tabName]` \nWHERE [condition]";}
+				"DELETE FROM `" +this.tabPage+ "` \nWHERE [condition]";}
 			else { textView.Buffer.Text = textView.Buffer.Text +
-				"\nDELETE FROM `[tabName]` \nWHERE [condition]";}
+				"\nDELETE FROM `" +this.tabPage+ "` \nWHERE [condition]";}
 
 		}
 		protected void OnBtnExecuteClicked (object sender, EventArgs e)

@@ -16,7 +16,7 @@ public partial class MainWindow: Gtk.Window
 
 	List<string> pgName = new List<string> ();
 
-	public static string actualPage;
+	public static string currentPage;
 
 	//MAIN FUNCTION
 	public MainWindow (): base (Gtk.WindowType.Toplevel)
@@ -37,7 +37,7 @@ public partial class MainWindow: Gtk.Window
 	}
 	private void whereIAm ()
 	{
-		actualPage = whatPgName (noteBook.GetTabLabel (noteBook.GetNthPage (noteBook.CurrentPage)));
+		currentPage = whatPgName (noteBook.GetTabLabel (noteBook.GetNthPage (noteBook.CurrentPage)));
 
 	}
 	private string whatPgName (Widget widget){

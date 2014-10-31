@@ -17,8 +17,8 @@ namespace PArticulo
 		private IDataReader dataReader;
 
 		private List<string> tablas = new List<string> ();
-		private List<string> colsArticulo = new List<string> ();
-		private List<string> colsCategoria = new List<string> ();
+		private static List<string> colsArticulo = new List<string> ();
+		private static List<string> colsCategoria = new List<string> ();
 		private List<string> rowValues = new List<string> ();
 		private static List<string> rowSelected = new List<string> ();
 
@@ -89,6 +89,7 @@ namespace PArticulo
 		private void setTableNames (string db)
 		{
 			try{
+				if (tablas.Count != 0){ tablas.Clear ();}
 				this.dbCommand = App.Instance.DbConnection.CreateCommand ();
 				dbCommand.CommandText = String.Format (
 					"SHOW TABLES FROM " +db);
@@ -113,6 +114,8 @@ namespace PArticulo
 		private void setColumnNames ()
 		{
 			try{
+				if (colsArticulo.Count != 0){ colsArticulo.Clear ();}
+				if (colsCategoria.Count != 0){ colsCategoria.Clear ();}
 				if (tablas.Count == 0){ setTableNames("dbprueba");}
 				for (int i = 0; i < tablas.Count; i++){
 					string tabla = tablas[i].ToString ();
@@ -125,10 +128,10 @@ namespace PArticulo
 
 					while (this.dataReader.Read ()){
 						if (tabla == "articulo"){
-							this.colsArticulo.Add (this.dataReader [0].ToString ());
+							colsArticulo.Add (this.dataReader [0].ToString ());
 						}
 						if (tabla == "categoria"){
-							this.colsCategoria.Add (this.dataReader [0].ToString ());
+							colsCategoria.Add (this.dataReader [0].ToString ());
 						}
 
 					}
@@ -207,10 +210,20 @@ namespace PArticulo
 		{
 			TreeIter ti;
 			Selection.GetSelected (out ti);
-			if (rowValues.Count != 0){ rowValues.Clear ();}
+			if (rowSelected.Count != 0){ rowSelected.Clear ();}
+			if (MainWindow.currentPage.ToLower () == "articulo"){
+				for (int i = 0; i < colsArticulo.Count; i++){
+					rowSelected.Add (Model.GetValue (ti, i).ToString ());
 
-			for (int i = 0; i < colsArticulo.Count; i++){
-				rowValues.Add (Model.GetValue (ti, i).ToString ());
+				}
+
+			}
+
+			if (MainWindow.currentPage.ToLower () == "categoria"){
+				for (int i = 0; i < colsCategoria.Count; i++){
+					rowSelected.Add (Model.GetValue (ti, i).ToString ());
+
+				}
 
 			}
 
@@ -218,6 +231,16 @@ namespace PArticulo
 		public static List<string> getRowSelected ()
 		{
 			return rowSelected;
+
+		}
+		public static List<string> getColsArticulo ()
+		{
+			return colsArticulo;
+
+		}
+		public static List<string> getColsCategoria ()
+		{
+			return colsCategoria;
 
 		}
 		private string capitalize (string str)
