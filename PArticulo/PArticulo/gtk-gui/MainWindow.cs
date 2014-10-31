@@ -79,7 +79,7 @@ public partial class MainWindow
 		this.EditarAction = new global::Gtk.Action ("EditarAction", global::Mono.Unix.Catalog.GetString ("Editar"), null, null);
 		this.EditarAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Editar");
 		w1.Add (this.EditarAction, null);
-		this.RefrescarAction = new global::Gtk.Action ("RefrescarAction", global::Mono.Unix.Catalog.GetString ("Refrescar"), global::Mono.Unix.Catalog.GetString ("UNNECESSARY"), null);
+		this.RefrescarAction = new global::Gtk.Action ("RefrescarAction", global::Mono.Unix.Catalog.GetString ("Refrescar"), "", null);
 		this.RefrescarAction.Sensitive = false;
 		this.RefrescarAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Refrescar");
 		w1.Add (this.RefrescarAction, null);

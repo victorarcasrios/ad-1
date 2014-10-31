@@ -28,25 +28,25 @@ namespace PArticulo
 		protected void OnBtnInsertClicked (object sender, EventArgs e)
 		{
 			if (textView.Buffer.Text == "") { textView.Buffer.Text =
-				"INSERT INTO `[tabName]`(`[column1]`, `[column2]`) VALUES ([value1], [value2])";}
+				"INSERT INTO `[tabName]`(`[column1]`, `[column2]`) \nVALUES ([value1], [value2])";}
 			else { textView.Buffer.Text = textView.Buffer.Text +
-				"\nINSERT INTO `[tabName]`(`[column1]`, `[column2]`) VALUES ([value1], [value2])";}
+				"\nINSERT INTO `[tabName]`(`[column1]`, `[column2]`) \nVALUES ([value1], [value2])";}
 
 		}
 		protected void OnBtnUpdateClicked (object sender, EventArgs e)
 		{
 			if (textView.Buffer.Text == "") { textView.Buffer.Text =
-				"UPDATE `[tabName]` SET `[column1]`=[value1], `[column2]`=[value2] WHERE [condition]";}
+				"UPDATE `[tabName]` \nSET `[column1]`=[value1], `[column2]`=[value2] \nWHERE [condition]";}
 			else { textView.Buffer.Text = textView.Buffer.Text +
-				"\nUPDATE `[tabName]` SET `[column1]`=[value1], `[column2]`=[value2] WHERE [condition]";}
+				"\nUPDATE `[tabName]` \nSET `[column1]`=[value1], `[column2]`=[value2] \nWHERE [condition]";}
 
 		}
 		protected void OnBtnDeleteClicked (object sender, EventArgs e)
 		{
 			if (textView.Buffer.Text == "") { textView.Buffer.Text =
-				"DELETE FROM `[tabName]` WHERE [condition]";}
+				"DELETE FROM `[tabName]` \nWHERE [condition]";}
 			else { textView.Buffer.Text = textView.Buffer.Text +
-				"\nDELETE FROM `[tabName]` WHERE [condition]";}
+				"\nDELETE FROM `[tabName]` \nWHERE [condition]";}
 
 		}
 		protected void OnBtnExecuteClicked (object sender, EventArgs e)

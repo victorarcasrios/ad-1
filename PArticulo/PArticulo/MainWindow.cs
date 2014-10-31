@@ -153,7 +153,7 @@ public partial class MainWindow: Gtk.Window
 	{
 		msgDialog = new MessageDialog (
 			this, DialogFlags.Modal, MessageType.Info, ButtonsType.Close,
-			"\tPArticulo v0.1 (Alpha)\t\nCreado por: Juan Cazalilla Costa");
+			"\tPArticulo v0.1 (Alpha)\t\nCreado por: Juan Cazalilla Costa\n\tGitUser> @juankza\t");
 		msgDialog.Title = "Acerca De";
 		msgDialog.Run ();
 		msgDialog.Destroy ();
