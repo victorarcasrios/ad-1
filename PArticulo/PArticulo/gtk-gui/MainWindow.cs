@@ -77,6 +77,7 @@ public partial class MainWindow
 		this.CerrarTodoAct.ShortLabel = global::Mono.Unix.Catalog.GetString ("Cerrar todo");
 		w1.Add (this.CerrarTodoAct, null);
 		this.EditarAction = new global::Gtk.Action ("EditarAction", global::Mono.Unix.Catalog.GetString ("Editar"), null, null);
+		this.EditarAction.Sensitive = false;
 		this.EditarAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Editar");
 		w1.Add (this.EditarAction, null);
 		this.RefrescarAction = new global::Gtk.Action ("RefrescarAction", global::Mono.Unix.Catalog.GetString ("Refrescar"), "", null);

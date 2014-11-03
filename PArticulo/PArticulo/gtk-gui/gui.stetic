@@ -99,6 +99,7 @@
       <action id="EditarAction">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Editar</property>
+        <property name="Sensitive">False</property>
         <property name="ShortLabel" translatable="yes">Editar</property>
         <signal name="Activated" handler="OnEditActionActivated" />
       </action>

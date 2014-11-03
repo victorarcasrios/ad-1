@@ -14,7 +14,7 @@ public partial class MainWindow: Gtk.Window
 	//GLOBAL VARS
 	private MessageDialog msgDialog;
 
-	List<string> pgName = new List<string> ();
+	private List<string> pgName = new List<string> ();
 
 	public static string currentPage;
 
@@ -69,6 +69,7 @@ public partial class MainWindow: Gtk.Window
 	protected void OnArchivoActionActivated (object sender, EventArgs e)
 	{
 		if (this.pgName.Count != 0){ this.pgName.Clear ();}
+
 		if (noteBook.NPages != 0){
 			for (int i = 0; i < noteBook.NPages; i++){
 				this.pgName.Add (whatPgName (noteBook.GetTabLabel (noteBook.GetNthPage (i))));
@@ -85,9 +86,17 @@ public partial class MainWindow: Gtk.Window
 
 			}
 
+			List<string> rowSelected = new List<string> ();
+			if (rowSelected.Count != 0){ rowSelected.Clear ();}
+
+			rowSelected = MyWidgetTV.getRowSelected ();
+			if (rowSelected.Count != 0){ EditarAction.Sensitive = true;}
+			else { EditarAction.Sensitive = false;}
+
 		} else {
 			ArticuloCloseAct.Sensitive = false;
 			CategoriaCloseAct.Sensitive = false;
+			EditarAction.Sensitive = false;
 		}
 
 	}
@@ -172,7 +181,7 @@ public partial class MainWindow: Gtk.Window
 	{
 		msgDialog = new MessageDialog (
 			this, DialogFlags.Modal, MessageType.Info, ButtonsType.Close,
-			"\tPArticulo v0.2 (Alpha)\t\nCreado por: Juan Cazalilla Costa\n\tGitUser> @juankza\t");
+			"PArticulo v0.2 (Alpha)\nCreado por: Juan Cazalilla Costa\nGitUser> @juankza");
 		msgDialog.Title = "Acerca De";
 		msgDialog.Run ();
 		msgDialog.Destroy ();
