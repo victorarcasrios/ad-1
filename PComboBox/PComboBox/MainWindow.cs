@@ -1,6 +1,7 @@
 //GitUser>@juankza
 
 using Gtk;
+using SerpisAd;
 using System;
 using System.Collections.Generic;
 
@@ -10,38 +11,17 @@ public partial class MainWindow: Gtk.Window
 	{
 		Build ();
 
-		List<Categoria> categorias = new List<Categoria> ();
-		categorias.Add (new Categoria (1, "Uno"));
-		categorias.Add (new Categoria (2, "Dos"));
-		categorias.Add (new Categoria (3, "Tres"));
-
-		int categoriaId = 2;
-
-		CellRendererText crText = new CellRendererText ();
-		comboBox.PackStart (crText, false);
-		comboBox.AddAttribute (crText, "text", 1);
-
-		ListStore listStore = new ListStore (typeof (int), typeof(string));
-
-		TreeIter initTI = listStore.AppendValues (0, "<sin asignar>");
-		foreach (Categoria categoria in categorias) {
-			TreeIter currentTI = listStore.AppendValues (categoria.Id, categoria.Nombre);
-
-			if (categoria.Id == categoriaId){ initTI = currentTI;}
-
-		}
-
-		comboBox.Model = listStore;
-		comboBox.SetActiveIter (initTI);
-
-		propertiesAction.Activated += delegate{
-			TreeIter ti;
-			bool actIter = comboBox.GetActiveIter (out ti);
-			object id = actIter ? listStore.GetValue (ti, 0) : "null";
-			Console.WriteLine ("id={0}", id);
-			
+		ComboBoxHelper comboBoxHelper = new ComboBoxHelper ();
+		comboBoxHelper
+			.ComboBox (comboBox)
+			.Id ((ulong)7)
+			.SelectSql ("select id, nombre from categoria")
+			.Init ();
+		/*
+		propertiesAction.Activated += delegate {
+			Console.WriteLine("id={0}", comboBox.GetId());
 		};
-
+		*/
 	}
 
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
