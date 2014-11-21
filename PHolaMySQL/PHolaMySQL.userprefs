@@ -1,8 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="PHolaMySQL/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../PArticulo/PArticulo/LoginWindow.cs">
     <Files>
-      <File FileName="PHolaMySQL/Program.cs" Line="42" Column="33" />
+      <File FileName="../PSerpisAd/PSerpisAd/DbCommandExtensions.cs" Line="1" Column="1" />
+      <File FileName="../PSerpisAd/PSerpisAd/App.cs" Line="1" Column="1" />
+      <File FileName="PHolaMySQL/Program.cs" Line="1" Column="1" />
+      <File FileName="../PArticulo/PArticulo/LoginWindow.cs" Line="42" Column="20" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
