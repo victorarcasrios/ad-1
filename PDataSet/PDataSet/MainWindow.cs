@@ -16,15 +16,36 @@ public partial class MainWindow: Gtk.Window
 		Build ();
 
 		string sqlCommand = "SELECT * FROM articulo";
-		IDbDataAdapter dbDataAdapter = new MySqlDataAdapter (sqlCommand, mySqlConnection);
+		MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter (sqlCommand, mySqlConnection);
 
 		DataSet dataSet = new DataSet ();
-		dbDataAdapter.Fill (dataSet);
+		mySqlDataAdapter.Fill (dataSet);
 
 		DataTable dataTable = dataSet.Tables [0];
 
-		foreach (DataColumn dataColumn in dataTable.Columns)
-			Console.WriteLine (dataColumn.ColumnName);
+		show (dataTable);
+
+		DataRow dataRow = dataTable.Rows [0];
+		dataRow ["nombre"] = DateTime.Now.ToString ();
+
+		new MySqlCommandBuilder (mySqlDataAdapter);
+		mySqlDataAdapter.Update (dataSet);
+
+	}
+
+	private void show (DataTable dataTable)
+	{
+
+
+		foreach (DataRow dataRow in dataTable.Rows)
+		{
+			foreach (DataColumn dataColumn in dataTable.Columns)
+			{
+				Console.Write ("| {0} = {1} |", dataColumn.ColumnName, dataRow [dataColumn]);
+
+			}
+			Console.WriteLine ();
+		}
 
 	}
 
