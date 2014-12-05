@@ -7,26 +7,96 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class Articulo
 {
 	private static Scanner scan = new Scanner(System.in);
-	private static Connection connection = null;
+	private static Connection connection;
 	private static boolean exit = false;
 	
-	private static void connection(String user, String pwd)
+	private static Connection connection(String user, String pwd)
 	{
+		Connection connection = null;
 		try{
 			connection = DriverManager.getConnection(
 					"jdbc:mysql://localhost/dbprueba?user=" +user+ "&password=" +pwd);
 			
 		}
-		catch(Exception e){
+		catch(SQLException sql){
 			System.out.println("\nUnnable to connect to database.\nError 404.");
 			System.exit(0);
 			
 		}
+		
+		return connection;
+		
+	}
+	
+	private static void newArt()
+	{
+		
+		
+	}
+	
+	private static void editArt()
+	{
+		
+		
+	}
+	
+	private static void delArt()
+	{
+		
+		
+	}
+	
+	private static void seeArt()
+	{
+		System.out.println("\n0.Salir\n1.Visualizar todo\n2.Buscar por ID");
+		int option = Integer.parseInt(scan.nextLine());
+		
+		try{
+			if(option == 1)
+			{
+				PreparedStatement pStatement = connection.prepareStatement("SELECT * FROM articulo");
+				
+				ResultSet resultSet = pStatement.executeQuery();
+				while(resultSet.next())
+				{
+					System.out.printf("| id = %s || nombre = %s || cat = %s || precio = %s |\n",
+						resultSet.getObject("id"), resultSet.getObject("nombre"),
+						resultSet.getObject("categoria"), resultSet.getObject("precio"));
+					
+				}
+				
+				resultSet.close();
+				pStatement.close();
+				
+			}
+			
+			if(option == 2)
+			{
+				System.out.print("ID de busqueda: ");
+				String id = scan.nextLine();
+				PreparedStatement pStatement = connection.prepareStatement("SELECT * FROM articulo WHERE id like ?");
+				pStatement.setObject(1, id);
+				
+				ResultSet resultSet = pStatement.executeQuery();
+				while(resultSet.next())
+				{
+					System.out.printf("| id = %s || nombre = %s || cat = %s || precio = %s |\n",
+						resultSet.getObject("id"), resultSet.getObject("nombre"),
+						resultSet.getObject("categoria"), resultSet.getObject("precio"));
+					
+				}
+				
+				resultSet.close();
+				pStatement.close();
+				
+			}
+			
+		}
+		catch(Exception e){ }
 		
 	}
 	
@@ -38,25 +108,28 @@ public class Articulo
 		System.out.print("Password: ");
 		String pwd = scan.nextLine();
 		
-		connection(user, pwd);
+		connection = connection(user, pwd);
 		
 		while(!exit)
 		{
-			System.out.print("\n0.Salir\t1.Nuevo\t2.Editar\t3.Eliminar\t4.Visualizar");
-			int option = scan.nextInt();
+			System.out.println("\n0.Salir | 1.Nuevo | 2.Editar | 3.Eliminar | 4.Visualizar");
+			int option = Integer.parseInt(scan.nextLine());
 			
 			switch(option)
 			{
 				case 0:{ System.out.print("\nSaliendo..."); exit = true; break;}
-				case 1:{ }
-				case 2:{ }
-				case 3:{ }
-				case 4:{ }
+				case 1:{ newArt(); break;}
+				case 2:{ editArt(); break;}
+				case 3:{ delArt(); break;}
+				case 4:{ seeArt(); break;}
 				default:{ System.out.print("\nOpcion no encontrada."); break;}
 			
 			}
 			
 		}
+		
+		try{ connection.close();}
+		catch(SQLException sql){ System.out.print(sql.getMessage());}
 		
 	}
 
