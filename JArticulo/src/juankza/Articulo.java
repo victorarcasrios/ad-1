@@ -34,7 +34,34 @@ public class Articulo
 	
 	private static void newArt()
 	{
+		//INSERT INTO `dbprueba`.`articulo` (`id`, `nombre`, `categoria`, `precio`) VALUES (NULL, 'articulo 0', '1', '5,25');
+		System.out.println("--- Nuevo articulo ---");
 		
+		System.out.print("ID: ");
+		int id = Integer.parseInt(scan.nextLine());
+		
+		System.out.print("Nombre: ");
+		String name = scan.nextLine();
+		
+		System.out.print("Categoria: ");
+		int cat = Integer.parseInt(scan.nextLine());
+		
+		System.out.print("Precio: ");
+		double pvp = Double.parseDouble(scan.nextLine());
+		
+		try{
+			PreparedStatement pStatement = connection.prepareStatement(
+					"INSERT INTO `dbprueba`.`articulo` (`id`, `nombre`, `categoria`, `precio`) " +
+					"VALUES (?, ?, ?, ?);");
+			pStatement.setObject(1, id); pStatement.setObject(2, name);
+			pStatement.setObject(3, cat); pStatement.setObject(4, pvp);
+			
+			pStatement.executeUpdate();
+			
+			pStatement.close();
+			
+		}
+		catch(Exception e){ }
 		
 	}
 	
