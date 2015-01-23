@@ -11,6 +11,7 @@ public class Articulo
 {
 	private Long id;
 	private String nombre;
+	private Long categoria;
 	
 	@Id
 	@GeneratedValue(generator="increment")
@@ -26,5 +27,11 @@ public class Articulo
 
     public void setNombre(String nombre)
     { this.nombre = nombre;}
+    
+    public Long getCategoria()
+    { return categoria;}
+
+    public void setCategoria(Long categoria)
+    { this.categoria = categoria;}
     
 }

@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class HibernateCategoria
+public class HibernateMySql
 {
 	private static EntityManagerFactory entityManagerFactory;
 
@@ -16,11 +16,14 @@ public class HibernateCategoria
 	{
 		entityManagerFactory = Persistence.createEntityManagerFactory("serpis.ad.jpa.mysql");
 		
+		System.out.println("");
 		showCategorias();
+		System.out.println("");
+		showArticulos();
 		
-		System.out.println("Añado categorias "); persistNuevasCategorias();
+		//System.out.println("Añado categorias "); persistNuevasCategorias();
 		
-		showCategorias();
+		//showCategorias();
 		
 		entityManagerFactory.close();
 
@@ -51,6 +54,23 @@ public class HibernateCategoria
 		List<Categoria> categorias = entityManager.createQuery("FROM Categoria", Categoria.class).getResultList();
 		for (Categoria categoria : categorias)
 			System.out.printf("id=%d \t nombre=%s\n", categoria.getId(), categoria.getNombre());
+		
+		entityManager.getTransaction().commit();
+		
+		entityManager.close();
+		
+	}
+	
+	public static void showArticulos()
+	{
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		
+		entityManager.getTransaction().begin();
+		
+		List<Articulo> articulos = entityManager.createQuery("FROM Articulo", Articulo.class).getResultList();
+		for (Articulo articulo : articulos)
+			System.out.printf("id=%d \t nombre=%s \t categoria=%d \n",
+					articulo.getId(), articulo.getNombre(), articulo.getCategoria());
 		
 		entityManager.getTransaction().commit();
 		
